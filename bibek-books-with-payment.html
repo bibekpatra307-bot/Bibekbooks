@@ -1,0 +1,1436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Bibek Books | Digital Bookstore</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1510;
+  --ink-2: #4a4035;
+  --ink-3: #8a7a6a;
+  --paper: #faf7f2;
+  --paper-2: #f2ede4;
+  --paper-3: #e8e0d4;
+  --forest: #2c5f45;
+  --forest-l: #3d7d5c;
+  --forest-pale: #e8f2ec;
+  --amber: #c07c2a;
+  --amber-l: #f5e4c8;
+  --ruby: #b03030;
+  --ruby-l: #fae8e8;
+  --sapphire: #1e4d7a;
+  --sapphire-l: #e4eef8;
+  --card: #ffffff;
+  --border: rgba(0,0,0,0.09);
+  --shadow-xs: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-sm: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-md: 0 8px 32px rgba(0,0,0,0.12);
+  --shadow-lg: 0 20px 60px rgba(0,0,0,0.18);
+  --r: 14px;
+  --r-sm: 8px;
+  --t: 0.25s cubic-bezier(0.4,0,0.2,1);
+  --nav-h: 66px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+::selection{background:var(--forest-pale);color:var(--forest);}
+
+body {
+  font-family:'Outfit',system-ui,sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.6;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+}
+
+/* ─── NAVBAR ─── */
+.nav {
+  position:sticky;top:0;z-index:200;
+  height:var(--nav-h);
+  background:rgba(250,247,242,0.92);
+  backdrop-filter:blur(20px);
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;
+  padding:0 16px;gap:12px;
+  width:100%;
+}
+.nav-logo {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.6rem;font-weight:700;
+  color:var(--forest);
+  display:flex;align-items:center;gap:10px;
+  text-decoration:none;white-space:nowrap;letter-spacing:-0.3px;
+}
+.nav-logo-mark {
+  width:38px;height:38px;
+  background:linear-gradient(135deg,var(--forest),var(--amber));
+  border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.15rem;flex-shrink:0;
+  box-shadow:0 3px 10px rgba(44,95,69,0.35);
+}
+.nav-search {
+  flex:1;max-width:480px;
+  position:relative;margin:0 auto;
+}
+.nav-search input {
+  width:100%;
+  padding:10px 18px 10px 46px;
+  border:1.5px solid var(--border);
+  border-radius:50px;
+  font-size:0.9rem;font-family:inherit;
+  background:var(--card);color:var(--ink);
+  outline:none;transition:var(--t);
+}
+.nav-search input:focus {
+  border-color:var(--forest);
+  box-shadow:0 0 0 4px var(--forest-pale);
+}
+.nav-search-icon {
+  position:absolute;left:16px;top:50%;
+  transform:translateY(-50%);
+  color:var(--ink-3);pointer-events:none;font-size:1rem;
+}
+.nav-btns{display:flex;gap:6px;align-items:center;}
+.nav-btn {
+  height:40px;border-radius:50px;border:none;
+  cursor:pointer;display:flex;align-items:center;
+  justify-content:center;gap:6px;
+  transition:var(--t);
+  font-family:inherit;font-weight:500;font-size:0.82rem;
+  padding:0 14px;background:transparent;color:var(--ink-2);
+  position:relative;
+}
+.nav-btn:hover{background:var(--paper-3);color:var(--ink);}
+.nav-btn.author-active{background:var(--amber-l);color:var(--amber);}
+.nav-btn-icon{width:40px;padding:0;}
+.wish-dot {
+  position:absolute;top:6px;right:6px;
+  width:9px;height:9px;border-radius:50%;
+  background:var(--ruby);border:2px solid var(--paper);
+  display:none;
+}
+
+/* ─── HERO ─── */
+.hero {
+  text-align:center;
+  padding:52px 24px 36px;
+  position:relative;
+}
+.hero::before {
+  content:'';position:absolute;
+  top:0;left:50%;transform:translateX(-50%);
+  width:600px;height:200px;
+  background:radial-gradient(ellipse,rgba(44,95,69,0.07) 0%,transparent 70%);
+  pointer-events:none;
+}
+.hero-badge {
+  display:inline-flex;align-items:center;gap:6px;
+  background:var(--forest-pale);color:var(--forest);
+  padding:5px 14px;border-radius:50px;
+  font-size:0.78rem;font-weight:600;letter-spacing:0.4px;
+  margin-bottom:18px;border:1px solid rgba(44,95,69,0.2);
+}
+.hero h1 {
+  font-family:'Cormorant Garamond',serif;
+  font-size:clamp(2.2rem,5vw,3.6rem);
+  font-weight:700;letter-spacing:-0.8px;
+  color:var(--ink);margin-bottom:12px;line-height:1.1;
+}
+.hero h1 em{color:var(--forest);font-style:italic;}
+.hero p{
+  color:var(--ink-3);font-size:1.02rem;
+  max-width:460px;margin:0 auto 28px;
+}
+.hero-stats {
+  display:flex;justify-content:center;gap:32px;flex-wrap:wrap;
+}
+.hero-stat {
+  text-align:center;
+}
+.hero-stat strong {
+  display:block;
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.5rem;font-weight:700;color:var(--forest);
+}
+.hero-stat span{font-size:0.78rem;color:var(--ink-3);}
+
+/* ─── MAIN ─── */
+.main {max-width:1280px;margin:0 auto;padding:0 16px 80px;}
+
+/* ─── AUTHOR PANEL ─── */
+.author-panel {
+  background:var(--card);
+  border:1.5px solid var(--amber-l);
+  border-radius:var(--r);
+  padding:28px;margin-bottom:32px;
+  display:none;
+  box-shadow:var(--shadow-sm);
+  animation:slideDown 0.3s ease;
+}
+.author-panel.open{display:block;}
+@keyframes slideDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
+
+.panel-header {
+  display:flex;justify-content:space-between;align-items:center;
+  margin-bottom:22px;flex-wrap:wrap;gap:12px;
+}
+.panel-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.3rem;font-weight:700;color:var(--amber);
+  display:flex;align-items:center;gap:8px;
+}
+
+/* Login Box */
+.login-box {
+  max-width:380px;
+}
+.login-box p{font-size:0.88rem;color:var(--ink-3);margin-bottom:16px;}
+.input-row{display:flex;gap:10px;align-items:center;}
+.input-row input {
+  flex:1;padding:10px 16px;
+  border:1.5px solid var(--border);
+  border-radius:var(--r-sm);
+  font-family:inherit;font-size:0.9rem;
+  background:#fff;color:var(--ink);
+  outline:none;transition:var(--t);
+}
+.input-row input:focus{border-color:var(--forest);box-shadow:0 0 0 3px var(--forest-pale);}
+
+/* Forms */
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.form-grid .span2{grid-column:1/-1;}
+.fg{display:flex;flex-direction:column;gap:5px;}
+.fg label{font-weight:600;font-size:0.78rem;color:var(--ink-3);letter-spacing:0.3px;text-transform:uppercase;}
+.fg input,.fg textarea,.fg select {
+  padding:10px 14px;
+  border:1.5px solid var(--border);
+  border-radius:var(--r-sm);
+  font-family:inherit;font-size:0.88rem;
+  background:#fff;color:var(--ink);
+  outline:none;transition:var(--t);resize:vertical;
+}
+.fg input:focus,.fg textarea:focus,.fg select:focus{
+  border-color:var(--forest);
+  box-shadow:0 0 0 3px var(--forest-pale);
+}
+.check-row {
+  display:flex;align-items:center;gap:10px;
+  padding:10px 14px;
+  border:1.5px solid var(--border);
+  border-radius:var(--r-sm);background:#fff;
+}
+.check-row input[type=checkbox]{width:17px;height:17px;cursor:pointer;accent-color:var(--forest);}
+.check-row label{margin:0;font-weight:500;font-size:0.88rem;cursor:pointer;}
+.divider{border:none;border-top:1px solid var(--border);margin:22px 0;}
+.manage-scroll{max-height:260px;overflow-y:auto;margin-top:10px;}
+.manage-item {
+  display:flex;align-items:center;justify-content:space-between;
+  background:var(--paper-2);border-radius:50px;
+  padding:9px 16px;margin-bottom:8px;
+  border:1px solid var(--border);gap:10px;
+  transition:var(--t);
+}
+.manage-item:hover{border-color:#ccc;}
+.mi-info{flex:1;min-width:0;}
+.mi-title{font-weight:600;font-size:0.88rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.mi-sub{font-size:0.74rem;color:var(--ink-3);}
+.mi-actions{display:flex;gap:6px;flex-shrink:0;}
+
+/* ─── SECTION ─── */
+.section-bar {
+  display:flex;justify-content:space-between;
+  align-items:center;flex-wrap:wrap;
+  gap:14px;margin-bottom:22px;
+}
+.section-title {
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.6rem;font-weight:700;
+  color:var(--ink);
+}
+.cat-pills{display:flex;gap:8px;flex-wrap:wrap;}
+.pill {
+  padding:6px 18px;border-radius:50px;
+  border:1.5px solid var(--border);
+  background:var(--card);
+  cursor:pointer;font-size:0.82rem;font-family:inherit;
+  transition:var(--t);color:var(--ink-3);
+  font-weight:500;white-space:nowrap;
+}
+.pill:hover{border-color:#bbb;color:var(--ink);}
+.pill.on{background:var(--forest);color:#fff;border-color:var(--forest);}
+
+/* ─── BOOK GRID ─── */
+.book-grid {
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(min(200px,45%),1fr));
+  gap:16px;
+  width:100%;
+}
+.book-card {
+  background:var(--card);border-radius:var(--r);
+  overflow:hidden;border:1px solid var(--border);
+  transition:var(--t);cursor:pointer;
+  display:flex;flex-direction:column;
+  box-shadow:var(--shadow-xs);position:relative;
+}
+.book-card:hover{
+  transform:translateY(-6px);
+  box-shadow:var(--shadow-lg);
+  border-color:rgba(0,0,0,0.16);
+}
+.book-cover {
+  width:100%;aspect-ratio:2/2.9;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;
+  font-size:1rem;font-weight:700;color:#fff;
+  text-align:center;padding:20px;
+  line-height:1.3;position:relative;overflow:hidden;
+}
+.book-cover img {
+  width:100%;height:100%;object-fit:cover;
+  position:absolute;top:0;left:0;
+}
+.cover-text{position:relative;z-index:1;text-shadow:0 2px 10px rgba(0,0,0,0.4);}
+.book-badge {
+  position:absolute;top:10px;left:10px;z-index:2;
+  padding:3px 10px;border-radius:50px;
+  font-size:0.65rem;font-weight:700;letter-spacing:0.6px;
+}
+.badge-free{background:var(--forest);color:#fff;}
+.badge-disc{background:var(--ruby);color:#fff;}
+.badge-read{
+  position:absolute;top:10px;right:10px;z-index:2;
+  background:rgba(0,0,0,0.6);color:#fff;
+  padding:3px 10px;border-radius:50px;
+  font-size:0.65rem;font-weight:700;letter-spacing:0.8px;
+  opacity:0;transform:translateY(-4px);transition:var(--t);
+}
+.book-card:hover .badge-read{opacity:1;transform:translateY(0);}
+.book-info{padding:14px 14px 16px;flex:1;display:flex;flex-direction:column;gap:4px;}
+.book-title{
+  font-weight:600;font-size:0.92rem;line-height:1.3;
+  display:-webkit-box;-webkit-line-clamp:2;
+  -webkit-box-orient:vertical;overflow:hidden;
+}
+.book-author{font-size:0.76rem;color:var(--ink-3);}
+.book-cat{font-size:0.7rem;color:#aaa;margin-top:1px;}
+.price-row{display:flex;align-items:center;gap:7px;flex-wrap:wrap;margin-top:6px;}
+.price-now{font-weight:800;font-size:1rem;color:var(--forest);}
+.price-was{font-size:0.73rem;text-decoration:line-through;color:#aaa;}
+.card-btns{display:flex;gap:7px;margin-top:10px;}
+.c-btn {
+  flex:1;border:1px solid var(--border);
+  padding:7px 8px;border-radius:50px;
+  font-size:0.74rem;font-weight:500;
+  display:inline-flex;align-items:center;
+  justify-content:center;gap:4px;
+  cursor:pointer;transition:var(--t);
+  font-family:inherit;background:var(--paper);
+  color:var(--ink);text-decoration:none;
+}
+.c-btn:hover{background:var(--paper-3);}
+.c-btn.wishlisted{color:var(--ruby);border-color:var(--ruby-l);background:var(--ruby-l);}
+.c-btn.buy-btn{background:var(--forest);color:#fff;border-color:var(--forest);}
+.c-btn.buy-btn:hover{background:var(--forest-l);}
+
+/* ─── EMPTY ─── */
+.empty {
+  text-align:center;padding:70px 20px;
+  grid-column:1/-1;color:var(--ink-3);
+}
+.empty .empty-icon{font-size:3.5rem;margin-bottom:16px;}
+.empty h3{font-family:'Cormorant Garamond',serif;font-size:1.3rem;margin-bottom:6px;color:#aaa;}
+.empty p{font-size:0.88rem;color:#bbb;}
+
+/* ─── MODAL BASE ─── */
+.overlay {
+  position:fixed;inset:0;z-index:300;
+  background:rgba(0,0,0,0.7);
+  display:flex;align-items:center;justify-content:center;
+  padding:20px;animation:fadeIn 0.2s ease;
+}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal-box {
+  background:#fff;border-radius:var(--r);
+  width:100%;max-width:900px;
+  max-height:92vh;display:flex;flex-direction:column;
+  box-shadow:var(--shadow-lg);animation:popIn 0.28s ease;overflow:hidden;
+}
+@keyframes popIn{from{opacity:0;transform:scale(0.95)}to{opacity:1;transform:scale(1)}}
+.modal-head {
+  display:flex;align-items:center;
+  justify-content:space-between;
+  padding:18px 24px;border-bottom:1px solid var(--border);gap:14px;
+}
+.modal-head h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.2rem;font-weight:700;
+  white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+}
+.modal-close {
+  width:36px;height:36px;border-radius:50%;
+  border:none;background:var(--paper-2);cursor:pointer;
+  font-size:1rem;display:flex;align-items:center;
+  justify-content:center;transition:var(--t);flex-shrink:0;
+}
+.modal-close:hover{background:var(--paper-3);}
+.modal-body{flex:1;overflow:auto;min-height:300px;background:#f5f3f0;}
+.modal-body iframe{width:100%;height:62vh;border:none;display:block;touch-action:pan-x pan-y;}
+.modal-foot{
+  padding:14px 22px;border-top:1px solid var(--border);
+  display:flex;gap:10px;justify-content:flex-end;flex-wrap:wrap;
+}
+
+/* Card modals */
+.card-modal {
+  background:#fff;border-radius:20px;
+  max-width:540px;width:90%;max-height:86vh;
+  overflow-y:auto;padding:28px;
+  box-shadow:var(--shadow-lg);animation:popIn 0.28s ease;
+}
+.card-modal h3{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.25rem;font-weight:700;
+  margin-bottom:20px;
+  display:flex;justify-content:space-between;align-items:center;
+}
+
+/* Wishlist */
+.wish-item {
+  display:flex;align-items:center;gap:14px;
+  padding:12px 0;border-bottom:1px solid var(--border);
+}
+.wish-item:last-child{border-bottom:none;}
+.wish-cover {
+  width:44px;height:62px;border-radius:6px;
+  object-fit:cover;flex-shrink:0;
+}
+.wish-cover-grad {
+  width:44px;height:62px;border-radius:6px;
+  flex-shrink:0;display:flex;align-items:center;
+  justify-content:center;font-size:0.6rem;
+  color:#fff;text-align:center;padding:4px;
+  font-family:'Cormorant Garamond',serif;font-weight:700;
+  line-height:1.2;
+}
+
+/* ─── BUTTONS ─── */
+.btn {
+  padding:9px 22px;border-radius:50px;border:none;
+  cursor:pointer;font-family:inherit;font-weight:600;
+  font-size:0.85rem;transition:var(--t);
+  display:inline-flex;align-items:center;gap:7px;
+  text-decoration:none;
+}
+.btn-forest{background:var(--forest);color:#fff;}
+.btn-forest:hover{background:var(--forest-l);transform:translateY(-1px);box-shadow:0 4px 14px rgba(44,95,69,0.3);}
+.btn-outline{background:#fff;color:var(--forest);border:1.5px solid var(--forest);}
+.btn-outline:hover{background:var(--forest-pale);}
+.btn-amber{background:var(--amber);color:#fff;}
+.btn-amber:hover{background:#a86b20;}
+.btn-ruby{background:var(--ruby);color:#fff;}
+.btn-ruby:hover{background:#962828;}
+.btn-ghost{background:var(--paper-2);color:var(--ink-2);}
+.btn-ghost:hover{background:var(--paper-3);}
+.btn-sm{padding:6px 14px;font-size:0.78rem;}
+
+/* ─── TOAST ─── */
+.toast-wrap {
+  position:fixed;bottom:24px;left:24px;z-index:999;
+  display:flex;flex-direction:column;gap:8px;
+}
+.toast {
+  padding:11px 20px;border-radius:50px;color:#fff;
+  font-weight:500;font-size:0.86rem;
+  animation:slideInL 0.3s ease,fadeOut 0.3s ease 2.7s forwards;
+  box-shadow:var(--shadow-md);max-width:360px;
+  display:flex;align-items:center;gap:8px;
+}
+.toast.ok{background:#2d7a52;}
+.toast.err{background:#b03030;}
+.toast.inf{background:#1e5c9a;}
+@keyframes slideInL{from{transform:translateX(-120%);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes fadeOut{to{opacity:0;transform:translateY(6px)}}
+
+/* ─── FOOTER ─── */
+.site-footer {
+  background:var(--paper-3);
+  border-top:1px solid var(--border);
+  padding:30px 24px;text-align:center;
+  font-size:0.74rem;color:var(--ink-3);
+  white-space:pre-line;margin-top:60px;
+  line-height:1.8;
+}
+
+/* ─── BOOK DETAIL PANEL ─── */
+.book-detail {
+  display:flex;gap:24px;padding:24px;
+  align-items:flex-start;flex-wrap:wrap;
+}
+.book-detail-cover {
+  width:140px;height:200px;border-radius:10px;
+  flex-shrink:0;overflow:hidden;
+}
+.book-detail-cover img{width:100%;height:100%;object-fit:cover;}
+.book-detail-cover-grad {
+  width:140px;height:200px;border-radius:10px;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond',serif;font-weight:700;
+  color:#fff;text-align:center;padding:16px;
+  font-size:1.05rem;line-height:1.3;
+  text-shadow:0 2px 8px rgba(0,0,0,0.3);
+  flex-shrink:0;
+}
+.book-detail-info{flex:1;min-width:200px;}
+.book-detail-info h2{
+  font-family:'Cormorant Garamond',serif;
+  font-size:1.5rem;font-weight:700;margin-bottom:4px;
+}
+.book-detail-author{color:var(--ink-3);font-size:0.9rem;margin-bottom:10px;}
+.book-detail-desc{font-size:0.88rem;color:var(--ink-2);line-height:1.65;margin-bottom:14px;}
+.book-detail-meta{
+  display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px;
+}
+.meta-chip {
+  padding:4px 12px;border-radius:50px;
+  font-size:0.73rem;font-weight:600;
+  background:var(--paper-2);color:var(--ink-3);
+  border:1px solid var(--border);
+}
+
+/* ─── BUY MODAL ─── */
+.buy-modal .card-modal{max-width:440px;}
+.buy-summary {
+  background:var(--paper-2);border-radius:var(--r-sm);
+  padding:18px;margin-bottom:20px;
+}
+.buy-item-row{display:flex;justify-content:space-between;margin-bottom:6px;font-size:0.88rem;}
+.buy-total{
+  display:flex;justify-content:space-between;
+  font-weight:700;font-size:1.05rem;
+  padding-top:10px;border-top:1px solid var(--border);margin-top:10px;
+  color:var(--forest);
+}
+.buy-fields{display:flex;flex-direction:column;gap:10px;margin-bottom:20px;}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:768px){
+  .nav{padding:0 16px;gap:12px;}
+  .nav-logo{font-size:1.35rem;}
+  .book-grid{grid-template-columns:repeat(2,1fr);gap:12px;}
+  .main{padding:0 14px 60px;}
+  .form-grid{grid-template-columns:1fr;}
+  .form-grid .span2{grid-column:1;}
+  .book-detail{flex-direction:column;}
+  .hero{padding:36px 16px 24px;}
+}
+@media(max-width:480px){
+  .hero h1{font-size:1.9rem;}
+  .hero-stats{gap:20px;}
+  .book-grid{grid-template-columns:repeat(2,1fr);gap:10px;}
+  .book-info{padding:10px 10px 12px;}
+  .book-title{font-size:0.85rem;}
+  .card-btns{gap:5px;}
+  .c-btn{font-size:0.7rem;padding:6px 6px;}
+}
+
+/* Animations for page load */
+.hero{animation:fadeUp 0.5s ease both;}
+.book-card{animation:fadeUp 0.4s ease both;}
+@keyframes fadeUp{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}
+</style>
+</head>
+<body>
+
+<div class="toast-wrap" id="toastWrap"></div>
+
+<!-- NAVBAR -->
+<nav class="nav">
+  <a class="nav-logo" href="#">
+    <div class="nav-logo-mark">📚</div>
+    Bibek Books
+  </a>
+  <div class="nav-search">
+    <span class="nav-search-icon">🔍</span>
+    <input type="text" id="searchInput" placeholder="Search titles, authors, categories…" oninput="filterBooks()">
+  </div>
+  <div class="nav-btns">
+    <button class="nav-btn nav-btn-icon" title="Cart" onclick="openCart()">🛒<span class="wish-dot" id="cartDot" style="display:none"></span></button>
+    <button class="nav-btn nav-btn-icon" title="Wishlist" onclick="openWishModal()">❤️<span class="wish-dot" id="wishDot"></span></button>
+    <button class="nav-btn nav-btn-icon" id="authorBtn" title="Author Studio" onclick="toggleAuthorPanel()">✍️</button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-badge">✨ Discover · Read · Collect</div>
+  <h1>Your Personal<br><em>Digital Library</em></h1>
+  <p>Curated books by Bibek — buy, read free titles, and save your favourites, all in one place.</p>
+  <div class="hero-stats" id="heroStats"></div>
+</div>
+
+<!-- MAIN -->
+<div class="main">
+
+  <!-- AUTHOR PANEL -->
+  <div class="author-panel" id="authorPanel">
+    <div class="panel-header">
+      <div class="panel-title">✍️ Author Studio</div>
+      <div id="authorPanelHead"></div>
+    </div>
+    <div id="authorPanelBody"></div>
+  </div>
+
+  <!-- BOOKS SECTION -->
+  <div class="section-bar">
+    <div class="section-title" id="sectionTitle">All Books</div>
+    <div class="cat-pills" id="catPills"></div>
+  </div>
+  <div class="book-grid" id="bookGrid"></div>
+
+</div>
+
+<footer class="site-footer" id="siteFooter"></footer>
+
+<!-- READ MODAL -->
+<div class="overlay" id="readModal" style="display:none" onclick="if(event.target===this)closeReadModal()">
+  <div class="modal-box">
+    <div class="modal-head">
+      <h3 id="readModalTitle">Book</h3>
+      <button class="modal-close" onclick="closeReadModal()">✕</button>
+    </div>
+    <div class="modal-body" id="readModalBody"></div>
+    <div class="modal-foot" id="readModalFoot"></div>
+  </div>
+</div>
+
+<!-- BOOK DETAIL MODAL -->
+<div class="overlay" id="detailModal" style="display:none" onclick="if(event.target===this)closeDetailModal()">
+  <div class="modal-box" style="max-width:660px">
+    <div class="modal-head">
+      <h3 id="detailTitle">Book Details</h3>
+      <button class="modal-close" onclick="closeDetailModal()">✕</button>
+    </div>
+    <div id="detailBody" class="book-detail"></div>
+    <div class="modal-foot" id="detailFoot"></div>
+  </div>
+</div>
+
+<!-- WISHLIST MODAL -->
+<div class="overlay" id="wishModal" style="display:none" onclick="if(event.target===this)closeWishModal()">
+  <div class="card-modal">
+    <h3>❤️ Wishlist <button class="modal-close" onclick="closeWishModal()">✕</button></h3>
+    <div id="wishItems"></div>
+  </div>
+</div>
+
+<!-- CART MODAL -->
+<div class="overlay" id="cartModal" style="display:none" onclick="if(event.target===this)closeCart()">
+  <div class="card-modal">
+    <h3>🛒 Cart <button class="modal-close" onclick="closeCart()">✕</button></h3>
+    <div id="cartItems"></div>
+    <div id="cartFoot" style="margin-top:14px"></div>
+  </div>
+</div>
+
+<!-- BUY MODAL -->
+<div class="overlay" id="buyModal" style="display:none" onclick="if(event.target===this)closeBuy()">
+  <div class="card-modal" style="max-width:420px">
+    <h3>💳 Checkout <button class="modal-close" onclick="closeBuy()">✕</button></h3>
+    <div id="buyBody"></div>
+  </div>
+</div>
+
+<!-- EDIT MODAL -->
+<div class="overlay" id="editModal" style="display:none" onclick="if(event.target===this)closeEditModal()">
+  <div class="card-modal">
+    <h3>✏️ Edit Book <button class="modal-close" onclick="closeEditModal()">✕</button></h3>
+    <input type="hidden" id="editId">
+    <div class="form-grid" style="margin-bottom:14px">
+      <div class="fg"><label>Title *</label><input id="eTitle"></div>
+      <div class="fg"><label>Author *</label><input id="eAuthor"></div>
+      <div class="fg"><label>Publish Date</label><input type="date" id="eDate"></div>
+      <div class="fg"><label>Category</label>
+        <select id="eCat">
+          <option>Spiritual</option><option>Fiction</option><option>Non-Fiction</option>
+          <option>Science</option><option>History</option><option>Poetry</option><option>Business</option>
+        </select>
+      </div>
+      <div class="fg"><label>Price (₹)</label><input type="number" id="ePrice"></div>
+      <div class="fg"><label>Discount (%)</label><input type="number" id="eDisc" min="0" max="90"></div>
+    </div>
+    <div class="check-row" style="margin-bottom:12px">
+      <input type="checkbox" id="eFree"><label for="eFree">📖 Make this book FREE</label>
+    </div>
+    <div class="fg" style="margin-bottom:12px"><label>Cover Image (replace)</label><input type="file" id="eCover" accept="image/*"></div>
+    <div class="fg" style="margin-bottom:12px"><label>PDF / Read URL</label><input id="ePdf" placeholder="https://..."></div>
+    <div class="fg" style="margin-bottom:20px"><label>Description</label><textarea id="eDesc" rows="3"></textarea></div>
+    <div style="display:flex;gap:10px">
+      <button class="btn btn-forest" onclick="confirmEdit()">💾 Save Changes</button>
+      <button class="btn btn-ghost" onclick="closeEditModal()">Cancel</button>
+    </div>
+  </div>
+</div>
+
+<!-- Razorpay SDK -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<!-- Firebase SDK -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import {
+  getFirestore, collection, addDoc, updateDoc, deleteDoc,
+  doc, setDoc, getDoc, onSnapshot, query, orderBy
+} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+// ── FIREBASE CONFIG ──
+const firebaseConfig = {
+  apiKey: "AIzaSyC9vp6iqR0O2KOKguHBKs6ZWCWXN1oEzAs",
+  authDomain: "bibek-media-143ba.firebaseapp.com",
+  projectId: "bibek-media-143ba",
+  storageBucket: "bibek-media-143ba.firebasestorage.app",
+  messagingSenderId: "135854036939",
+  appId: "1:135854036939:web:35d2b18c16c6037ef7484e"
+};
+const fbApp = initializeApp(firebaseConfig);
+const db = getFirestore(fbApp);
+
+// ── CONSTANTS ──
+const SK_PASS = 'bibek_pass';
+const SK_COPY = 'bibek_copy';
+const SK_WISH = 'bibek_wish';
+const SK_CART = 'bibek_cart';
+const SK_SESS = 'bibek_session';
+const SK_PURCHASED = 'bibek_purchased';
+
+// ── RAZORPAY CONFIG ── (Replace with your actual Key ID from razorpay.com dashboard)
+const RAZORPAY_KEY = 'rzp_test_YourKeyHere';
+const DEF_PASS = 'author123';
+const DEF_COPY = `Copyright \u00A9 2026 by Bibek Patra\n\nAll rights reserved. No part of this publication may be reproduced, stored, or transmitted in any form without written permission from the publisher.\n\nBibek Books \u00B7 Digital Bookstore \u00B7 Est. 2026`;
+const CATS = ['Spiritual','Fiction','Non-Fiction','Science','History','Poetry','Business'];
+const PALETTES = [
+  ['#2c5f45','#4a9e72'],['#7a3b1e','#c47a4a'],['#1a4a7a','#4a90c8'],
+  ['#5a2d7a','#9a55c8'],['#a82020','#d86060'],['#1e6070','#3ab0c8'],
+  ['#3a4f60','#6a90aa'],['#4a3020','#8a7050'],
+];
+
+let books = [], wishlist = [], cart = [], isAuthor = false, activeCat = 'All';
+let purchased = [];
+
+// ── HELPERS ──
+const uid = () => Math.random().toString(36).slice(2,10)+Date.now().toString(36);
+const esc = s => String(s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+const getPass = () => localStorage.getItem(SK_PASS)||DEF_PASS;
+const setPass = p => localStorage.setItem(SK_PASS,p);
+const getCopy = () => localStorage.getItem(SK_COPY)||DEF_COPY;
+const saveCopy = t => localStorage.setItem(SK_COPY,t);
+const saveWish = () => localStorage.setItem(SK_WISH,JSON.stringify(wishlist));
+const saveCart = () => localStorage.setItem(SK_CART,JSON.stringify(cart));
+const savePurchased = () => localStorage.setItem(SK_PURCHASED,JSON.stringify(purchased));
+const inWish = id => wishlist.includes(id);
+const inCart = id => cart.includes(id);
+const isPurchased = id => purchased.includes(id);
+const readFile = f => new Promise((res,rej)=>{
+  if(!f){res('');return;}
+  const r=new FileReader();
+  r.onerror=()=>rej(r.error);
+  r.onload=()=>{
+    const img=new Image();
+    img.onload=()=>{
+      const MAX=600;
+      let w=img.width,h=img.height;
+      if(w>MAX||h>MAX){
+        if(w>h){h=Math.round(h*MAX/w);w=MAX;}
+        else{w=Math.round(w*MAX/h);h=MAX;}
+      }
+      const canvas=document.createElement('canvas');
+      canvas.width=w;canvas.height=h;
+      canvas.getContext('2d').drawImage(img,0,0,w,h);
+      res(canvas.toDataURL('image/jpeg',0.75));
+    };
+    img.onerror=()=>rej(new Error('Image load failed'));
+    img.src=r.result;
+  };
+  r.readAsDataURL(f);
+});
+
+function calcPrice(b){
+  if(b.isFree)return{cur:0,orig:b.price,disc:0};
+  const d=Math.max(0,Math.min(90,b.discount||0));
+  return{cur:d>0?Math.round(b.price*(1-d/100)):b.price,orig:b.price,disc:d};
+}
+
+function toast(msg,type='ok'){
+  const t=document.createElement('div');
+  t.className=`toast ${type}`;t.textContent=msg;
+  document.getElementById('toastWrap').appendChild(t);
+  setTimeout(()=>t.remove(),3300);
+}
+
+// ── FIREBASE: LOAD BOOKS (realtime) ──
+function initFirebase(){
+  showLoading(true);
+  const q = query(collection(db, 'books'), orderBy('createdAt','desc'));
+  onSnapshot(q, (snap) => {
+    books = [];
+    snap.forEach(d => {
+      books.push({id:d.id, discount:0, isFree:false, publishDate:'', pdfUrl:'', description:'', cover:'', coverColor:0, ...d.data()});
+    });
+    // If no books in Firestore, seed sample books
+    if(books.length === 0) {
+      seedSampleBooks();
+    } else {
+      showLoading(false);
+      filterBooks();
+      updateDots();
+    }
+  }, (err) => {
+    console.error('Firestore error:', err);
+    toast('⚠️ Firebase connection error. Check Firestore rules.', 'err');
+    showLoading(false);
+  });
+}
+
+async function seedSampleBooks(){
+  const samples = getSampleBooks();
+  for(const b of samples){
+    await addDoc(collection(db,'books'), {...b, createdAt: Date.now()});
+  }
+  // onSnapshot will auto-refresh
+}
+
+function getSampleBooks(){
+  return[
+    {title:'The Midnight Library',author:'Matt Haig',category:'Fiction',price:499,discount:20,isFree:false,publishDate:'2020-09-29',pdfUrl:'https://www.gutenberg.org/files/1342/1342-h/1342-h.htm',description:'Between life and death there is a library, and within that library, the shelves go on forever.',cover:'',coverColor:0},
+    {title:'Atomic Habits',author:'James Clear',category:'Non-Fiction',price:599,discount:10,isFree:false,publishDate:'2018-10-16',pdfUrl:'',description:'Tiny changes, remarkable results. An easy and proven way to build good habits and break bad ones.',cover:'',coverColor:1},
+    {title:'Sapiens',author:'Yuval Noah Harari',category:'History',price:699,discount:0,isFree:false,publishDate:'2011-01-01',pdfUrl:'https://www.gutenberg.org/files/345/345-h/345-h.htm',description:'A brief history of humankind from the Stone Age to the modern era.',cover:'',coverColor:2},
+    {title:'The Alchemist',author:'Paulo Coelho',category:'Spiritual',price:350,discount:0,isFree:true,publishDate:'1988-01-01',pdfUrl:'https://www.gutenberg.org/files/84/84-h/84-h.htm',description:'A timeless journey of self-discovery and following your dreams.',cover:'',coverColor:3},
+    {title:'A Brief History of Time',author:'Stephen Hawking',category:'Science',price:450,discount:15,isFree:false,publishDate:'1988-04-01',pdfUrl:'',description:'Exploring the cosmos, black holes, and the nature of time.',cover:'',coverColor:4},
+    {title:'Think and Grow Rich',author:'Napoleon Hill',category:'Business',price:299,discount:5,isFree:false,publishDate:'1937-03-26',pdfUrl:'',description:'The philosophy of personal achievement and financial success.',cover:'',coverColor:5},
+    {title:'Rumi: Selected Poems',author:'Jalal al-Din Rumi',category:'Poetry',price:250,discount:0,isFree:true,publishDate:'1258-01-01',pdfUrl:'https://www.gutenberg.org/files/18723/18723-h/18723-h.htm',description:'The timeless spiritual poetry of the great Sufi master.',cover:'',coverColor:6},
+  ];
+}
+
+function showLoading(on){
+  let el=document.getElementById('loadingState');
+  if(!el){
+    el=document.createElement('div');
+    el.id='loadingState';
+    el.style.cssText='grid-column:1/-1;text-align:center;padding:60px 20px;color:#aaa;font-size:0.95rem;';
+    el.innerHTML='<div style="font-size:2.5rem;margin-bottom:12px;animation:spin 1s linear infinite;display:inline-block">🔄</div><br>Loading books from cloud…';
+    document.getElementById('bookGrid').appendChild(el);
+  }
+  el.style.display=on?'block':'none';
+}
+
+// ── FIREBASE: SAVE BOOK ──
+async function saveBookToFirestore(bookData){
+  const ref = await addDoc(collection(db,'books'), {
+    ...bookData,
+    createdAt: Date.now()
+  });
+  return ref.id;
+}
+
+async function updateBookInFirestore(id, data){
+  await updateDoc(doc(db,'books',id), data);
+}
+
+async function deleteBookFromFirestore(id){
+  await deleteDoc(doc(db,'books',id));
+}
+
+// ── STATS ──
+function updateStats(){
+  const total=books.length;
+  const free=books.filter(b=>b.isFree).length;
+  const cats=new Set(books.map(b=>b.category)).size;
+  document.getElementById('heroStats').innerHTML=`
+    <div class="hero-stat"><strong>${total}</strong><span>Books</span></div>
+    <div class="hero-stat"><strong>${free}</strong><span>Free to Read</span></div>
+    <div class="hero-stat"><strong>${cats}</strong><span>Categories</span></div>`;
+}
+
+// ── DOTS ──
+function updateDots(){
+  document.getElementById('wishDot').style.display=wishlist.length?'block':'none';
+  document.getElementById('cartDot').style.display=cart.length?'block':'none';
+}
+
+// ── RENDER BOOKS ──
+function bookCard(b){
+  const{cur,disc}=calcPrice(b);
+  const saved=inWish(b.id);
+  const carted=inCart(b.id);
+  const ci=(b.coverColor??b.title.charCodeAt(0))%PALETTES.length;
+  const[c1,c2]=PALETTES[ci];
+  const coverHtml=b.cover
+    ?`<img src="${esc(b.cover)}" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0" loading="lazy">`
+    :`<span class="cover-text">${esc(b.title)}</span>`;
+  const topBadge=b.isFree
+    ?`<span class="book-badge badge-free">FREE</span>`
+    :(disc>0?`<span class="book-badge badge-disc">${disc}% OFF</span>`:'');
+  const readBadge=b.pdfUrl?`<span class="badge-read">PREVIEW</span>`:'';
+  const priceSection=b.isFree
+    ?`<div class="price-row"><span style="font-size:0.82rem;font-weight:600;color:var(--forest)">📖 Free to Read</span></div>`
+    :`<div class="price-row"><span class="price-now">&#8377;${cur}</span>${disc>0?`<span class="price-was">&#8377;${b.price}</span>`:''}</div>`;
+  const readBtn = b.isFree
+    ? (b.pdfUrl
+        ? `<a class="c-btn" href="${esc(b.pdfUrl)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">📖 Read Free</a>`
+        : `<button class="c-btn" style="opacity:0.4;cursor:default" disabled>📖 Read</button>`)
+    : (isPurchased(b.id) && b.pdfUrl
+        ? `<a class="c-btn" href="${esc(b.pdfUrl)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">📖 Read</a>`
+        : `<button class="c-btn" style="opacity:0.55" onclick="event.stopPropagation();openBuy('${b.id}')">🔒 Buy to Read</button>`);
+  const cartBtn=b.isFree?''
+    :`<button class="c-btn buy-btn" onclick="event.stopPropagation();addToCart('${b.id}')">${carted?'✓ Cart':'🛒'}</button>`;
+  return`<div class="book-card" onclick="openDetail('${b.id}')">
+    <div class="book-cover" style="background:linear-gradient(135deg,${c1},${c2})">
+      ${coverHtml}${topBadge}${readBadge}
+    </div>
+    <div class="book-info">
+      <div class="book-title">${esc(b.title)}</div>
+      <div class="book-author">${esc(b.author)}</div>
+      <div class="book-cat">${esc(b.category)}${b.publishDate?' · '+b.publishDate.slice(0,4):''}</div>
+      ${priceSection}
+      <div class="card-btns">
+        ${readBtn}
+        <button class="c-btn ${saved?'wishlisted':''}" onclick="event.stopPropagation();toggleWish('${b.id}')" id="wb-${b.id}">
+          ${saved?'❤️':'🤍'}
+        </button>
+        ${cartBtn}
+      </div>
+    </div>
+  </div>`;
+}
+
+function renderBooks(list){
+  const g=document.getElementById('bookGrid');
+  if(!list.length){
+    g.innerHTML=`<div class="empty"><div class="empty-icon">📭</div><h3>No books found</h3><p>Try a different search or category.</p></div>`;
+    return;
+  }
+  g.innerHTML=list.map(bookCard).join('');
+}
+
+function renderPills(){
+  const cats=['All',...CATS.filter(c=>books.some(b=>b.category===c))];
+  document.getElementById('catPills').innerHTML=cats.map(c=>
+    `<button class="pill${c===activeCat?' on':''}" onclick="setCat('${c}')">${c}</button>`
+  ).join('');
+}
+
+window.setCat = c => { activeCat=c; filterBooks(); };
+
+window.filterBooks = function(){
+  const q=document.getElementById('searchInput').value.toLowerCase().trim();
+  let list=activeCat==='All'?books:books.filter(b=>b.category===activeCat);
+  if(q)list=list.filter(b=>
+    b.title.toLowerCase().includes(q)||
+    b.author.toLowerCase().includes(q)||
+    (b.category||'').toLowerCase().includes(q)
+  );
+  document.getElementById('sectionTitle').textContent=
+    q?`Results for "${q}"`:activeCat==='All'?'All Books':activeCat;
+  renderPills();
+  renderBooks(list);
+  updateStats();
+};
+
+// ── WISHLIST ──
+window.toggleWish = function(id){
+  if(inWish(id)){wishlist=wishlist.filter(x=>x!==id);toast('Removed from wishlist','inf');}
+  else{wishlist.push(id);toast('\u2764\uFE0F Added to wishlist');}
+  saveWish();updateDots();
+  const btn=document.getElementById('wb-'+id);
+  if(btn){btn.className=`c-btn ${inWish(id)?'wishlisted':''}`;btn.innerHTML=inWish(id)?'\u2764\uFE0F':'\uD83E\uDD0D';}
+};
+
+window.openWishModal = function(){
+  const items=document.getElementById('wishItems');
+  const wBooks=books.filter(b=>wishlist.includes(b.id));
+  if(!wBooks.length){
+    items.innerHTML=`<div style="text-align:center;padding:40px;color:#aaa"><div style="font-size:3rem;margin-bottom:12px">\u2764\uFE0F</div><p>Your wishlist is empty!</p></div>`;
+  }else{
+    items.innerHTML=wBooks.map(b=>{
+      const{cur}=calcPrice(b);
+      const ci=(b.coverColor??b.title.charCodeAt(0))%PALETTES.length;
+      const[c1,c2]=PALETTES[ci];
+      const covEl=b.cover
+        ?`<img class="wish-cover" src="${esc(b.cover)}">`
+        :`<div class="wish-cover-grad" style="background:linear-gradient(135deg,${c1},${c2})">${esc(b.title.slice(0,20))}</div>`;
+      return`<div class="wish-item">
+        ${covEl}
+        <div style="flex:1;min-width:0">
+          <div style="font-weight:700;font-size:0.9rem">${esc(b.title)}</div>
+          <div style="font-size:0.74rem;color:var(--ink-3)">${esc(b.author)} \u00B7 ${esc(b.category)}</div>
+          <div style="font-weight:800;color:var(--forest);font-size:0.86rem;margin-top:3px">${b.isFree?'FREE':'\u20B9'+cur}</div>
+        </div>
+        <div style="display:flex;gap:6px;flex-shrink:0">
+          ${!b.isFree?`<button class="btn btn-forest btn-sm" onclick="addToCart('${b.id}');openWishModal()">\uD83D\uDED2</button>`:''}
+          <button class="btn btn-ghost btn-sm" onclick="toggleWish('${b.id}');openWishModal()">\u2715</button>
+        </div>
+      </div>`;
+    }).join('');
+  }
+  document.getElementById('wishModal').style.display='flex';
+};
+window.closeWishModal = () => document.getElementById('wishModal').style.display='none';
+
+// ── CART ──
+window.addToCart = function(id){
+  const b=books.find(x=>x.id===id);
+  if(!b||b.isFree)return;
+  if(!inCart(id)){cart.push(id);toast('\uD83D\uDED2 Added to cart');}
+  else toast('Already in cart','inf');
+  saveCart();updateDots();filterBooks();
+};
+window.removeFromCart = id => {cart=cart.filter(x=>x!==id);saveCart();updateDots();openCart();};
+
+window.openCart = function(){
+  const cartBooks=books.filter(b=>cart.includes(b.id));
+  const itemsEl=document.getElementById('cartItems');
+  const footEl=document.getElementById('cartFoot');
+  if(!cartBooks.length){
+    itemsEl.innerHTML=`<div style="text-align:center;padding:40px;color:#aaa"><div style="font-size:3rem;margin-bottom:12px">\uD83D\uDED2</div><p>Your cart is empty!</p></div>`;
+    footEl.innerHTML='';
+  }else{
+    const total=cartBooks.reduce((s,b)=>s+calcPrice(b).cur,0);
+    itemsEl.innerHTML=cartBooks.map(b=>{
+      const{cur,disc}=calcPrice(b);
+      return`<div class="wish-item">
+        <div style="flex:1;min-width:0">
+          <div style="font-weight:700;font-size:0.9rem">${esc(b.title)}</div>
+          <div style="font-size:0.74rem;color:var(--ink-3)">${esc(b.author)}</div>
+          <div style="font-weight:800;color:var(--forest);font-size:0.86rem;margin-top:3px">\u20B9${cur}${disc>0?` <span style="font-size:0.72rem;color:#aaa;text-decoration:line-through">\u20B9${b.price}</span>`:''}</div>
+        </div>
+        <button class="btn btn-ghost btn-sm" onclick="removeFromCart('${b.id}')">\u2715</button>
+      </div>`;
+    }).join('');
+    footEl.innerHTML=`
+      <div style="display:flex;justify-content:space-between;font-weight:700;padding:10px 0;border-top:1px solid var(--border);font-size:1rem;color:var(--forest)">
+        <span>Total</span><span>\u20B9${total}</span>
+      </div>
+      <button class="btn btn-forest" style="width:100%;justify-content:center;margin-top:10px" onclick="closeCart();openBuyFromCart()">\uD83D\uDCB3 Proceed to Checkout</button>`;
+  }
+  document.getElementById('cartModal').style.display='flex';
+};
+window.closeCart = () => document.getElementById('cartModal').style.display='none';
+
+// ── BUY (Razorpay) ──
+window.openBuy = function(id){
+  const b=books.find(x=>x.id===id);
+  if(!b||b.isFree)return;
+  if(isPurchased(id)){toast('✅ Already purchased! Click Read to open.','inf');return;}
+  closeBuy();closeDetailModal();
+  const{cur,disc,orig}=calcPrice(b);
+  document.getElementById('buyBody').innerHTML=`
+    <div class="buy-summary">
+      <div class="buy-item-row"><span style="font-weight:600">${esc(b.title)}</span><span>₹${orig}</span></div>
+      ${disc>0?`<div class="buy-item-row" style="color:var(--ruby)"><span>Discount (${disc}%)</span><span>-₹${orig-cur}</span></div>`:''}
+      <div class="buy-total"><span>Total</span><span>₹${cur}</span></div>
+    </div>
+    <div class="buy-fields">
+      <div class="fg"><label>Full Name</label><input id="buyName" placeholder="Your name"></div>
+      <div class="fg"><label>Email</label><input type="email" id="buyEmail" placeholder="you@example.com"></div>
+      <div class="fg"><label>Phone</label><input id="buyPhone" placeholder="+91 XXXXX XXXXX"></div>
+    </div>
+    <button class="btn btn-forest" style="width:100%;justify-content:center" onclick="launchRazorpay('${b.id}')">💳 Pay ₹${cur} via Razorpay</button>
+    <p style="text-align:center;font-size:0.73rem;color:#aaa;margin-top:10px">🔒 Secure payment · UPI · Cards · Net Banking</p>`;
+  document.getElementById('buyModal').style.display='flex';
+};
+
+window.launchRazorpay = function(id){
+  const b=books.find(x=>x.id===id);
+  if(!b)return;
+  const name=document.getElementById('buyName').value.trim();
+  const email=document.getElementById('buyEmail').value.trim();
+  const phone=document.getElementById('buyPhone').value.trim();
+  if(!name||!email){toast('⚠️ Please fill name and email','err');return;}
+  const{cur}=calcPrice(b);
+  const options={
+    key: RAZORPAY_KEY,
+    amount: cur * 100, // Razorpay takes paise (1 INR = 100 paise)
+    currency: 'INR',
+    name: 'Bibek Books',
+    description: b.title,
+    image: 'https://via.placeholder.com/60x60/2c5f45/ffffff?text=BB',
+    prefill:{ name, email, contact: phone },
+    theme:{ color: '#2c5f45' },
+    handler: function(response){
+      // Payment successful — unlock book
+      if(!purchased.includes(id)) purchased.push(id);
+      savePurchased();
+      cart = cart.filter(x=>x!==id);
+      saveCart(); updateDots();
+      closeBuy();
+      filterBooks();
+      toast(`🎉 Payment successful! "${b.title}" unlocked. Happy reading!`);
+      // Auto-open the book if PDF exists
+      if(b.pdfUrl) setTimeout(()=>window.open(b.pdfUrl,'_blank'),800);
+    },
+    modal:{
+      ondismiss: function(){ toast('Payment cancelled','inf'); }
+    }
+  };
+  try{
+    const rzp = new Razorpay(options);
+    rzp.open();
+    closeBuy();
+  }catch(e){
+    toast('⚠️ Razorpay load failed. Check your API key in the code.','err');
+    console.error('Razorpay error:',e);
+  }
+};
+
+window.openBuyFromCart = function(){
+  const cartBooks=books.filter(b=>cart.includes(b.id));
+  if(!cartBooks.length)return;
+  const total=cartBooks.reduce((s,b)=>s+calcPrice(b).cur,0);
+  document.getElementById('buyBody').innerHTML=`
+    <div class="buy-summary">
+      ${cartBooks.map(b=>{const{cur}=calcPrice(b);return`<div class="buy-item-row"><span>${esc(b.title)}</span><span>₹${cur}</span></div>`;}).join('')}
+      <div class="buy-total"><span>Total</span><span>₹${total}</span></div>
+    </div>
+    <div class="buy-fields">
+      <div class="fg"><label>Full Name</label><input id="buyName" placeholder="Your name"></div>
+      <div class="fg"><label>Email</label><input type="email" id="buyEmail" placeholder="you@example.com"></div>
+      <div class="fg"><label>Phone</label><input id="buyPhone" placeholder="+91 XXXXX XXXXX"></div>
+    </div>
+    <button class="btn btn-forest" style="width:100%;justify-content:center" onclick="launchRazorpayCart()">💳 Pay ₹${total} via Razorpay</button>
+    <p style="text-align:center;font-size:0.73rem;color:#aaa;margin-top:10px">🔒 Secure payment · UPI · Cards · Net Banking</p>`;
+  document.getElementById('buyModal').style.display='flex';
+};
+
+window.launchRazorpayCart = function(){
+  const cartBooks=books.filter(b=>cart.includes(b.id));
+  const name=document.getElementById('buyName').value.trim();
+  const email=document.getElementById('buyEmail').value.trim();
+  const phone=document.getElementById('buyPhone').value.trim();
+  if(!name||!email){toast('⚠️ Please fill name and email','err');return;}
+  const total=cartBooks.reduce((s,b)=>s+calcPrice(b).cur,0);
+  const options={
+    key: RAZORPAY_KEY,
+    amount: total * 100,
+    currency: 'INR',
+    name: 'Bibek Books',
+    description: `${cartBooks.length} book(s)`,
+    image: 'https://via.placeholder.com/60x60/2c5f45/ffffff?text=BB',
+    prefill:{ name, email, contact: phone },
+    theme:{ color: '#2c5f45' },
+    handler: function(response){
+      // Unlock all cart books
+      cartBooks.forEach(b=>{ if(!purchased.includes(b.id)) purchased.push(b.id); });
+      savePurchased();
+      cart=[];saveCart();updateDots();
+      closeBuy();filterBooks();
+      toast(`🎉 Payment successful! ${cartBooks.length} book(s) unlocked!`);
+    },
+    modal:{ ondismiss: function(){ toast('Payment cancelled','inf'); } }
+  };
+  try{
+    const rzp = new Razorpay(options);
+    rzp.open();
+    closeBuy();
+  }catch(e){
+    toast('⚠️ Razorpay load failed. Check your API key.','err');
+    console.error('Razorpay error:',e);
+  }
+};
+
+window.closeBuy = () => document.getElementById('buyModal').style.display='none';
+
+// ── DETAIL MODAL ──
+window.openDetail = function(id){
+  const b=books.find(x=>x.id===id);
+  if(!b)return;
+  const{cur,orig,disc}=calcPrice(b);
+  document.getElementById('detailTitle').textContent=b.title;
+  const ci=(b.coverColor??b.title.charCodeAt(0))%PALETTES.length;
+  const[c1,c2]=PALETTES[ci];
+  const covEl=b.cover
+    ?`<div class="book-detail-cover"><img src="${esc(b.cover)}" style="width:100%;height:100%;object-fit:cover"></div>`
+    :`<div class="book-detail-cover-grad" style="background:linear-gradient(135deg,${c1},${c2})">${esc(b.title)}</div>`;
+  document.getElementById('detailBody').innerHTML=`
+    ${covEl}
+    <div class="book-detail-info">
+      <h2>${esc(b.title)}</h2>
+      <div class="book-detail-author">by ${esc(b.author)}</div>
+      ${b.description?`<div class="book-detail-desc">${esc(b.description)}</div>`:''}
+      <div class="book-detail-meta">
+        <span class="meta-chip">\uD83D\uDCC2 ${esc(b.category)}</span>
+        ${b.publishDate?`<span class="meta-chip">\uD83D\uDCC5 ${b.publishDate.slice(0,4)}</span>`:''}
+        ${b.isFree?`<span class="meta-chip" style="background:var(--forest-pale);color:var(--forest)">\uD83D\uDCDA FREE</span>`:`<span class="meta-chip" style="background:var(--forest-pale);color:var(--forest)">\u20B9${cur}</span>`}
+        ${disc>0?`<span class="meta-chip" style="background:var(--ruby-l);color:var(--ruby)">${disc}% OFF</span>`:''}
+      </div>
+      <div style="display:flex;gap:10px;flex-wrap:wrap">
+        ${b.pdfUrl && b.isFree ? `<a class="btn btn-forest" href="${esc(b.pdfUrl)}" target="_blank" rel="noopener">📖 Read Free</a>` : ''}
+        ${b.pdfUrl && !b.isFree && isPurchased(b.id) ? `<a class="btn btn-forest" href="${esc(b.pdfUrl)}" target="_blank" rel="noopener">📖 Read Now</a>` : ''}
+        ${!b.isFree && !isPurchased(b.id)?`<button class="btn btn-amber" onclick="openBuy('${b.id}')">💳 Buy — ₹${cur}</button>`:''}
+        ${!b.isFree && !isPurchased(b.id)?`<button class="btn btn-ghost" onclick="addToCart('${b.id}')">🛒 Add to Cart</button>`:''}
+        ${isPurchased(b.id) ? `<span class="btn btn-ghost" style="color:var(--forest);pointer-events:none">✅ Purchased</span>` : ''}
+        <button class="btn btn-ghost" onclick="toggleWish('${b.id}');renderDetailFoot('${b.id}')" id="dw-${b.id}">${inWish(b.id)?'\u2764\uFE0F Saved':'\uD83E\uDD0D Wishlist'}</button>
+      </div>
+    </div>`;
+  renderDetailFoot(id);
+  document.getElementById('detailModal').style.display='flex';
+};
+
+window.renderDetailFoot = function(id){
+  const foot=document.getElementById('detailFoot');
+  foot.innerHTML=isAuthor
+    ?`<button class="btn btn-ghost btn-sm" onclick="openEditModal('${id}');closeDetailModal()">\u270F\uFE0F Edit</button>
+       <button class="btn btn-ruby btn-sm" onclick="deleteBook('${id}')">\uD83D\uDDD1\uFE0F Delete</button>`:'';
+};
+window.closeDetailModal = () => document.getElementById('detailModal').style.display='none';
+
+window.closeReadModal = function(){
+  document.getElementById('readModal').style.display='none';
+  document.getElementById('readModalBody').innerHTML='';
+  document.body.style.overflow='';
+};
+
+// ── AUTHOR PANEL ──
+window.toggleAuthorPanel = function(){
+  const p=document.getElementById('authorPanel');
+  const btn=document.getElementById('authorBtn');
+  const open=p.classList.contains('open');
+  if(!open){p.classList.add('open');renderAuthorPanel();}
+  else p.classList.remove('open');
+  btn.classList.toggle('author-active',!open);
+};
+
+function renderAuthorPanel(){
+  const headEl=document.getElementById('authorPanelHead');
+  const bodyEl=document.getElementById('authorPanelBody');
+  if(!isAuthor){
+    headEl.innerHTML='';
+    bodyEl.innerHTML=`
+      <div class="login-box">
+        <p>Enter your author passcode to access the management panel.</p>
+        <div class="input-row">
+          <input type="password" id="passInput" placeholder="Enter passcode\u2026" onkeydown="if(event.key==='Enter')doLogin()">
+          <button class="btn btn-amber" onclick="doLogin()">\uD83D\uDD11 Login</button>
+        </div>
+      </div>`;
+    return;
+  }
+  headEl.innerHTML=`<div style="display:flex;gap:8px">
+    <button class="btn btn-ghost btn-sm" onclick="changePass()">\uD83D\uDD11 Change Password</button>
+    <button class="btn btn-ghost btn-sm" onclick="doLogout()">\uD83D\uDEAA Logout</button>
+  </div>`;
+  bodyEl.innerHTML=`
+    <button class="btn btn-amber btn-sm" onclick="toggleAddForm()" style="margin-bottom:18px">&#10133; Add New Book</button>
+    <div id="addForm" style="display:none;margin-bottom:24px">
+      <div class="form-grid" style="margin-bottom:14px">
+        <div class="fg"><label>Title *</label><input id="fTitle" placeholder="Book title\u2026"></div>
+        <div class="fg"><label>Author *</label><input id="fAuthor" placeholder="Author name\u2026"></div>
+        <div class="fg"><label>Publish Date</label><input type="date" id="fDate"></div>
+        <div class="fg"><label>Category</label>
+          <select id="fCat">${CATS.map(c=>`<option>${c}</option>`).join('')}</select>
+        </div>
+        <div class="fg"><label>Price (\u20B9)</label><input type="number" id="fPrice" value="499"></div>
+        <div class="fg"><label>Discount (%)</label><input type="number" id="fDisc" value="0" min="0" max="90"></div>
+      </div>
+      <div class="check-row" style="margin-bottom:12px">
+        <input type="checkbox" id="fFree"><label for="fFree">\uD83D\uDCDA Make this book FREE to read</label>
+      </div>
+      <div class="fg" style="margin-bottom:10px"><label>Cover Image</label><input type="file" id="fCover" accept="image/*"></div>
+      <div class="fg" style="margin-bottom:10px"><label>PDF / Read URL</label><input type="url" id="fPdf" placeholder="https://\u2026"></div>
+      <div class="fg" style="margin-bottom:16px"><label>Description</label><textarea id="fDesc" rows="2" placeholder="Short description\u2026"></textarea></div>
+      <button class="btn btn-forest" onclick="publishBook()">\uD83D\uDE80 Publish Book</button>
+    </div>
+    <hr class="divider">
+    <h4 style="font-family:'Cormorant Garamond',serif;font-size:1rem;margin-bottom:12px">\uD83D\uDCDA Manage Books</h4>
+    <div class="manage-scroll" id="manageList"></div>
+    <hr class="divider">
+    <div class="fg"><label>\u270D\uFE0F Global Copyright Footer</label>
+      <textarea id="copyInput" rows="5" style="font-family:monospace;font-size:0.8rem">${esc(getCopy())}</textarea>
+    </div>
+    <button class="btn btn-ghost btn-sm" style="margin-top:8px" onclick="saveCopyright()">\uD83D\uDCBE Save Copyright</button>`;
+  renderManageList();
+}
+
+window.doLogin = function(){
+  const val=document.getElementById('passInput').value;
+  if(val===getPass()){
+    isAuthor=true;
+    sessionStorage.setItem(SK_SESS,'true');
+    renderAuthorPanel();filterBooks();
+    toast('\u2728 Author access granted');
+  }else toast('\u274C Wrong passcode','err');
+};
+
+window.doLogout = function(){
+  isAuthor=false;sessionStorage.removeItem(SK_SESS);
+  document.getElementById('authorPanel').classList.remove('open');
+  document.getElementById('authorBtn').classList.remove('author-active');
+  filterBooks();
+  toast('Logged out','inf');
+};
+
+window.changePass = function(){
+  const cur=prompt('Current password:');
+  if(cur!==getPass()){toast('\u274C Wrong current password','err');return;}
+  const np=prompt('New password (min 4 chars):');
+  if(!np||np.length<4){toast('\u26A0\uFE0F Too short','err');return;}
+  setPass(np);toast('\uD83D\uDD11 Password updated!');
+};
+
+window.toggleAddForm = function(){
+  const f=document.getElementById('addForm');
+  f.style.display=f.style.display==='none'?'block':'none';
+};
+
+window.publishBook = async function(){
+  const title=document.getElementById('fTitle').value.trim();
+  const author=document.getElementById('fAuthor').value.trim();
+  if(!title||!author){toast('\u26A0\uFE0F Title and Author required','err');return;}
+  const btn=document.querySelector('#addForm .btn-forest');
+  btn.textContent='\u23F3 Publishing\u2026';btn.disabled=true;
+  try{
+    const file=document.getElementById('fCover').files[0];
+    const cover=file?await readFile(file):'';
+    await saveBookToFirestore({
+      title,author,
+      publishDate:document.getElementById('fDate').value,
+      category:document.getElementById('fCat').value,
+      price:parseFloat(document.getElementById('fPrice').value)||0,
+      discount:parseFloat(document.getElementById('fDisc').value)||0,
+      isFree:document.getElementById('fFree').checked,
+      pdfUrl:document.getElementById('fPdf').value.trim(),
+      description:document.getElementById('fDesc').value.trim(),
+      cover,
+      coverColor:Math.floor(Math.random()*PALETTES.length),
+    });
+    toast('\u2705 Book published to cloud!');
+    ['fTitle','fAuthor','fPdf','fDesc'].forEach(id=>document.getElementById(id).value='');
+    document.getElementById('fPrice').value=499;
+    document.getElementById('fDisc').value=0;
+    document.getElementById('fFree').checked=false;
+    document.getElementById('fCover').value='';
+  }catch(e){
+    console.error(e);
+    toast('\u274C Failed to publish. Check Firestore.','err');
+  }finally{
+    btn.textContent='\uD83D\uDE80 Publish Book';btn.disabled=false;
+  }
+};
+
+function renderManageList(){
+  const c=document.getElementById('manageList');
+  if(!c)return;
+  if(!books.length){c.innerHTML='<p style="color:#aaa;font-size:0.85rem;padding:10px 0">No books yet.</p>';return;}
+  c.innerHTML=books.map(b=>{
+    const{cur,disc}=calcPrice(b);
+    return`<div class="manage-item">
+      <div class="mi-info">
+        <div class="mi-title">${esc(b.title)}</div>
+        <div class="mi-sub">${esc(b.author)} \u00B7 ${b.isFree?'FREE':'\u20B9'+cur}${disc?' ('+disc+'% off)':''} \u00B7 ${esc(b.category)}</div>
+      </div>
+      <div class="mi-actions">
+        <button class="btn btn-ghost btn-sm" onclick="openEditModal('${b.id}')">\u270F\uFE0F</button>
+        <button class="btn btn-ruby btn-sm" onclick="deleteBook('${b.id}')">\uD83D\uDDD1\uFE0F</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+window.deleteBook = async function(id){
+  if(!confirm('Permanently delete this book from cloud?'))return;
+  try{
+    await deleteBookFromFirestore(id);
+    wishlist=wishlist.filter(x=>x!==id);
+    cart=cart.filter(x=>x!==id);
+    saveWish();saveCart();updateDots();
+    closeDetailModal();closeReadModal();
+    toast('Book removed from cloud','inf');
+  }catch(e){toast('\u274C Delete failed','err');}
+};
+
+// ── EDIT MODAL ──
+window.openEditModal = function(id){
+  const b=books.find(x=>x.id===id);
+  if(!b)return;
+  document.getElementById('editId').value=b.id;
+  document.getElementById('eTitle').value=b.title;
+  document.getElementById('eAuthor').value=b.author;
+  document.getElementById('eDate').value=b.publishDate||'';
+  document.getElementById('eCat').value=b.category||'Fiction';
+  document.getElementById('ePrice').value=b.price;
+  document.getElementById('eDisc').value=b.discount||0;
+  document.getElementById('eFree').checked=b.isFree||false;
+  document.getElementById('ePdf').value=b.pdfUrl||'';
+  document.getElementById('eDesc').value=b.description||'';
+  document.getElementById('eCover').value='';
+  document.getElementById('editModal').style.display='flex';
+};
+window.closeEditModal = () => document.getElementById('editModal').style.display='none';
+
+window.confirmEdit = async function(){
+  const id=document.getElementById('editId').value;
+  const b=books.find(x=>x.id===id);
+  if(!b)return;
+  const btn=document.querySelector('#editModal .btn-forest');
+  btn.textContent='\u23F3 Saving\u2026';btn.disabled=true;
+  try{
+    const file=document.getElementById('eCover').files[0];
+    const cover=file?await readFile(file):b.cover;
+    await updateBookInFirestore(id,{
+      title:document.getElementById('eTitle').value.trim(),
+      author:document.getElementById('eAuthor').value.trim(),
+      publishDate:document.getElementById('eDate').value,
+      category:document.getElementById('eCat').value,
+      price:parseFloat(document.getElementById('ePrice').value)||0,
+      discount:parseFloat(document.getElementById('eDisc').value)||0,
+      isFree:document.getElementById('eFree').checked,
+      pdfUrl:document.getElementById('ePdf').value.trim(),
+      description:document.getElementById('eDesc').value.trim(),
+      cover,
+    });
+    closeEditModal();
+    toast('\u2705 Book updated in cloud!');
+  }catch(e){
+    console.error(e);
+    toast('\u274C Update failed','err');
+  }finally{
+    btn.textContent='\uD83D\uDCBE Save Changes';btn.disabled=false;
+  }
+};
+
+// ── COPYRIGHT ──
+window.saveCopyright = function(){
+  const text=document.getElementById('copyInput').value;
+  saveCopy(text);
+  document.getElementById('siteFooter').textContent=text;
+  toast('\uD83D\uDCBE Copyright saved!');
+};
+
+// ── KEYBOARD ──
+document.addEventListener('keydown',e=>{
+  if(e.key==='Escape'){
+    closeReadModal();closeDetailModal();
+    closeWishModal();closeCart();closeBuy();closeEditModal();
+  }
+});
+
+// ── START ──
+try{wishlist=JSON.parse(localStorage.getItem(SK_WISH)||'[]');}catch{wishlist=[];}
+try{cart=JSON.parse(localStorage.getItem(SK_CART)||'[]');}catch{cart=[];}
+try{purchased=JSON.parse(localStorage.getItem(SK_PURCHASED)||'[]');}catch{purchased=[];}
+isAuthor=sessionStorage.getItem(SK_SESS)==='true';
+document.getElementById('siteFooter').textContent=getCopy();
+updateDots();
+initFirebase(); // Load from Firestore (realtime)
+
+// spinning animation for loader
+const style=document.createElement('style');
+style.textContent='@keyframes spin{to{transform:rotate(360deg)}}';
+document.head.appendChild(style);
+
+</script>
+</body>
+</html>
