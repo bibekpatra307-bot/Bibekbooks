@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>Bibek Books | Complete Digital Library</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --ink: #1a1510;
+  --ink-2: #4a4035;
+  --ink-3: #8a7a6a;
+  --paper: #faf7f2;
+  --paper-2: #f2ede4;
+  --paper-3: #e8e0d4;
+  --forest: #2c5f45;
+  --forest-l: #3d7d5c;
+  --forest-pale: #e8f2ec;
+  --amber: #c07c2a;
+  --amber-l: #f5e4c8;
+  --ruby: #b03030;
+  --ruby-l: #fae8e8;
+  --card: #ffffff;
+  --border: rgba(0,0,0,0.09);
+  --shadow-xs: 0 1px 3px rgba(0,0,0,0.06);
+  --shadow-sm: 0 4px 16px rgba(0,0,0,0.08);
+  --shadow-md: 0 8px 32px rgba(0,0,0,0.12);
+  --shadow-lg: 0 20px 60px rgba(0,0,0,0.18);
+  --r: 14px;
+  --r-sm: 8px;
+  --t: 0.25s cubic-bezier(0.4,0,0.2,1);
+  --nav-h: 66px;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+::selection{background:var(--forest-pale);color:var(--forest);}
+body {
+  font-family:'Outfit',system-ui,sans-serif;
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.6;
+  min-height:100vh;
+  -webkit-font-smoothing:antialiased;
+}
+.nav { position:sticky;top:0;z-index:200; height:var(--nav-h); background:rgba(250,247,242,0.92); backdrop-filter:blur(20px); border-bottom:1px solid var(--border); display:flex; align-items:center; padding:0 16px; gap:12px; width:100%; }
+.nav-logo { font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:700; color:var(--forest); display:flex; align-items:center; gap:10px; text-decoration:none; white-space:nowrap; letter-spacing:-0.3px; }
+.nav-logo-mark { width:38px;height:38px; background:linear-gradient(135deg,var(--forest),var(--amber)); border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:1.15rem; flex-shrink:0; box-shadow:0 3px 10px rgba(44,95,69,0.35); }
+.nav-search { flex:1; max-width:480px; position:relative; margin:0 auto; }
+.nav-search input { width:100%; padding:10px 18px 10px 46px; border:1.5px solid var(--border); border-radius:50px; font-size:0.9rem; font-family:inherit; background:var(--card); color:var(--ink); outline:none; transition:var(--t); }
+.nav-search input:focus { border-color:var(--forest); box-shadow:0 0 0 4px var(--forest-pale); }
+.nav-search-icon { position:absolute; left:16px; top:50%; transform:translateY(-50%); color:var(--ink-3); pointer-events:none; }
+.nav-btns{display:flex;gap:6px;align-items:center;}
+.nav-btn { height:40px; border-radius:50px; border:none; cursor:pointer; display:flex; align-items:center; justify-content:center; gap:6px; transition:var(--t); font-family:inherit; font-weight:500; font-size:0.82rem; padding:0 14px; background:transparent; color:var(--ink-2); position:relative; }
+.nav-btn:hover{background:var(--paper-3);color:var(--ink);}
+.nav-btn.author-active{background:var(--amber-l);color:var(--amber);}
+.nav-btn-icon{width:40px;padding:0;}
+.wish-dot { position:absolute; top:6px; right:6px; width:9px; height:9px; border-radius:50%; background:var(--ruby); border:2px solid var(--paper); display:none; }
+.hero { text-align:center; padding:52px 24px 36px; position:relative; }
+.hero::before { content:''; position:absolute; top:0; left:50%; transform:translateX(-50%); width:600px; height:200px; background:radial-gradient(ellipse,rgba(44,95,69,0.07) 0%,transparent 70%); pointer-events:none; }
+.hero-badge { display:inline-flex; align-items:center; gap:6px; background:var(--forest-pale); color:var(--forest); padding:5px 14px; border-radius:50px; font-size:0.78rem; font-weight:600; letter-spacing:0.4px; margin-bottom:18px; border:1px solid rgba(44,95,69,0.2); }
+.hero h1 { font-family:'Cormorant Garamond',serif; font-size:clamp(2.2rem,5vw,3.6rem); font-weight:700; letter-spacing:-0.8px; color:var(--ink); margin-bottom:12px; line-height:1.1; }
+.hero h1 em{color:var(--forest);font-style:italic;}
+.hero p{ color:var(--ink-3); font-size:1.02rem; max-width:460px; margin:0 auto 28px; }
+.hero-stats { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; }
+.hero-stat strong { display:block; font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:700; color:var(--forest); }
+.hero-stat span{font-size:0.78rem;color:var(--ink-3);}
+.main { max-width:1280px; margin:0 auto; padding:0 16px 80px; }
+.author-panel { background:var(--card); border:1.5px solid var(--amber-l); border-radius:var(--r); padding:28px; margin-bottom:32px; display:none; box-shadow:var(--shadow-sm); animation:slideDown 0.3s ease; }
+.author-panel.open{display:block;}
+@keyframes slideDown{from{opacity:0;transform:translateY(-12px)}to{opacity:1;transform:translateY(0)}}
+.panel-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:22px; flex-wrap:wrap; gap:12px; }
+.panel-title { font-family:'Cormorant Garamond',serif; font-size:1.3rem; font-weight:700; color:var(--amber); display:flex; align-items:center; gap:8px; }
+.login-box { max-width:380px; }
+.login-box p{font-size:0.88rem;color:var(--ink-3);margin-bottom:16px;}
+.input-row{display:flex;gap:10px;align-items:center;}
+.input-row input { flex:1; padding:10px 16px; border:1.5px solid var(--border); border-radius:var(--r-sm); font-family:inherit; font-size:0.9rem; background:#fff; outline:none; }
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.fg{display:flex;flex-direction:column;gap:5px;}
+.fg label{font-weight:600;font-size:0.78rem;color:var(--ink-3);text-transform:uppercase;}
+.fg input, .fg textarea, .fg select { padding:10px 14px; border:1.5px solid var(--border); border-radius:var(--r-sm); font-family:inherit; font-size:0.88rem; background:#fff; }
+.check-row { display:flex; align-items:center; gap:10px; padding:10px 14px; border:1.5px solid var(--border); border-radius:var(--r-sm); background:#fff; }
+.check-row input{width:17px;height:17px;accent-color:var(--forest);}
+.divider{border:none;border-top:1px solid var(--border);margin:22px 0;}
+.manage-scroll{max-height:260px;overflow-y:auto;margin-top:10px;}
+.manage-item { display:flex; align-items:center; justify-content:space-between; background:var(--paper-2); border-radius:50px; padding:9px 16px; margin-bottom:8px; border:1px solid var(--border); gap:10px; }
+.mi-info{flex:1;min-width:0;}
+.mi-title{font-weight:600;font-size:0.88rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.mi-sub{font-size:0.74rem;color:var(--ink-3);}
+.mi-actions{display:flex;gap:6px;}
+.section-bar { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px; margin-bottom:22px; }
+.section-title { font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:700; color:var(--ink); }
+.cat-pills{display:flex;gap:8px;flex-wrap:wrap;}
+.pill { padding:6px 18px; border-radius:50px; border:1.5px solid var(--border); background:var(--card); cursor:pointer; font-size:0.82rem; font-family:inherit; transition:var(--t); color:var(--ink-3); font-weight:500; white-space:nowrap; }
+.pill:hover{border-color:#bbb;color:var(--ink);}
+.pill.on{background:var(--forest);color:#fff;border-color:var(--forest);}
+.book-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(min(200px,45%),1fr)); gap:16px; width:100%; }
+.book-card { background:var(--card); border-radius:var(--r); overflow:hidden; border:1px solid var(--border); transition:var(--t); cursor:pointer; display:flex; flex-direction:column; box-shadow:var(--shadow-xs); position:relative; }
+.book-card:hover{ transform:translateY(-6px); box-shadow:var(--shadow-lg); border-color:rgba(0,0,0,0.16); }
+.book-cover { width:100%; aspect-ratio:2/2.9; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-size:1rem; font-weight:700; color:#fff; text-align:center; padding:20px; position:relative; overflow:hidden; }
+.book-cover img { width:100%; height:100%; object-fit:cover; position:absolute; top:0; left:0; }
+.cover-text{position:relative;z-index:1;text-shadow:0 2px 10px rgba(0,0,0,0.4);}
+.book-badge { position:absolute; top:10px; left:10px; z-index:2; padding:3px 10px; border-radius:50px; font-size:0.65rem; font-weight:700; }
+.badge-free{background:var(--forest);color:#fff;}
+.badge-disc{background:var(--ruby);color:#fff;}
+.badge-read{ position:absolute; top:10px; right:10px; background:rgba(0,0,0,0.6); color:#fff; padding:3px 10px; border-radius:50px; font-size:0.65rem; font-weight:700; opacity:0; transition:var(--t); }
+.book-card:hover .badge-read{opacity:1;}
+.book-info{padding:14px 14px 16px; flex:1; display:flex; flex-direction:column; gap:4px;}
+.book-title{font-weight:600;font-size:0.92rem;line-height:1.3; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden;}
+.book-author{font-size:0.76rem;color:var(--ink-3);}
+.price-row{display:flex;align-items:center;gap:7px;margin-top:6px;}
+.price-now{font-weight:800;font-size:1rem;color:var(--forest);}
+.price-was{font-size:0.73rem;text-decoration:line-through;color:#aaa;}
+.card-btns{display:flex;gap:7px;margin-top:10px;}
+.c-btn { flex:1; border:1px solid var(--border); padding:7px 8px; border-radius:50px; font-size:0.74rem; font-weight:500; display:inline-flex; align-items:center; justify-content:center; gap:4px; cursor:pointer; transition:var(--t); background:var(--paper); color:var(--ink); text-decoration:none; }
+.c-btn:hover{background:var(--paper-3);}
+.c-btn.wishlisted{color:var(--ruby);border-color:var(--ruby-l);background:var(--ruby-l);}
+.c-btn.buy-btn{background:var(--forest);color:#fff;border-color:var(--forest);}
+.empty { text-align:center; padding:70px 20px; grid-column:1/-1; color:var(--ink-3); }
+.overlay { position:fixed; inset:0; z-index:300; background:rgba(0,0,0,0.7); display:flex; align-items:center; justify-content:center; padding:20px; animation:fadeIn 0.2s; }
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.modal-box { background:#fff; border-radius:var(--r); width:100%; max-width:900px; max-height:92vh; display:flex; flex-direction:column; overflow:hidden; }
+.card-modal { background:#fff; border-radius:20px; max-width:540px; width:90%; max-height:86vh; overflow-y:auto; padding:28px; box-shadow:var(--shadow-lg); }
+.card-modal h3{ font-family:'Cormorant Garamond',serif; font-size:1.25rem; font-weight:700; margin-bottom:20px; display:flex; justify-content:space-between; align-items:center; }
+.modal-head { display:flex; align-items:center; justify-content:space-between; padding:18px 24px; border-bottom:1px solid var(--border); }
+.modal-close { width:36px;height:36px; border-radius:50%; border:none; background:var(--paper-2); cursor:pointer; font-size:1rem; }
+.book-detail { display:flex; gap:24px; padding:24px; flex-wrap:wrap; }
+.book-detail-cover { width:140px; height:200px; border-radius:10px; overflow:hidden; }
+.book-detail-cover-grad { width:140px; height:200px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-family:'Cormorant Garamond',serif; font-weight:700; color:#fff; text-align:center; padding:16px; text-shadow:0 2px 8px rgba(0,0,0,0.3); }
+.wish-item { display:flex; align-items:center; gap:14px; padding:12px 0; border-bottom:1px solid var(--border); }
+.wish-cover { width:44px; height:62px; border-radius:6px; object-fit:cover; }
+.wish-cover-grad { width:44px; height:62px; border-radius:6px; display:flex; align-items:center; justify-content:center; background:linear-gradient(135deg,var(--forest),var(--amber)); color:#fff; font-size:0.6rem; text-align:center; padding:4px; }
+.btn { padding:9px 22px; border-radius:50px; border:none; cursor:pointer; font-family:inherit; font-weight:600; font-size:0.85rem; display:inline-flex; align-items:center; gap:7px; text-decoration:none; }
+.btn-forest{background:var(--forest);color:#fff;}
+.btn-forest:hover{background:var(--forest-l);}
+.btn-amber{background:var(--amber);color:#fff;}
+.btn-ruby{background:var(--ruby);color:#fff;}
+.btn-ghost{background:var(--paper-2);color:var(--ink-2);}
+.btn-sm{padding:6px 14px;font-size:0.78rem;}
+.toast-wrap { position:fixed; bottom:24px; left:24px; z-index:999; display:flex; flex-direction:column; gap:8px; }
+.toast { padding:11px 20px; border-radius:50px; color:#fff; font-weight:500; font-size:0.86rem; animation:slideInL 0.3s ease,fadeOut 0.3s ease 2.7s forwards; box-shadow:var(--shadow-md); }
+.toast.ok{background:#2d7a52;}
+.toast.err{background:#b03030;}
+.toast.inf{background:#1e5c9a;}
+@keyframes slideInL{from{transform:translateX(-120%);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes fadeOut{to{opacity:0;transform:translateY(6px)}}
+.site-footer { background:var(--paper-3); border-top:1px solid var(--border); padding:30px 24px; text-align:center; font-size:0.74rem; color:var(--ink-3); white-space:pre-line; margin-top:60px; }
+@media(max-width:768px){ .book-grid{grid-template-columns:repeat(2,1fr);} .form-grid{grid-template-columns:1fr;} .book-detail{flex-direction:column;} }
+</style>
+</head>
+<body>
+<div class="toast-wrap" id="toastWrap"></div>
+<nav class="nav">
+  <a class="nav-logo" href="#"><div class="nav-logo-mark">📚</div> Bibek Books</a>
+  <div class="nav-search"><span class="nav-search-icon">🔍</span><input type="text" id="searchInput" placeholder="Search titles, authors, categories…" oninput="filterBooks()"></div>
+  <div class="nav-btns">
+    <button class="nav-btn nav-btn-icon" title="Cart" onclick="openCart()">🛒<span class="wish-dot" id="cartDot"></span></button>
+    <button class="nav-btn nav-btn-icon" title="Wishlist" onclick="openWishModal()">❤️<span class="wish-dot" id="wishDot"></span></button>
+    <button class="nav-btn nav-btn-icon" id="authorBtn" onclick="toggleAuthorPanel()">✍️</button>
+  </div>
+</nav>
+<div class="hero">
+  <div class="hero-badge">✨ Discover · Read · Collect</div>
+  <h1>Your Personal<br><em>Digital Library</em></h1>
+  <p>Curated books by Bibek — buy, read free titles, and save your favourites, all in one place.</p>
+  <div class="hero-stats" id="heroStats"></div>
+</div>
+<div class="main">
+  <div class="author-panel" id="authorPanel">
+    <div class="panel-header"><div class="panel-title">✍️ Author Studio</div><div id="authorPanelHead"></div></div>
+    <div id="authorPanelBody"></div>
+  </div>
+  <div class="section-bar"><div class="section-title" id="sectionTitle">All Books</div><div class="cat-pills" id="catPills"></div></div>
+  <div class="book-grid" id="bookGrid"></div>
+</div>
+<footer class="site-footer" id="siteFooter"></footer>
+
+<!-- MODALS -->
+<div class="overlay" id="detailModal" style="display:none" onclick="if(event.target===this)closeDetailModal()"><div class="modal-box" style="max-width:660px"><div class="modal-head"><h3 id="detailTitle">Book Details</h3><button class="modal-close" onclick="closeDetailModal()">✕</button></div><div id="detailBody" class="book-detail"></div><div class="modal-foot" id="detailFoot"></div></div></div>
+<div class="overlay" id="wishModal" style="display:none" onclick="if(event.target===this)closeWishModal()"><div class="card-modal"><h3>❤️ Wishlist <button class="modal-close" onclick="closeWishModal()">✕</button></h3><div id="wishItems"></div></div></div>
+<div class="overlay" id="cartModal" style="display:none" onclick="if(event.target===this)closeCart()"><div class="card-modal"><h3>🛒 Cart <button class="modal-close" onclick="closeCart()">✕</button></h3><div id="cartItems"></div><div id="cartFoot" style="margin-top:14px"></div></div></div>
+<div class="overlay" id="buyModal" style="display:none" onclick="if(event.target===this)closeBuy()"><div class="card-modal"><h3>💳 Checkout <button class="modal-close" onclick="closeBuy()">✕</button></h3><div id="buyBody"></div></div></div>
+<div class="overlay" id="editModal" style="display:none" onclick="if(event.target===this)closeEditModal()"><div class="card-modal"><h3>✏️ Edit Book <button class="modal-close" onclick="closeEditModal()">✕</button></h3><input type="hidden" id="editId"><div class="form-grid"><div class="fg"><label>Title *</label><input id="eTitle"></div><div class="fg"><label>Author *</label><input id="eAuthor"></div><div class="fg"><label>Publish Date</label><input type="date" id="eDate"></div><div class="fg"><label>Category</label><select id="eCat"></select></div><div class="fg"><label>Price (₹)</label><input type="number" id="ePrice"></div><div class="fg"><label>Discount (%)</label><input type="number" id="eDisc" min="0" max="90"></div></div><div class="check-row"><input type="checkbox" id="eFree"><label>📖 Make this book FREE</label></div><div class="fg"><label>Cover Image</label><input type="file" id="eCover" accept="image/*"></div><div class="fg"><label>PDF / Read URL</label><input id="ePdf" placeholder="https://..."></div><div class="fg"><label>📁 Upload PDF (optional, replaces URL)</label><input type="file" id="ePdfFile" accept="application/pdf"></div><div class="fg"><label>Description</label><textarea id="eDesc" rows="3"></textarea></div><div style="display:flex;gap:10px"><button class="btn btn-forest" id="editSaveBtn">💾 Save Changes</button><button class="btn btn-ghost" onclick="closeEditModal()">Cancel</button></div></div></div>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, addDoc, updateDoc, deleteDoc, doc, onSnapshot, query, orderBy } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-storage.js";
+
+const firebaseConfig = { apiKey: "AIzaSyC9vp6iqR0O2KOKguHBKs6ZWCWXN1oEzAs", authDomain: "bibek-media-143ba.firebaseapp.com", projectId: "bibek-media-143ba", storageBucket: "bibek-media-143ba.firebasestorage.app", messagingSenderId: "135854036939", appId: "1:135854036939:web:35d2b18c16c6037ef7484e" };
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+const storage = getStorage(app);
+
+// COMPLETE CATEGORY LIST (66 categories as requested)
+const FULL_CATS = ["Spiritual","Religion","Self-Help","Motivation","Personal Development","Psychology","Philosophy","Fiction","Non-Fiction","Romance","Poetry","Drama","Adventure","Action","Fantasy","Science Fiction","Thriller","Mystery","Horror","Crime","Comedy","Short Stories","Biography","Autobiography","Memoir","History","Politics","Current Affairs","Law","Business","Entrepreneurship","Finance","Investing","Marketing","Leadership","Science","Technology","Artificial Intelligence","Programming","Computer Science","Education","Academic","Exam Preparation","Language Learning","Health & Fitness","Yoga","Meditation","Nutrition","Children","Young Adult","Travel","Lifestyle","Art & Design","Photography","Music","Relationships","Marriage","Heartbreak & Healing","Others","Puzzle","Economics","Mindfulness","Productivity","Creativity","Spirituality"];
+
+const SK_PASS = 'bibek_pass', SK_COPY = 'bibek_copy', SK_WISH = 'bibek_wish', SK_CART = 'bibek_cart', SK_SESS = 'bibek_session', SK_PURCHASED = 'bibek_purchased';
+const RAZORPAY_KEY = 'rzp_test_YourKeyHere'; // Replace with actual live key
+const DEF_PASS = 'author123';
+const DEF_COPY = `Copyright © 2026 by Bibek Patra\n\nAll rights reserved. No part may be reproduced.\nBibek Books · Digital Library · Est. 2026`;
+const PALETTES = [ ['#2c5f45','#4a9e72'],['#7a3b1e','#c47a4a'],['#1a4a7a','#4a90c8'],['#5a2d7a','#9a55c8'],['#a82020','#d86060'],['#1e6070','#3ab0c8'],['#3a4f60','#6a90aa'],['#4a3020','#8a7050'] ];
+
+let books = [], wishlist = [], cart = [], purchased = [], isAuthor = false, activeCat = 'All';
+const esc = s => String(s||'').replace(/[&<>]/g, m => m==='&'?'&amp;':m==='<'?'&lt;':'&gt;');
+const getPass = () => localStorage.getItem(SK_PASS)||DEF_PASS;
+const setPass = p => localStorage.setItem(SK_PASS,p);
+const getCopy = () => localStorage.getItem(SK_COPY)||DEF_COPY;
+const saveCopy = t => localStorage.setItem(SK_COPY,t);
+const saveWish = () => localStorage.setItem(SK_WISH,JSON.stringify(wishlist));
+const saveCart = () => localStorage.setItem(SK_CART,JSON.stringify(cart));
+const savePurchased = () => localStorage.setItem(SK_PURCHASED,JSON.stringify(purchased));
+const inWish = id => wishlist.includes(id);
+const inCart = id => cart.includes(id);
+const isPurchased = id => purchased.includes(id);
+
+const readFile = (f) => new Promise((res,rej)=>{ if(!f) return res(''); const r=new FileReader(); r.onload=()=>{ const img=new Image(); img.onload=()=>{ const MAX=600; let w=img.width,h=img.height; if(w>MAX||h>MAX){ if(w>h) h=Math.round(h*MAX/w),w=MAX; else w=Math.round(w*MAX/h),h=MAX; } const c=document.createElement('canvas'); c.width=w; c.height=h; c.getContext('2d').drawImage(img,0,0,w,h); res(c.toDataURL('image/jpeg',0.75)); }; img.onerror=()=>rej(new Error('Image load')); img.src=r.result; }; r.readAsDataURL(f); });
+const uploadPdf = async (file, nameHint) => { if(!file) return ''; const ts=Date.now(); const path = `books/pdfs/${ts}_${file.name.replace(/[^a-zA-Z0-9.]/g,'_')}`; const storageRef = ref(storage, path); await uploadBytes(storageRef, file); return await getDownloadURL(storageRef); };
+const calcPrice = (b) => { if(b.isFree) return {cur:0, orig:b.price, disc:0}; const d=Math.max(0,Math.min(90,b.discount||0)); return {cur:d>0?Math.round(b.price*(1-d/100)):b.price, orig:b.price, disc:d}; };
+const toast = (msg,type='ok') => { const t=document.createElement('div'); t.className=`toast ${type}`; t.textContent=msg; document.getElementById('toastWrap').appendChild(t); setTimeout(()=>t.remove(),3300); };
+
+// Firestore realtime
+function initFirebase() {
+  const q = query(collection(db,'books'), orderBy('createdAt','desc'));
+  onSnapshot(q, (snap) => { books = []; snap.forEach(d => books.push({id:d.id, discount:0, isFree:false, publishDate:'', pdfUrl:'', description:'', cover:'', coverColor:0, ...d.data()})); if(books.length===0) seedSampleBooks(); else { filterBooks(); updateDots(); } }, err => toast('Firebase connection error','err'));
+}
+async function seedSampleBooks() {
+  const samples = [
+    {title:'The Midnight Library',author:'Matt Haig',category:'Fiction',price:499,discount:20,isFree:false,publishDate:'2020-09-29',pdfUrl:'https://www.gutenberg.org/files/1342/1342-h/1342-h.htm',description:'Between life and death there is a library.',cover:'',coverColor:0,createdAt:Date.now()},
+    {title:'Atomic Habits',author:'James Clear',category:'Self-Help',price:599,discount:10,isFree:false,publishDate:'2018-10-16',pdfUrl:'',description:'Tiny changes, remarkable results.',cover:'',coverColor:1,createdAt:Date.now()},
+    {title:'The Power of Now',author:'Eckhart Tolle',category:'Spiritual',price:399,discount:0,isFree:true,publishDate:'1997-01-01',pdfUrl:'https://www.gutenberg.org/files/84/84-h/84-h.htm',description:'Guide to spiritual enlightenment.',cover:'',coverColor:2,createdAt:Date.now()},
+    {title:'Sapiens',author:'Yuval Noah Harari',category:'History',price:699,discount:0,isFree:false,pdfUrl:'',description:'Brief history of humankind.',cover:'',coverColor:3,createdAt:Date.now()}
+  ];
+  for(const b of samples) await addDoc(collection(db,'books'), b);
+}
+
+function updateStats() { const total=books.length, free=books.filter(b=>b.isFree).length, cats=new Set(books.map(b=>b.category)).size; document.getElementById('heroStats').innerHTML=`<div class="hero-stat"><strong>${total}</strong><span>Books</span></div><div class="hero-stat"><strong>${free}</strong><span>Free</span></div><div class="hero-stat"><strong>${cats}</strong><span>Categories</span></div>`; }
+function updateDots(){ document.getElementById('wishDot').style.display=wishlist.length?'block':'none'; document.getElementById('cartDot').style.display=cart.length?'block':'none'; }
+
+function bookCard(b){
+  const {cur,disc}=calcPrice(b); const saved=inWish(b.id); const carted=inCart(b.id); const ci=(b.coverColor??b.title.charCodeAt(0))%PALETTES.length; const [c1,c2]=PALETTES[ci];
+  const coverHtml=b.cover?`<img src="${esc(b.cover)}" style="width:100%;height:100%;object-fit:cover;position:absolute;top:0;left:0">`:`<span class="cover-text">${esc(b.title)}</span>`;
+  const topBadge=b.isFree?`<span class="book-badge badge-free">FREE</span>`:(disc>0?`<span class="book-badge badge-disc">${disc}% OFF</span>`:'');
+  const readBadge=b.pdfUrl?`<span class="badge-read">PREVIEW</span>`:'';
+  const priceSection=b.isFree?`<div class="price-row"><span style="font-size:0.82rem;font-weight:600;color:var(--forest)">📖 Free</span></div>`:`<div class="price-row"><span class="price-now">₹${cur}</span>${disc>0?`<span class="price-was">₹${b.price}</span>`:''}</div>`;
+  const readBtn = b.isFree ? (b.pdfUrl?`<a class="c-btn" href="${esc(b.pdfUrl)}" target="_blank" rel="noopener" onclick="event.stopPropagation()">📖 Read</a>`:`<button class="c-btn" disabled>📖 Read</button>`) : (isPurchased(b.id) && b.pdfUrl?`<a class="c-btn" href="${esc(b.pdfUrl)}" target="_blank" rel="noopener">📖 Read</a>`:`<button class="c-btn" onclick="event.stopPropagation();openBuy('${b.id}')">🔒 Buy</button>`);
+  const cartBtn=b.isFree?'':`<button class="c-btn buy-btn" onclick="event.stopPropagation();addToCart('${b.id}')">${carted?'✓ Cart':'🛒'}</button>`;
+  return `<div class="book-card" onclick="openDetail('${b.id}')"><div class="book-cover" style="background:linear-gradient(135deg,${c1},${c2})">${coverHtml}${topBadge}${readBadge}</div><div class="book-info"><div class="book-title">${esc(b.title)}</div><div class="book-author">${esc(b.author)}</div><div class="book-cat">${esc(b.category)}</div>${priceSection}<div class="card-btns">${readBtn}<button class="c-btn ${saved?'wishlisted':''}" onclick="event.stopPropagation();toggleWish('${b.id}')" id="wb-${b.id}">${saved?'❤️':'🤍'}</button>${cartBtn}</div></div></div>`;
+}
+function renderBooks(list){ const g=document.getElementById('bookGrid'); if(!list.length){ g.innerHTML=`<div class="empty"><div class="empty-icon">📭</div><h3>No books found</h3></div>`; return; } g.innerHTML=list.map(bookCard).join(''); }
+function renderPills(){ const cats=['All',...new Set(books.map(b=>b.category))]; document.getElementById('catPills').innerHTML=cats.map(c=>`<button class="pill${c===activeCat?' on':''}" onclick="setCat('${c}')">${c}</button>`).join(''); }
+window.setCat = c => { activeCat=c; filterBooks(); };
+window.filterBooks = function(){ const q=document.getElementById('searchInput').value.toLowerCase().trim(); let list=activeCat==='All'?books:books.filter(b=>b.category===activeCat); if(q)list=list.filter(b=>b.title.toLowerCase().includes(q)||b.author.toLowerCase().includes(q)||b.category.toLowerCase().includes(q)); document.getElementById('sectionTitle').textContent=q?`Results for "${q}"`:activeCat==='All'?'All Books':activeCat; renderPills(); renderBooks(list); updateStats(); };
+window.toggleWish = function(id){ if(inWish(id)) wishlist=wishlist.filter(x=>x!==id); else wishlist.push(id); saveWish(); updateDots(); const btn=document.getElementById('wb-'+id); if(btn){ btn.className=`c-btn ${inWish(id)?'wishlisted':''}`; btn.innerHTML=inWish(id)?'❤️':'🤍'; } toast(inWish(id)?'❤️ Added':'Removed'); };
+window.openWishModal = function(){ const wBooks=books.filter(b=>wishlist.includes(b.id)); document.getElementById('wishItems').innerHTML=wBooks.length?wBooks.map(b=>`<div class="wish-item"><div class="wish-cover-grad" style="background:${PALETTES[(b.coverColor??0)%PALETTES.length][0]}">${esc(b.title.slice(0,2))}</div><div style="flex:1"><div>${esc(b.title)}</div><div style="font-size:0.74rem">${esc(b.author)}</div></div><button class="btn btn-ghost btn-sm" onclick="toggleWish('${b.id}');openWishModal()">✕</button></div>`).join(''):'<div style="text-align:center;padding:40px">❤️ Empty</div>'; document.getElementById('wishModal').style.display='flex'; };
+window.closeWishModal = () => document.getElementById('wishModal').style.display='none';
+window.addToCart = function(id){ if(!inCart(id)){ cart.push(id); saveCart(); toast('🛒 Added'); updateDots(); filterBooks(); } };
+window.removeFromCart = id => { cart=cart.filter(x=>x!==id); saveCart(); updateDots(); openCart(); };
+window.openCart = function(){ const cartBooks=books.filter(b=>cart.includes(b.id)); const total=cartBooks.reduce((s,b)=>s+calcPrice(b).cur,0); document.getElementById('cartItems').innerHTML=cartBooks.map(b=>`<div class="wish-item"><div><strong>${esc(b.title)}</strong><br>₹${calcPrice(b).cur}</div><button class="btn btn-ghost btn-sm" onclick="removeFromCart('${b.id}')">✕</button></div>`).join(''); document.getElementById('cartFoot').innerHTML=cartBooks.length?`<div style="font-weight:700;text-align:right">Total: ₹${total}</div><button class="btn btn-forest" style="width:100%;margin-top:10px" onclick="closeCart();openBuyFromCart()">Checkout</button>`:''; document.getElementById('cartModal').style.display='flex'; };
+window.closeCart = () => document.getElementById('cartModal').style.display='none';
+window.openBuy = function(id){ const b=books.find(x=>x.id===id); if(!b||b.isFree) return; const {cur}=calcPrice(b); document.getElementById('buyBody').innerHTML=`<div class="buy-summary"><div>${esc(b.title)} - ₹${cur}</div></div><div class="buy-fields"><input id="buyName" placeholder="Full Name"><input id="buyEmail" placeholder="Email"></div><button class="btn btn-forest" onclick="launchRazorpay('${b.id}')">Pay ₹${cur}</button>`; document.getElementById('buyModal').style.display='flex'; };
+window.launchRazorpay = function(id){ const b=books.find(x=>x.id===id); const name=document.getElementById('buyName')?.value, email=document.getElementById('buyEmail')?.value; if(!name||!email){toast('Enter name/email','err');return;} const {cur}=calcPrice(b); const options={ key:RAZORPAY_KEY, amount:cur*100, currency:'INR', name:'Bibek Books', description:b.title, prefill:{name,email}, theme:{color:'#2c5f45'}, handler:()=>{ if(!purchased.includes(id)) purchased.push(id); savePurchased(); cart=cart.filter(x=>x!==id); saveCart(); updateDots(); closeBuy(); filterBooks(); toast(`✅ "${b.title}" unlocked`); if(b.pdfUrl) setTimeout(()=>window.open(b.pdfUrl,'_blank'),800); } }; new Razorpay(options).open(); closeBuy(); };
+window.openBuyFromCart = function(){ const cartBooks=books.filter(b=>cart.includes(b.id)); const total=cartBooks.reduce((s,b)=>s+calcPrice(b).cur,0); document.getElementById('buyBody').innerHTML=`<div>${cartBooks.map(b=>`<div>${esc(b.title)} - ₹${calcPrice(b).cur}</div>`).join('')}<div><strong>Total ₹${total}</strong></div><input id="buyName" placeholder="Name"><input id="buyEmail" placeholder="Email"><button class="btn btn-forest" onclick="launchRazorpayCart()">Pay ₹${total}</button>`; document.getElementById('buyModal').style.display='flex'; };
+window.launchRazorpayCart = function(){ const cartBooks=books.filter(b=>cart.includes(b.id)); const name=document.getElementById('buyName')?.value, email=document.getElementById('buyEmail')?.value; if(!name||!email){toast('Enter name/email','err');return;} const total=cartBooks.reduce((s,b)=>s+calcPrice(b).cur,0); const options={ key:RAZORPAY_KEY, amount:total*100, currency:'INR', name:'Bibek Books', description:`${cartBooks.length} books`, prefill:{name,email}, theme:{color:'#2c5f45'}, handler:()=>{ cartBooks.forEach(b=>{ if(!purchased.includes(b.id)) purchased.push(b.id); }); savePurchased(); cart=[]; saveCart(); updateDots(); closeBuy(); filterBooks(); toast(`✅ ${cartBooks.length} books unlocked`); } }; new Razorpay(options).open(); closeBuy(); };
+window.closeBuy = () => document.getElementById('buyModal').style.display='none';
+window.openDetail = function(id){ const b=books.find(x=>x.id===id); if(!b)return; const {cur}=calcPrice(b); const ci=(b.coverColor??0)%PALETTES.length; const covEl=b.cover?`<div class="book-detail-cover"><img src="${esc(b.cover)}"></div>`:`<div class="book-detail-cover-grad" style="background:linear-gradient(135deg,${PALETTES[ci][0]},${PALETTES[ci][1]})">${esc(b.title)}</div>`; document.getElementById('detailBody').innerHTML=`${covEl}<div><h2>${esc(b.title)}</h2><div>by ${esc(b.author)}</div><div>${b.description||''}</div><div class="book-detail-meta">${esc(b.category)} ${b.isFree?'FREE':`₹${cur}`}</div><div style="display:flex;gap:10px">${b.isFree&&b.pdfUrl?`<a class="btn btn-forest" href="${esc(b.pdfUrl)}" target="_blank">Read Free</a>`:''}${!b.isFree&&isPurchased(b.id)&&b.pdfUrl?`<a class="btn btn-forest" href="${esc(b.pdfUrl)}" target="_blank">Read</a>`:''}${!b.isFree&&!isPurchased(b.id)?`<button class="btn btn-amber" onclick="openBuy('${b.id}')">Buy ₹${cur}</button>`:''}<button class="btn btn-ghost" onclick="toggleWish('${b.id}');openDetail('${b.id}')">${inWish(b.id)?'❤️':'🤍'}</button></div></div>`; document.getElementById('detailFoot').innerHTML=isAuthor?`<button class="btn btn-ghost btn-sm" onclick="openEditModal('${b.id}');closeDetailModal()">✏️ Edit</button><button class="btn btn-ruby btn-sm" onclick="deleteBook('${b.id}')">🗑️ Delete</button>`:''; document.getElementById('detailModal').style.display='flex'; };
+window.closeDetailModal = () => document.getElementById('detailModal').style.display='none';
+
+// Author panel with full categories and fixed publishing
+window.toggleAuthorPanel = function(){ const p=document.getElementById('authorPanel'); const btn=document.getElementById('authorBtn'); const open=p.classList.contains('open'); if(!open){ p.classList.add('open'); renderAuthorPanel(); } else p.classList.remove('open'); btn.classList.toggle('author-active',!open); };
+function renderAuthorPanel(){ const headEl=document.getElementById('authorPanelHead'), bodyEl=document.getElementById('authorPanelBody'); if(!isAuthor){ headEl.innerHTML=''; bodyEl.innerHTML=`<div class="login-box"><p>Author passcode</p><div class="input-row"><input type="password" id="passInput"><button class="btn btn-amber" onclick="doLogin()">Login</button></div></div>`; return; } headEl.innerHTML=`<button class="btn btn-ghost btn-sm" onclick="changePass()">Change Password</button><button class="btn btn-ghost btn-sm" onclick="doLogout()">Logout</button>`; bodyEl.innerHTML=`<button class="btn btn-amber btn-sm" id="showAddBookBtn">➕ Add Book</button><div id="addForm" style="display:none;margin-top:16px"><div class="form-grid"><input id="fTitle" placeholder="Title"><input id="fAuthor" placeholder="Author"><input type="date" id="fDate"><select id="fCat">${FULL_CATS.map(c=>`<option>${c}</option>`).join('')}</select><input type="number" id="fPrice" placeholder="Price"><input type="number" id="fDisc" placeholder="Discount %"></div><div class="check-row"><input type="checkbox" id="fFree"><label>Free</label></div><div class="fg"><label>Cover</label><input type="file" id="fCover" accept="image/*"></div><div class="fg"><label>PDF URL</label><input id="fPdf" placeholder="https://..."></div><div class="fg"><label>Upload PDF</label><input type="file" id="fPdfFile" accept="application/pdf"></div><textarea id="fDesc" placeholder="Description" rows="2"></textarea><button class="btn btn-forest" id="publishBookBtn">Publish</button></div><hr class="divider"><div class="manage-scroll" id="manageList"></div><hr><textarea id="copyInput" rows="3">${esc(getCopy())}</textarea><button class="btn btn-ghost" id="saveCopyrightBtn">Save Copyright</button>`; document.getElementById('showAddBookBtn').onclick=()=>{ const f=document.getElementById('addForm'); f.style.display=f.style.display==='none'?'block':'none'; }; document.getElementById('publishBookBtn').onclick=()=>publishBook(); document.getElementById('saveCopyrightBtn').onclick=()=>saveCopyright(); renderManageList(); }
+window.doLogin = function(){ const v=document.getElementById('passInput').value; if(v===getPass()){ isAuthor=true; sessionStorage.setItem(SK_SESS,'true'); renderAuthorPanel(); filterBooks(); toast('Author access'); } else toast('Wrong pass','err'); };
+window.doLogout = function(){ isAuthor=false; sessionStorage.removeItem(SK_SESS); document.getElementById('authorPanel').classList.remove('open'); document.getElementById('authorBtn').classList.remove('author-active'); filterBooks(); };
+window.changePass = function(){ if(prompt('Current:')!==getPass()){toast('Wrong','err');return;} const np=prompt('New pass (min4)'); if(np&&np.length>=4) setPass(np), toast('Updated'); };
+async function publishBook(){ const title=document.getElementById('fTitle').value.trim(), author=document.getElementById('fAuthor').value.trim(); if(!title||!author){toast('Title & Author required','err');return;} const btn=document.getElementById('publishBookBtn'); btn.textContent='⏳ Publishing...'; btn.disabled=true; try{ let pdfUrl=document.getElementById('fPdf').value.trim(); const pdfFile=document.getElementById('fPdfFile').files[0]; if(pdfFile){ toast('Uploading PDF...'); pdfUrl=await uploadPdf(pdfFile, title); } const cover=document.getElementById('fCover').files[0]?await readFile(document.getElementById('fCover').files[0]):''; await addDoc(collection(db,'books'),{ title, author, publishDate:document.getElementById('fDate').value, category:document.getElementById('fCat').value, price:parseFloat(document.getElementById('fPrice').value)||0, discount:parseFloat(document.getElementById('fDisc').value)||0, isFree:document.getElementById('fFree').checked, pdfUrl, description:document.getElementById('fDesc').value.trim(), cover, coverColor:Math.floor(Math.random()*PALETTES.length), createdAt:Date.now() }); toast('✅ Book published!'); document.getElementById('addForm').style.display='none'; document.getElementById('fTitle').value=''; document.getElementById('fAuthor').value=''; document.getElementById('fPdfFile').value=''; document.getElementById('fCover').value=''; }catch(e){ console.error(e); toast('Publish failed: '+e.message,'err'); }finally{ btn.textContent='Publish'; btn.disabled=false; } }
+function renderManageList(){ const container=document.getElementById('manageList'); if(!container) return; container.innerHTML=books.map(b=>`<div class="manage-item"><div><strong>${esc(b.title)}</strong><br>${esc(b.author)}</div><div><button class="btn btn-ghost btn-sm" onclick="openEditModal('${b.id}')">✏️</button><button class="btn btn-ruby btn-sm" onclick="deleteBook('${b.id}')">🗑️</button></div></div>`).join(''); }
+window.deleteBook = async function(id){ if(!confirm('Delete permanently?')) return; await deleteDoc(doc(db,'books',id)); wishlist=wishlist.filter(x=>x!==id); cart=cart.filter(x=>x!==id); saveWish(); saveCart(); updateDots(); toast('Deleted'); };
+window.openEditModal = function(id){ const b=books.find(x=>x.id===id); if(!b)return; document.getElementById('editId').value=b.id; document.getElementById('eTitle').value=b.title; document.getElementById('eAuthor').value=b.author; document.getElementById('eDate').value=b.publishDate||''; document.getElementById('eCat').innerHTML=FULL_CATS.map(c=>`<option ${c===b.category?'selected':''}>${c}</option>`).join(''); document.getElementById('ePrice').value=b.price; document.getElementById('eDisc').value=b.discount||0; document.getElementById('eFree').checked=b.isFree; document.getElementById('ePdf').value=b.pdfUrl||''; document.getElementById('eDesc').value=b.description||''; document.getElementById('eCover').value=''; document.getElementById('ePdfFile').value=''; document.getElementById('editModal').style.display='flex'; };
+window.closeEditModal = () => document.getElementById('editModal').style.display='none';
+window.confirmEdit = async function(){ const id=document.getElementById('editId').value; const b=books.find(x=>x.id===id); if(!b)return; const btn=document.getElementById('editSaveBtn'); btn.textContent='⏳ Saving...'; btn.disabled=true; try{ let pdfUrl=document.getElementById('ePdf').value.trim(); const pdfFile=document.getElementById('ePdfFile').files[0]; if(pdfFile) pdfUrl=await uploadPdf(pdfFile, b.title); const cover=document.getElementById('eCover').files[0]?await readFile(document.getElementById('eCover').files[0]):b.cover; await updateDoc(doc(db,'books',id),{ title:document.getElementById('eTitle').value.trim(), author:document.getElementById('eAuthor').value.trim(), publishDate:document.getElementById('eDate').value, category:document.getElementById('eCat').value, price:parseFloat(document.getElementById('ePrice').value)||0, discount:parseFloat(document.getElementById('eDisc').value)||0, isFree:document.getElementById('eFree').checked, pdfUrl, description:document.getElementById('eDesc').value.trim(), cover }); closeEditModal(); toast('Updated'); }catch(e){ toast('Update failed','err'); }finally{ btn.textContent='💾 Save Changes'; btn.disabled=false; } };
+window.saveCopyright = function(){ saveCopy(document.getElementById('copyInput').value); document.getElementById('siteFooter').textContent=getCopy(); toast('Copyright saved'); };
+document.getElementById('editSaveBtn').onclick = () => confirmEdit();
+
+// Load initial data
+try{ wishlist=JSON.parse(localStorage.getItem(SK_WISH)||'[]'); }catch{ wishlist=[]; }
+try{ cart=JSON.parse(localStorage.getItem(SK_CART)||'[]'); }catch{ cart=[]; }
+try{ purchased=JSON.parse(localStorage.getItem(SK_PURCHASED)||'[]'); }catch{ purchased=[]; }
+isAuthor = sessionStorage.getItem(SK_SESS)==='true';
+document.getElementById('siteFooter').textContent=getCopy();
+updateDots();
+initFirebase();
+
+document.querySelectorAll('.modal-close').forEach(btn=>btn.onclick=()=>btn.closest('.overlay').style.display='none');
+</script>
+</body>
+</html>
