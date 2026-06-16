@@ -3,17 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Bibek Books - Free & Paid Ebooks on Spirituality, Fiction, Science</title>
+    <title>Bibek Books – Free & Paid Ebooks on Spirituality, Fiction, Science</title>
     <meta name="description" content="Bibek Patra's digital library: Download spiritual, fiction, non-fiction and science books. Read free ebooks or buy at low prices. New books added regularly.">
     <meta name="keywords" content="Bibek Books, digital library, ebook store, spiritual books, fiction books, science books, Bibek Patra">
     <link rel="canonical" href="https://bibekbook.store/">
-    <meta property="og:title" content="Bibek Books - Digital Library">
-    <meta property="og:description" content="Curated books by Bibek Patra - read online or download.">
+    <meta property="og:title" content="Bibek Books – Digital Library">
+    <meta property="og:description" content="Curated books by Bibek Patra – read online or download.">
     <meta property="og:url" content="https://bibekbook.store/">
     <meta property="og:type" content="website">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
+        /* (Your full CSS – same as before – no change) */
         :root {
             --bg: #1a0f2e;
             --bg2: #231538;
@@ -325,9 +326,12 @@
     </div>
 
     <nav class="nav">
-        <a class="nav-logo" href="#"><div class="nav-logo-mark">📚</div>Bibek Books</a>
+        <a class="nav-logo" href="/"><div class="nav-logo-mark">📚</div>Bibek Books</a>
         <div class="nav-spacer"></div>
         <div class="nav-btns">
+            <!-- Added static page links in nav -->
+            <a href="/about.html" class="nav-btn" style="text-decoration:none; padding:0 12px;">About</a>
+            <a href="/contact.html" class="nav-btn" style="text-decoration:none; padding:0 12px;">Contact</a>
             <button class="nav-btn nav-btn-icon" title="Cart" onclick="requireAuthThen(()=>openCart())">🛒<span class="wish-dot" id="cartDot"></span></button>
             <button class="nav-btn nav-btn-icon" title="Wishlist" onclick="requireAuthThen(()=>openWishlist())">❤️<span class="wish-dot" id="wishDot"></span></button>
             <div class="dropdown-wrap" id="dropdownWrap">
@@ -338,6 +342,9 @@
                     <div class="dropdown-divider"></div>
                     <button class="dropdown-item" id="dropAuthor" onclick="handleAuthorClick()">✍️ Author Studio</button>
                     <button class="dropdown-item" id="dropAuthorLogout" style="display:none;color:var(--amber);font-weight:600" onclick="handleAuthorLogout()">🔒 Lock Author Panel</button>
+                    <div class="dropdown-divider"></div>
+                    <a href="/privacy.html" class="dropdown-item" style="text-decoration:none;">🔒 Privacy Policy</a>
+                    <a href="/terms.html" class="dropdown-item" style="text-decoration:none;">📄 Terms & Conditions</a>
                 </div>
             </div>
         </div>
@@ -424,15 +431,16 @@
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
         import { getFirestore, collection, addDoc, updateDoc, deleteDoc, doc, getDoc, setDoc, onSnapshot, query, orderBy, where, getDocs } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
         
-
+        // NEW FIREBASE CONFIG (your new project "bibek-books")
         const firebaseConfig = {
-            apiKey: "AIzaSyC9vp6iqR0O2KOKguHBKs6ZWCWXN1oEzAs",
-            authDomain: "bibek-media-143ba.firebaseapp.com",
-            projectId: "bibek-media-143ba",
-            storageBucket: "bibek-media-143ba.firebasestorage.app",
-            messagingSenderId: "135854036939",
-            appId: "1:135854036939:web:35d2b18c16c6037ef7484e"
+            apiKey: "AIzaSyDC1JnGXxX5zVjPHUT96thS0IK8X6LWtn0",
+            authDomain: "bibek-books.firebaseapp.com",
+            projectId: "bibek-books",
+            storageBucket: "bibek-books.firebasestorage.app",
+            messagingSenderId: "1031530818922",
+            appId: "1:1031530818922:web:ab9416cd298f4bc31d4913"
         };
+        
         const app = initializeApp(firebaseConfig);
         const db = getFirestore(app);
         
@@ -440,7 +448,7 @@
         let books = [], currentUser = null, userWishlist = [], userCart = [], userPurchased = [], isAuthor = false, activeCat = 'All';
         const CATS = ['Spiritual','Fiction','Non-Fiction','Science','History','Poetry','Business'];
         const PALETTES = [['#8b5cf6','#6d28d9'],['#f0b90b','#e8860c'],['#3b82f6','#2563eb'],['#10b981','#059669'],['#ef4444','#dc2626'],['#f59e0b','#d97706'],['#ec4899','#db2777']];
-        const RAZORPAY_KEY = 'rzp_live_Swxgfrh9fcdcud';
+        const RAZORPAY_KEY = 'rzp_live_Swxgfrh9fcdcud'; // Keep your Razorpay key as is
         const SK_PASS_KEY = 'bibek_pass', DEF_PASS = 'author123', SESSION_KEY = 'bibek_session';
 
         const getPass = () => localStorage.getItem(SK_PASS_KEY) || DEF_PASS;
@@ -595,7 +603,6 @@
             if(window.Razorpay) {
                 launchRzp();
             } else {
-                // Dynamically load if not present
                 toast('Loading payment gateway…', 'ok');
                 const s = document.createElement('script');
                 s.src = 'https://checkout.razorpay.com/v1/checkout.js';
