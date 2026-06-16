@@ -14,7 +14,23 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        /* (Same as before – no change) */
+        /* Reset & Global Fixes */
+        * {
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+        html, body {
+            height:100%;
+            min-height:100vh;
+            overflow-x:hidden; /* No horizontal scroll */
+            font-family:'Outfit',sans-serif;
+            background:linear-gradient(170deg, #1a0f2e 0%, #231538 30%, #1f1235 60%, #1a0f2e 100%);
+            background-attachment:fixed;
+            color:var(--text);
+            line-height:1.6;
+        }
+        /* Rest of your CSS (same as before, but ensure all containers have max-width:100%) */
         :root {
             --bg: #1a0f2e;
             --bg2: #231538;
@@ -53,21 +69,21 @@
             --t: 0.28s cubic-bezier(0.4,0,0.2,1);
             --nav-h: 66px;
         }
-        * { margin:0; padding:0; box-sizing:border-box; }
         ::selection { background:rgba(139,92,246,0.3); color:#fff; }
         body {
-            font-family:'Outfit',sans-serif;
             background:linear-gradient(170deg, #1a0f2e 0%, #231538 30%, #1f1235 60%, #1a0f2e 100%);
             background-attachment:fixed;
             color:var(--text);
             line-height:1.6;
             min-height:100vh;
+            overflow-x:hidden;
         }
         .nav {
             position:sticky; top:0; z-index:200; height:var(--nav-h);
             background:rgba(26,15,46,0.88); backdrop-filter:blur(24px);
             border-bottom:1px solid var(--border); display:flex; align-items:center;
             padding:0 16px; gap:12px; width:100%;
+            max-width:100vw;
         }
         .nav-logo {
             font-family:'Cormorant Garamond',serif; font-size:1.55rem; font-weight:700;
@@ -112,7 +128,7 @@
         .dropdown-item.acc-item { font-weight:600; color:var(--gold); }
         .dropdown-item.logout-item { color:var(--rose2); font-weight:600; }
         .dropdown-divider { height:1px; background:var(--border); margin:6px 8px; }
-        .hero { text-align:center; padding:48px 24px 32px; position:relative; }
+        .hero { text-align:center; padding:48px 24px 32px; position:relative; max-width:100%; }
         .hero::before {
             content:''; position:absolute; top:-80px; left:50%; transform:translateX(-50%);
             width:300px; height:300px; background:radial-gradient(circle, rgba(139,92,246,0.25) 0%, transparent 70%);
@@ -135,11 +151,12 @@
         .hero-stats { display:flex; justify-content:center; gap:32px; flex-wrap:wrap; position:relative; z-index:1; }
         .hero-stat strong { font-family:'Cormorant Garamond',serif; font-size:1.6rem; font-weight:700; color:var(--gold); display:block; }
         .hero-stat span { font-size:0.78rem; color:var(--text3); }
-        .main { max-width:1280px; margin:0 auto; padding:0 16px 80px; }
+        .main { max-width:1280px; margin:0 auto; padding:0 16px 80px; width:100%; }
         .author-panel {
             background:var(--card); border:1.5px solid rgba(240,185,11,0.35); border-radius:var(--r);
             padding:28px; margin-bottom:28px; display:none; box-shadow:var(--shadow-md);
             background:linear-gradient(160deg, #2a1a3f 0%, #231538 100%);
+            max-width:100%;
         }
         .author-panel.open { display:block; }
         .panel-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:20px; flex-wrap:wrap; gap:10px; }
@@ -150,7 +167,7 @@
         .fg input, .fg textarea, .fg select {
             padding:10px 14px; border:1.5px solid var(--border); border-radius:var(--r-sm);
             font-family:inherit; font-size:0.88rem; background:rgba(255,255,255,0.06); color:#fff;
-            outline:none; transition:var(--t);
+            outline:none; transition:var(--t); width:100%;
         }
         .fg input:focus, .fg textarea:focus, .fg select:focus { border-color:var(--gold); box-shadow:0 0 0 4px rgba(240,185,11,0.12); background:rgba(255,255,255,0.1); }
         .fg select option { background:#2d1b45; color:#fff; }
@@ -161,17 +178,17 @@
         .section-bar {
             display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:14px;
             margin-bottom:22px; background:rgba(255,255,255,0.03); padding:16px 20px; border-radius:var(--r);
-            border:1px solid var(--border);
+            border:1px solid var(--border); max-width:100%;
         }
-        .section-left { display:flex; align-items:center; gap:14px; flex-wrap:wrap; }
+        .section-left { display:flex; align-items:center; gap:14px; flex-wrap:wrap; flex:1; }
         .section-title { font-family:'Cormorant Garamond',serif; font-size:1.5rem; font-weight:700; white-space:nowrap; color:#fff; }
-        .section-search { position:relative; }
+        .section-search { position:relative; flex:1; min-width:150px; }
         .section-search input {
             padding:10px 18px 10px 42px; border:1.5px solid var(--border); border-radius:50px;
             font-size:0.88rem; font-family:inherit; background:rgba(255,255,255,0.06); color:#fff;
-            outline:none; width:240px; transition:var(--t);
+            outline:none; width:100%; transition:var(--t);
         }
-        .section-search input:focus { border-color:var(--violet2); box-shadow:0 0 0 4px rgba(139,92,246,0.15); width:280px; background:rgba(255,255,255,0.1); }
+        .section-search input:focus { border-color:var(--violet2); box-shadow:0 0 0 4px rgba(139,92,246,0.15); background:rgba(255,255,255,0.1); }
         .section-search input::placeholder { color:var(--text3); }
         .section-search-icon { position:absolute; left:15px; top:50%; transform:translateY(-50%); color:var(--text3); pointer-events:none; font-size:0.9rem; }
         .cat-pills { display:flex; gap:8px; flex-wrap:wrap; }
@@ -181,11 +198,12 @@
         }
         .pill:hover { border-color:var(--violet2); color:#fff; background:rgba(139,92,246,0.15); }
         .pill.on { background:linear-gradient(135deg,#8b5cf6,#7c3aed); color:#fff; border-color:#8b5cf6; box-shadow:0 2px 12px rgba(139,92,246,0.4); }
-        .book-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(min(200px,45%),1fr)); gap:16px; }
+        .book-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(min(200px,45%),1fr)); gap:16px; max-width:100%; }
         .book-card {
             background:var(--card); border-radius:var(--r); overflow:hidden; border:1px solid var(--border);
             transition:var(--t); cursor:pointer; display:flex; flex-direction:column; box-shadow:var(--shadow-xs);
             background:linear-gradient(180deg, #2a1a3f 0%, #231538 100%);
+            max-width:100%;
         }
         .book-card:hover { transform:translateY(-6px); box-shadow:var(--shadow-lg); border-color:rgba(240,185,11,0.4); }
         .book-cover {
@@ -203,10 +221,10 @@
         .book-info { padding:14px; flex:1; }
         .book-title { font-weight:600; font-size:0.92rem; line-height:1.3; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; color:#fff; }
         .book-author { font-size:0.76rem; color:var(--text3); margin-top:2px; }
-        .price-row { display:flex; align-items:center; gap:7px; margin-top:6px; }
+        .price-row { display:flex; align-items:center; gap:7px; margin-top:6px; flex-wrap:wrap; }
         .price-now { font-weight:800; font-size:1rem; color:var(--gold); }
         .price-was { font-size:0.73rem; text-decoration:line-through; color:#6b5b80; }
-        .card-btns { display:flex; gap:7px; margin-top:10px; }
+        .card-btns { display:flex; gap:7px; margin-top:10px; flex-wrap:wrap; }
         .c-btn {
             flex:1; border:1px solid var(--border); padding:7px 8px; border-radius:50px; font-size:0.74rem;
             font-weight:500; display:inline-flex; align-items:center; justify-content:center; cursor:pointer;
@@ -275,12 +293,40 @@
             background:#2a1a3f; border-radius:20px; padding:32px 28px; max-width:400px; width:90%;
             text-align:center; border:1px solid var(--border2); box-shadow:var(--shadow-lg);
         }
-        .site-footer { background:rgba(255,255,255,0.03); border-top:1px solid var(--border); padding:30px 24px; text-align:center; font-size:0.74rem; color:var(--text3); white-space:pre-line; margin-top:60px; }
-        .footer-links { display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-bottom:10px; }
-        .footer-links a { color:var(--text2); text-decoration:none; font-size:0.8rem; }
+        .site-footer {
+            background:rgba(255,255,255,0.03);
+            border-top:1px solid var(--border);
+            padding:30px 24px;
+            text-align:center;
+            font-size:0.74rem;
+            color:var(--text3);
+            margin-top:60px;
+            width:100%;
+        }
+        .footer-links {
+            display:flex;
+            justify-content:center;
+            gap:20px;
+            flex-wrap:wrap;
+            margin-bottom:10px;
+        }
+        .footer-links a {
+            color:var(--text2);
+            text-decoration:none;
+            font-size:0.8rem;
+        }
         .footer-links a:hover { color:var(--gold); }
-        .social-links { display:flex; justify-content:center; gap:12px; margin-bottom:10px; }
-        .social-links a { color:var(--text2); font-size:1.2rem; text-decoration:none; }
+        .social-links {
+            display:flex;
+            justify-content:center;
+            gap:12px;
+            margin-bottom:10px;
+        }
+        .social-links a {
+            color:var(--text2);
+            font-size:1.2rem;
+            text-decoration:none;
+        }
         .social-links a:hover { color:var(--gold); }
         @keyframes slideInL { from{transform:translateX(-120%);opacity:0} to{transform:translateX(0);opacity:1} }
         @keyframes fadeOut { to{opacity:0;transform:translateY(6px)} }
@@ -291,19 +337,26 @@
             .section-left { flex-direction:column; align-items:stretch; gap:10px; }
             .section-search input { width:100%; }
             .section-search input:focus { width:100%; }
+            .nav-logo { font-size:1.2rem; }
+            .nav-btn { padding:0 8px; font-size:0.7rem; }
+            .nav-btn-icon { width:34px; }
+            .hero h1 { font-size:clamp(1.8rem,4vw,2.5rem); }
+            .author-panel { padding:16px; }
+            .panel-header { flex-direction:column; align-items:stretch; }
+            .book-detail { flex-direction:column; align-items:center; }
+            .book-detail-cover { width:100%; height:auto; max-width:200px; }
         }
     </style>
     <!-- Firebase SDKs -->
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore-compat.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/10.12.0/firebase-storage-compat.js"></script>
     <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
 </head>
 <body>
     <div class="toast-wrap" id="toastWrap"></div>
 
-    <!-- AUTH MODAL (Updated with Email/Phone & Forgot Password) -->
+    <!-- AUTH MODAL -->
     <div id="authModal" style="display:none" class="auth-overlay" onclick="if(event.target===this)closeAuthModal()">
         <div class="auth-card">
             <div style="margin-bottom:20px">
@@ -320,15 +373,15 @@
         </div>
     </div>
 
-    <!-- AUTHOR PASSWORD MODAL (unchanged) -->
+    <!-- AUTHOR PASSWORD MODAL -->
     <div id="authorPassModal" style="display:none" class="auth-overlay" onclick="if(event.target===this)closeAuthorPassModal()">
         <div class="password-modal">
             <h3 style="color:var(--gold);margin-bottom:16px">🔐 Author Access</h3>
             <div class="fg" style="margin-bottom:14px">
                 <label>Enter Author Password</label>
-                <input type="password" id="authorPassInput" placeholder="••••••" style="text-align:center">
+                <input type="password" id="authorPassInput" placeholder="••••••" style="text-align:center;width:100%;">
             </div>
-            <div style="display:flex;gap:8px;justify-content:center">
+            <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;">
                 <button class="btn btn-amber" onclick="verifyAuthorPass()">Unlock</button>
                 <button class="btn btn-ghost" onclick="closeAuthorPassModal()">Cancel</button>
             </div>
@@ -336,13 +389,11 @@
         </div>
     </div>
 
-    <!-- NAVIGATION -->
+    <!-- NAVIGATION (No About/Contact/Privacy/Terms in top) -->
     <nav class="nav">
         <a class="nav-logo" href="/"><div class="nav-logo-mark">📚</div>Bibek Books</a>
         <div class="nav-spacer"></div>
         <div class="nav-btns">
-            <a href="/about.html" class="nav-btn" style="text-decoration:none; padding:0 12px;">About</a>
-            <a href="/contact.html" class="nav-btn" style="text-decoration:none; padding:0 12px;">Contact</a>
             <button class="nav-btn nav-btn-icon" title="Cart" onclick="requireAuthThen(()=>openCart())">🛒<span class="wish-dot" id="cartDot"></span></button>
             <button class="nav-btn nav-btn-icon" title="Wishlist" onclick="requireAuthThen(()=>openWishlist())">❤️<span class="wish-dot" id="wishDot"></span></button>
             <div class="dropdown-wrap" id="dropdownWrap">
@@ -353,9 +404,6 @@
                     <div class="dropdown-divider"></div>
                     <button class="dropdown-item" id="dropAuthor" onclick="handleAuthorClick()">✍️ Author Studio</button>
                     <button class="dropdown-item" id="dropAuthorLogout" style="display:none;color:var(--amber);font-weight:600" onclick="handleAuthorLogout()">🔒 Lock Author Panel</button>
-                    <div class="dropdown-divider"></div>
-                    <a href="/privacy.html" class="dropdown-item" style="text-decoration:none;">🔒 Privacy Policy</a>
-                    <a href="/terms.html" class="dropdown-item" style="text-decoration:none;">📄 Terms & Conditions</a>
                 </div>
             </div>
         </div>
@@ -369,7 +417,7 @@
     </div>
 
     <div class="main">
-        <!-- AUTHOR PANEL (with extra section for social links and file uploads) -->
+        <!-- Author Panel -->
         <div class="author-panel" id="authorPanel">
             <div class="panel-header"><div class="panel-title">✍️ Author Studio</div><div id="authorPanelHead"></div></div>
             <div id="authorPanelBody"></div>
@@ -389,7 +437,7 @@
         <div class="book-grid" id="bookGrid"></div>
     </div>
 
-    <!-- FOOTER with social links and page links -->
+    <!-- FOOTER (All links here) -->
     <footer class="site-footer" id="siteFooter">
         <div class="social-links" id="socialLinks"></div>
         <div class="footer-links">
@@ -401,7 +449,8 @@
         <div id="copyrightText">© 2026 Bibek Patra · Bibek Books</div>
     </footer>
 
-    <!-- MODALS (Detail, Wishlist, Cart, Buy, Edit) – same as before -->
+    <!-- MODALS -->
+    <!-- Detail Modal -->
     <div class="overlay" id="detailModal" style="display:none" onclick="if(event.target===this)closeDetailModal()">
         <div class="modal-box" style="max-width:660px">
             <div class="modal-head"><h3 id="detailTitle">Book Details</h3><button class="modal-close" onclick="closeDetailModal()">✕</button></div>
@@ -445,17 +494,16 @@
             </div>
             <div class="check-row"><input type="checkbox" id="eFree"><label>📖 FREE book</label></div>
             <div class="fg" style="margin-bottom:10px"><label>Cover Image</label><input type="file" id="eCover" accept="image/*"></div>
-            <div class="fg" style="margin-bottom:10px"><label>PDF URL</label><input id="ePdf" placeholder="https://..."></div>
-            <div class="fg" style="margin-bottom:10px"><label>Upload PDF</label><input type="file" id="ePdfFile" accept="application/pdf"></div>
+            <div class="fg" style="margin-bottom:10px"><label>PDF URL</label><input id="ePdf" placeholder="https://drive.google.com/..."></div>
             <div class="fg" style="margin-bottom:10px"><label>Description</label><textarea id="eDesc" rows="3"></textarea></div>
-            <div style="display:flex;gap:8px;margin-top:12px"><button class="btn btn-forest" onclick="confirmEdit()">💾 Save</button><button class="btn btn-ghost" onclick="closeEditModal()">Cancel</button></div>
+            <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap;"><button class="btn btn-forest" onclick="confirmEdit()">💾 Save</button><button class="btn btn-ghost" onclick="closeEditModal()">Cancel</button></div>
         </div>
     </div>
 
     <script>
-        // -------------------------------------------------------------------------
-        // FIREBASE INIT (compat)
-        // -------------------------------------------------------------------------
+        // ================================================================
+        //  FIREBASE INIT (No Storage)
+        // ================================================================
         const firebaseConfig = {
             apiKey: "AIzaSyDC1JnGXxX5zVjPHUT96thS0IK8X6LWtn0",
             authDomain: "bibek-books.firebaseapp.com",
@@ -467,16 +515,15 @@
         firebase.initializeApp(firebaseConfig);
         const auth = firebase.auth();
         const db = firebase.firestore();
-        const storage = firebase.storage();
 
-        // Enable phone auth with reCAPTCHA – we'll set it up later
+        // Enable phone auth
         let recaptchaVerifier = null;
 
-        // -------------------------------------------------------------------------
-        // GLOBAL VARIABLES
-        // -------------------------------------------------------------------------
+        // ================================================================
+        //  GLOBAL VARIABLES
+        // ================================================================
         let books = [];
-        let currentUser = null; // will hold Firebase user object
+        let currentUser = null;
         let userData = { wishlist: [], cart: [], purchased: [] };
         let isAuthor = false;
         let activeCat = 'All';
@@ -492,9 +539,39 @@
         const toast = (msg,type='ok')=>{ const t=document.createElement('div'); t.className=`toast ${type}`; t.textContent=msg; document.getElementById('toastWrap').appendChild(t); setTimeout(()=>t.remove(),3300); };
         const calcPrice = (b) => { if(b.isFree) return {cur:0, orig:b.price||0, disc:0}; const d=Math.max(0,Math.min(90,b.discount||0)); return {cur: d>0?Math.round(b.price*(1-d/100)):b.price, orig:b.price, disc:d}; };
 
-        // -------------------------------------------------------------------------
-        // AUTH FUNCTIONS (Email/Password + Phone OTP)
-        // -------------------------------------------------------------------------
+        // ================================================================
+        //  BASE64 IMAGE COMPRESSION (No Storage)
+        // ================================================================
+        function readFileAsDataURL(file) {
+            return new Promise((resolve, reject) => {
+                if (!file) { resolve(''); return; }
+                const reader = new FileReader();
+                reader.onload = () => {
+                    const img = new Image();
+                    img.onload = () => {
+                        const MAX = 600; // max width/height
+                        let w = img.width, h = img.height;
+                        if (w > MAX || h > MAX) {
+                            if (w > h) { h = Math.round(h * MAX / w); w = MAX; }
+                            else { w = Math.round(w * MAX / h); h = MAX; }
+                        }
+                        const canvas = document.createElement('canvas');
+                        canvas.width = w; canvas.height = h;
+                        const ctx = canvas.getContext('2d');
+                        ctx.drawImage(img, 0, 0, w, h);
+                        resolve(canvas.toDataURL('image/jpeg', 0.7));
+                    };
+                    img.onerror = reject;
+                    img.src = reader.result;
+                };
+                reader.onerror = reject;
+                reader.readAsDataURL(file);
+            });
+        }
+
+        // ================================================================
+        //  AUTH FUNCTIONS (Email/Password + Phone OTP + Forgot Password)
+        // ================================================================
         function renderAuthForm(tab) {
             const c = document.getElementById('authFormContainer');
             const msg = document.getElementById('authFootMsg');
@@ -504,8 +581,8 @@
                 c.innerHTML = `
                 <div style="display:flex;flex-direction:column;gap:14px">
                     <div class="fg">
-                        <label>Email or Phone</label>
-                        <input id="authLoginId" type="text" placeholder="Enter email or phone (with country code)" style="width:100%;">
+                        <label>Email</label>
+                        <input id="authLoginId" type="email" placeholder="your@email.com" style="width:100%;">
                     </div>
                     <div class="fg">
                         <label>Password</label>
@@ -525,7 +602,6 @@
                     <button class="btn btn-ghost" style="width:100%;justify-content:center;margin-top:5px" onclick="sendPhoneOTP()">📱 Login with Phone OTP</button>
                 </div>`;
             } else {
-                // Register
                 c.innerHTML = `
                 <div style="display:flex;flex-direction:column;gap:14px">
                     <div class="fg">
@@ -568,17 +644,11 @@
         }
 
         async function doLogin() {
-            const loginId = document.getElementById('authLoginId')?.value.trim();
+            const email = document.getElementById('authLoginId')?.value.trim();
             const pass = document.getElementById('authLoginPass')?.value;
-            if (!loginId || !pass) { showAuthErr('Please fill all fields.'); return; }
-            // If loginId contains '@' treat as email, else treat as phone (but phone login with password is not standard; we'll attempt email)
-            // For simplicity, we'll always use email/password for password login. Phone OTP is separate.
-            if (!loginId.includes('@')) {
-                showAuthErr('Please enter email for password login. Use Phone OTP for phone login.');
-                return;
-            }
+            if (!email || !pass) { showAuthErr('Please fill all fields.'); return; }
             try {
-                const cred = await auth.signInWithEmailAndPassword(loginId, pass);
+                const cred = await auth.signInWithEmailAndPassword(email, pass);
                 onAuthStateChangedHandler(cred.user);
                 closeAuthModal();
                 toast('✅ Welcome back!');
@@ -596,11 +666,8 @@
             if (pass.length < 6) { showAuthErr('Password must be at least 6 characters.'); return; }
             try {
                 const cred = await auth.createUserWithEmailAndPassword(email, pass);
-                // Update profile
                 await cred.user.updateProfile({ displayName: name });
-                // Save additional data to Firestore users collection
-                const user = cred.user;
-                await db.collection('users').doc(user.uid).set({
+                await db.collection('users').doc(cred.user.uid).set({
                     displayName: name,
                     email: email,
                     phone: phone || '',
@@ -609,7 +676,7 @@
                     purchased: [],
                     createdAt: firebase.firestore.FieldValue.serverTimestamp()
                 });
-                onAuthStateChangedHandler(user);
+                onAuthStateChangedHandler(cred.user);
                 closeAuthModal();
                 toast('🎉 Account created! Welcome ' + name);
             } catch(e) {
@@ -617,7 +684,6 @@
             }
         }
 
-        // Forgot Password
         function forgotPassword() {
             const email = prompt('Enter your email address to reset password:');
             if (email) {
@@ -629,33 +695,25 @@
             }
         }
 
-        // Phone OTP Login
         function sendPhoneOTP() {
-            // We'll use a simple prompt to get phone number and send OTP
             const phone = prompt('Enter your phone number with country code (e.g., +919876543210):');
             if (!phone) return;
-            // Create a reCAPTCHA verifier (invisible)
             if (!recaptchaVerifier) {
-                recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
-                    'size': 'invisible',
-                    'callback': (response) => { /* reCAPTCHA solved */ }
-                });
-                // We need a div to host it
                 const container = document.createElement('div');
                 container.id = 'recaptcha-container';
                 document.body.appendChild(container);
+                recaptchaVerifier = new firebase.auth.RecaptchaVerifier('recaptcha-container', {
+                    'size': 'invisible',
+                    'callback': (response) => {}
+                });
             }
-            // Sign in with phone
-            const appVerifier = recaptchaVerifier;
-            auth.signInWithPhoneNumber(phone, appVerifier)
+            auth.signInWithPhoneNumber(phone, recaptchaVerifier)
                 .then(confirmationResult => {
-                    // Ask for OTP
                     const otp = prompt('Enter the OTP sent to your phone:');
                     if (!otp) { toast('OTP required', 'err'); return; }
                     return confirmationResult.confirm(otp);
                 })
                 .then(result => {
-                    // User signed in
                     onAuthStateChangedHandler(result.user);
                     closeAuthModal();
                     toast('📱 Phone login successful!');
@@ -665,13 +723,12 @@
                 });
         }
 
-        // -------------------------------------------------------------------------
-        // AUTH STATE HANDLER
-        // -------------------------------------------------------------------------
+        // ================================================================
+        //  AUTH STATE HANDLER
+        // ================================================================
         function onAuthStateChangedHandler(user) {
             if (user) {
                 currentUser = user;
-                // Load user data from Firestore
                 db.collection('users').doc(user.uid).get().then(doc => {
                     if (doc.exists) {
                         const data = doc.data();
@@ -679,20 +736,9 @@
                         userData.cart = data.cart || [];
                         userData.purchased = data.purchased || [];
                     } else {
-                        // Create default document if missing
-                        const newData = {
-                            displayName: user.displayName || '',
-                            email: user.email || '',
-                            phone: user.phoneNumber || '',
-                            wishlist: [],
-                            cart: [],
-                            purchased: [],
-                            createdAt: firebase.firestore.FieldValue.serverTimestamp()
-                        };
+                        const newData = { displayName: user.displayName || '', email: user.email || '', phone: user.phoneNumber || '', wishlist: [], cart: [], purchased: [], createdAt: firebase.firestore.FieldValue.serverTimestamp() };
                         db.collection('users').doc(user.uid).set(newData);
-                        userData.wishlist = [];
-                        userData.cart = [];
-                        userData.purchased = [];
+                        userData.wishlist = []; userData.cart = []; userData.purchased = [];
                     }
                     updateUIForLoginState();
                     updateDots();
@@ -700,25 +746,18 @@
                 });
             } else {
                 currentUser = null;
-                userData.wishlist = [];
-                userData.cart = [];
-                userData.purchased = [];
+                userData.wishlist = []; userData.cart = []; userData.purchased = [];
                 updateUIForLoginState();
                 updateDots();
                 filterBooks();
             }
         }
 
-        // Set up auth listener
         auth.onAuthStateChanged(user => {
-            if (user) {
-                onAuthStateChangedHandler(user);
-            } else {
-                onAuthStateChangedHandler(null);
-            }
+            if (user) onAuthStateChangedHandler(user);
+            else onAuthStateChangedHandler(null);
         });
 
-        // Login/Logout UI functions
         function updateUIForLoginState() {
             const accBtn = document.getElementById('dropAccount');
             const logoutBtn = document.getElementById('dropLogout');
@@ -751,7 +790,6 @@
 
         function closeAuthModal() {
             document.getElementById('authModal').style.display='none';
-            // Cleanup reCAPTCHA container if any
         }
 
         function requireAuthThen(callback) {
@@ -765,9 +803,6 @@
             openAuthModal();
         }
 
-        // -------------------------------------------------------------------------
-        // SAVE USER DATA TO FIRESTORE
-        // -------------------------------------------------------------------------
         async function saveUserData() {
             if (!currentUser) return;
             try {
@@ -784,17 +819,9 @@
             document.getElementById('wishDot').classList.toggle('show', userData.wishlist.length>0);
         }
 
-        // -------------------------------------------------------------------------
-        // BOOK CRUD (with file uploads)
-        // -------------------------------------------------------------------------
-        async function uploadFile(file, folder) {
-            if (!file) return '';
-            const storageRef = storage.ref();
-            const fileRef = storageRef.child(folder + '/' + Date.now() + '_' + file.name);
-            await fileRef.put(file);
-            return await fileRef.getDownloadURL();
-        }
-
+        // ================================================================
+        //  BOOK CRUD (Base64 cover, PDF URL only)
+        // ================================================================
         async function submitBook(editId) {
             const title = document.getElementById('f_title')?.value.trim();
             const author = document.getElementById('f_author')?.value.trim();
@@ -806,29 +833,19 @@
             const cat = document.getElementById('f_cat')?.value || 'Fiction';
             const pubDate = document.getElementById('f_date')?.value || '';
             const coverFile = document.getElementById('f_cover')?.files?.[0];
-            const pdfFile = document.getElementById('f_pdfFile')?.files?.[0];
 
             if (!title || !author) { toast('❌ Title and Author required', 'err'); return; }
             if (!isFree && price <= 0) { toast('❌ Enter a valid price', 'err'); return; }
 
             try {
                 let coverImage = '';
-                let uploadedPdfUrl = '';
-
-                // Upload cover if present
                 if (coverFile) {
-                    coverImage = await uploadFile(coverFile, 'covers');
+                    coverImage = await readFileAsDataURL(coverFile);
                 }
-                // Upload PDF if present
-                if (pdfFile) {
-                    uploadedPdfUrl = await uploadFile(pdfFile, 'pdfs');
-                }
-                // Use provided PDF URL if uploadedPdfUrl is empty
-                const finalPdfUrl = uploadedPdfUrl || pdfUrl;
 
                 const bookData = {
                     title, author, price, discount: disc, isFree,
-                    pdfUrl: finalPdfUrl,
+                    pdfUrl: pdfUrl,
                     description: desc, category: cat, publishDate: pubDate,
                     updatedAt: firebase.firestore.FieldValue.serverTimestamp()
                 };
@@ -848,94 +865,9 @@
             }
         }
 
-        // -------------------------------------------------------------------------
-        // WISHLIST, CART, PURCHASE (use userData)
-        // -------------------------------------------------------------------------
-        async function toggleWishlist(bookId) {
-            if (!currentUser) return;
-            const idx = userData.wishlist.indexOf(bookId);
-            if (idx > -1) userData.wishlist.splice(idx, 1);
-            else userData.wishlist.push(bookId);
-            await saveUserData();
-            updateDots();
-            filterBooks();
-            toast(idx > -1 ? 'Removed from wishlist' : 'Added to wishlist');
-        }
-
-        async function addToCart(bookId) {
-            if (!currentUser) return;
-            if (userData.cart.includes(bookId)) { toast('Already in cart','err'); return; }
-            if (userData.purchased.includes(bookId)) { toast('Already purchased','err'); return; }
-            userData.cart.push(bookId);
-            await saveUserData();
-            updateDots();
-            filterBooks();
-            toast('Added to cart');
-        }
-
-        async function removeFromCart(bookId) {
-            userData.cart = userData.cart.filter(id => id !== bookId);
-            await saveUserData();
-            updateDots();
-            filterBooks();
-            openCart();
-            toast('Removed from cart');
-        }
-
-        // (Other functions like openWishlist, openCart, openBuy, processPayment remain similar but use userData)
-        // We'll adapt them below.
-
-        // -------------------------------------------------------------------------
-        // RENDER BOOK GRID
-        // -------------------------------------------------------------------------
-        function renderBookGrid(bookArr) {
-            const grid = document.getElementById('bookGrid');
-            if (!bookArr.length) {
-                grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="empty-icon">📭</div><p><strong>No books found</strong></p></div>`;
-                return;
-            }
-            grid.innerHTML = bookArr.map((b, i) => {
-                const pr = calcPrice(b);
-                const pal = PALETTES[i % PALETTES.length];
-                const coverHTML = b.coverImage ? `<img src="${esc(b.coverImage)}" alt="${esc(b.title)}" loading="lazy">` : `<div class="cover-text">${esc(b.title)}</div>`;
-                const badgeHTML = b.isFree ? '<span class="book-badge badge-free">FREE</span>' : (pr.disc > 0 ? `<span class="book-badge badge-disc">-${pr.disc}%</span>` : '');
-                const priceHTML = b.isFree ? '<span class="price-now">Free</span>' : `${pr.disc > 0 ? `<span class="price-was">₹${pr.orig}</span>` : ''}<span class="price-now">₹${pr.cur}</span>`;
-                const isWishlisted = userData.wishlist.includes(b.id);
-                const isInCart = userData.cart.includes(b.id);
-                const isPurchased = userData.purchased.includes(b.id);
-                const readAction = isPurchased || b.isFree ? `onclick="window._readBook('${b.id}')"` : `onclick="window._addToCart('${b.id}')"`;
-                const readText = isPurchased || b.isFree ? '📖 Read' : (isInCart ? '✓ In Cart' : '🛒 Buy');
-                return `
-                <div class="book-card" onclick="window._openDetail('${b.id}')">
-                  <div class="book-cover" style="background:linear-gradient(135deg,${pal[0]},${pal[1]})">
-                    ${coverHTML} ${badgeHTML}
-                    <span class="badge-read">📖 Quick View</span>
-                  </div>
-                  <div class="book-info">
-                    <div class="book-title">${esc(b.title)}</div>
-                    <div class="book-author">by ${esc(b.author)}</div>
-                    <div class="price-row">${priceHTML}</div>
-                    <div class="card-btns" onclick="event.stopPropagation()">
-                      <button class="c-btn ${isWishlisted?'wishlisted':''}" onclick="window._toggleWishlist('${b.id}')">${isWishlisted?'❤️':'🤍'}</button>
-                      <button class="c-btn buy-btn" ${readAction}>${readText}</button>
-                    </div>
-                  </div>
-                </div>`;
-            }).join('');
-        }
-
-        function filterBooks() {
-            const q = (document.getElementById('searchInput').value || '').toLowerCase().trim();
-            let filtered = books;
-            if (activeCat !== 'All') filtered = filtered.filter(b => b.category === activeCat);
-            if (q) filtered = filtered.filter(b => (b.title || '').toLowerCase().includes(q) || (b.author || '').toLowerCase().includes(q));
-            document.getElementById('sectionTitle').textContent = q ? `Results for "${esc(q)}"` : (activeCat === 'All' ? 'All Books' : activeCat);
-            renderBookGrid(filtered);
-        }
-
-        // -------------------------------------------------------------------------
-        // AUTHOR PANEL
-        // -------------------------------------------------------------------------
+        // ================================================================
+        //  AUTHOR PANEL
+        // ================================================================
         function handleAuthorClick() {
             document.getElementById('dropdownWrap').classList.remove('open');
             if (isAuthor) { toggleAuthorPanelDirect(); return; }
@@ -1000,9 +932,8 @@
                         <input type="checkbox" id="f_free" ${bookData?.isFree?'checked':''} style="width:18px;height:18px;accent-color:var(--emerald)"> Yes, make it free
                     </label>
                 </div>
-                <div class="fg" style="grid-column:1/-1"><label>PDF URL (Google Drive / direct link)</label><input id="f_pdf" value="${esc(bookData?.pdfUrl||'')}" placeholder="https://drive.google.com/file/..."></div>
+                <div class="fg" style="grid-column:1/-1"><label>PDF URL</label><input id="f_pdf" value="${esc(bookData?.pdfUrl||'')}" placeholder="https://drive.google.com/file/..."></div>
                 <div class="fg" style="grid-column:1/-1"><label>Cover Image (upload)</label><input type="file" id="f_cover" accept="image/*"></div>
-                <div class="fg" style="grid-column:1/-1"><label>Upload PDF</label><input type="file" id="f_pdfFile" accept="application/pdf"></div>
                 <div class="fg" style="grid-column:1/-1"><label>Publish Date</label><input type="date" id="f_date" value="${bookData?.publishDate||new Date().toISOString().slice(0,10)}"></div>
                 <div class="fg" style="grid-column:1/-1"><label>Description</label><textarea id="f_desc" rows="3" placeholder="Book description...">${esc(bookData?.description||'')}</textarea></div>
                 <div style="grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap">
@@ -1014,27 +945,6 @@
 
         window.submitBook = submitBook;
         window.showAddBookForm = showAddBookForm;
-
-        // Social Links editing
-        async function editSocialLinks() {
-            // We'll store social links in a Firestore doc 'siteSettings/config'
-            const docRef = db.collection('siteSettings').doc('config');
-            const doc = await docRef.get();
-            let links = { facebook: '', twitter: '', instagram: '', youtube: '' };
-            if (doc.exists) {
-                const data = doc.data();
-                if (data.social) links = data.social;
-            }
-            // Simple prompt for each
-            const fb = prompt('Facebook URL:', links.facebook || '');
-            const tw = prompt('Twitter URL:', links.twitter || '');
-            const ig = prompt('Instagram URL:', links.instagram || '');
-            const yt = prompt('YouTube URL:', links.youtube || '');
-            const newLinks = { facebook: fb || '', twitter: tw || '', instagram: ig || '', youtube: yt || '' };
-            await docRef.set({ social: newLinks }, { merge: true });
-            toast('✅ Social links updated!');
-            loadSocialLinks();
-        }
 
         function changeAuthorPass() {
             const np = prompt('Enter new author password:');
@@ -1048,37 +958,98 @@
             toast('🔒 Author panel locked');
         }
 
-        // -------------------------------------------------------------------------
-        // SOCIAL LINKS IN FOOTER
-        // -------------------------------------------------------------------------
+        // ================================================================
+        //  SOCIAL LINKS
+        // ================================================================
+        async function editSocialLinks() {
+            const docRef = db.collection('siteSettings').doc('config');
+            const doc = await docRef.get();
+            let links = { facebook: '', twitter: '', instagram: '', youtube: '' };
+            if (doc.exists && doc.data().social) links = doc.data().social;
+            const fb = prompt('Facebook URL:', links.facebook || '');
+            const tw = prompt('Twitter URL:', links.twitter || '');
+            const ig = prompt('Instagram URL:', links.instagram || '');
+            const yt = prompt('YouTube URL:', links.youtube || '');
+            const newLinks = { facebook: fb || '', twitter: tw || '', instagram: ig || '', youtube: yt || '' };
+            await docRef.set({ social: newLinks }, { merge: true });
+            toast('✅ Social links updated!');
+            loadSocialLinks();
+        }
+
         async function loadSocialLinks() {
             const docRef = db.collection('siteSettings').doc('config');
             const doc = await docRef.get();
             let links = { facebook: '', twitter: '', instagram: '', youtube: '' };
-            if (doc.exists && doc.data().social) {
-                links = doc.data().social;
-            }
+            if (doc.exists && doc.data().social) links = doc.data().social;
             const container = document.getElementById('socialLinks');
-            const icons = {
-                facebook: 'f',
-                twitter: 't',
-                instagram: 'i',
-                youtube: 'y'
-            };
+            const icons = { facebook: '📘', twitter: '🐦', instagram: '📸', youtube: '▶️' };
             let html = '';
             for (const [key, url] of Object.entries(links)) {
-                if (url) {
-                    const icon = key === 'facebook' ? '📘' : key === 'twitter' ? '🐦' : key === 'instagram' ? '📸' : '▶️';
-                    html += `<a href="${url}" target="_blank" rel="noopener">${icon}</a>`;
-                }
+                if (url) html += `<a href="${url}" target="_blank" rel="noopener">${icons[key] || '🔗'}</a>`;
             }
             container.innerHTML = html;
         }
 
-        // -------------------------------------------------------------------------
-        // BOOK DETAIL, CART, WISHLIST MODALS (unchanged logic but use userData)
-        // -------------------------------------------------------------------------
-        // (We'll just reference functions from global scope)
+        // ================================================================
+        //  BOOK GRID & FILTERS
+        // ================================================================
+        function renderBookGrid(bookArr) {
+            const grid = document.getElementById('bookGrid');
+            if (!bookArr.length) {
+                grid.innerHTML = `<div class="empty-state" style="grid-column:1/-1"><div class="empty-icon">📭</div><p><strong>No books found</strong></p></div>`;
+                return;
+            }
+            grid.innerHTML = bookArr.map((b, i) => {
+                const pr = calcPrice(b);
+                const pal = PALETTES[i % PALETTES.length];
+                const coverHTML = b.coverImage ? `<img src="${esc(b.coverImage)}" alt="${esc(b.title)}" loading="lazy">` : `<div class="cover-text">${esc(b.title)}</div>`;
+                const badgeHTML = b.isFree ? '<span class="book-badge badge-free">FREE</span>' : (pr.disc > 0 ? `<span class="book-badge badge-disc">-${pr.disc}%</span>` : '');
+                const priceHTML = b.isFree ? '<span class="price-now">Free</span>' : `${pr.disc > 0 ? `<span class="price-was">₹${pr.orig}</span>` : ''}<span class="price-now">₹${pr.cur}</span>`;
+                const isWishlisted = userData.wishlist.includes(b.id);
+                const isInCart = userData.cart.includes(b.id);
+                const isPurchased = userData.purchased.includes(b.id);
+                const readAction = isPurchased || b.isFree ? `onclick="window._readBook('${b.id}')"` : `onclick="window._addToCart('${b.id}')"`;
+                const readText = isPurchased || b.isFree ? '📖 Read' : (isInCart ? '✓ In Cart' : '🛒 Buy');
+                return `
+                <div class="book-card" onclick="window._openDetail('${b.id}')">
+                  <div class="book-cover" style="background:linear-gradient(135deg,${pal[0]},${pal[1]})">
+                    ${coverHTML} ${badgeHTML}
+                    <span class="badge-read">📖 Quick View</span>
+                  </div>
+                  <div class="book-info">
+                    <div class="book-title">${esc(b.title)}</div>
+                    <div class="book-author">by ${esc(b.author)}</div>
+                    <div class="price-row">${priceHTML}</div>
+                    <div class="card-btns" onclick="event.stopPropagation()">
+                      <button class="c-btn ${isWishlisted?'wishlisted':''}" onclick="window._toggleWishlist('${b.id}')">${isWishlisted?'❤️':'🤍'}</button>
+                      <button class="c-btn buy-btn" ${readAction}>${readText}</button>
+                    </div>
+                  </div>
+                </div>`;
+            }).join('');
+        }
+
+        function filterBooks() {
+            const q = (document.getElementById('searchInput').value || '').toLowerCase().trim();
+            let filtered = books;
+            if (activeCat !== 'All') filtered = filtered.filter(b => b.category === activeCat);
+            if (q) filtered = filtered.filter(b => (b.title || '').toLowerCase().includes(q) || (b.author || '').toLowerCase().includes(q));
+            document.getElementById('sectionTitle').textContent = q ? `Results for "${esc(q)}"` : (activeCat === 'All' ? 'All Books' : activeCat);
+            renderBookGrid(filtered);
+        }
+
+        function renderCatPills() {
+            document.getElementById('catPills').innerHTML = ['All',...CATS].map(c =>
+                `<button class="pill ${c===activeCat?'on':''}" onclick="window._setCat('${c}')">${c}</button>`
+            ).join('');
+        }
+
+        window._setCat = (c) => { activeCat = c; renderCatPills(); filterBooks(); };
+        window.filterBooks = filterBooks;
+
+        // ================================================================
+        //  WISHLIST, CART, PURCHASE
+        // ================================================================
         window._toggleWishlist = (id) => requireAuthThen(() => toggleWishlist(id));
         window._addToCart = (id) => requireAuthThen(() => addToCart(id));
         window._removeFromCart = (id) => removeFromCart(id);
@@ -1090,51 +1061,41 @@
             });
         };
         window._openDetail = (id) => openDetailModal(id);
-        window._setCat = (c) => { activeCat = c; renderCatPills(); filterBooks(); };
 
-        // -------------------------------------------------------------------------
-        // INIT
-        // -------------------------------------------------------------------------
-        function renderCatPills() {
-            document.getElementById('catPills').innerHTML = ['All',...CATS].map(c =>
-                `<button class="pill ${c===activeCat?'on':''}" onclick="window._setCat('${c}')">${c}</button>`
-            ).join('');
-        }
-
-        function updateHeroStats() {
-            const total = books.length;
-            const freeCount = books.filter(b => b.isFree).length;
-            const catCount = new Set(books.map(b => b.category).filter(Boolean)).size;
-            document.getElementById('heroStats').innerHTML = `
-                <div class="hero-stat"><strong>${total}</strong><span>Books</span></div>
-                <div class="hero-stat"><strong>${catCount}</strong><span>Categories</span></div>
-                <div class="hero-stat"><strong>${freeCount}</strong><span>Free Titles</span></div>
-            `;
-        }
-
-        // Listen to books collection
-        db.collection('books').orderBy('createdAt', 'desc').onSnapshot(snapshot => {
-            books = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
-            updateHeroStats();
+        async function toggleWishlist(bookId) {
+            if (!currentUser) return;
+            const idx = userData.wishlist.indexOf(bookId);
+            if (idx > -1) userData.wishlist.splice(idx, 1);
+            else userData.wishlist.push(bookId);
+            await saveUserData();
+            updateDots();
             filterBooks();
-        }, err => { console.warn(err); books = []; updateHeroStats(); filterBooks(); });
+            toast(idx > -1 ? 'Removed from wishlist' : 'Added to wishlist');
+        }
 
-        // Load social links on page load
-        loadSocialLinks();
+        async function addToCart(bookId) {
+            if (!currentUser) return;
+            if (userData.cart.includes(bookId)) { toast('Already in cart','err'); return; }
+            if (userData.purchased.includes(bookId)) { toast('Already purchased','err'); return; }
+            userData.cart.push(bookId);
+            await saveUserData();
+            updateDots();
+            filterBooks();
+            toast('Added to cart');
+        }
 
-        // Expose functions to global
-        window.openAuthModal = openAuthModal;
-        window.closeAuthModal = closeAuthModal;
-        window.handleLogout = handleLogout;
-        window.toggleDropdown = function() {
-            document.getElementById('dropdownWrap').classList.toggle('open');
-        };
-        document.addEventListener('click', function(e) {
-            const wrap = document.getElementById('dropdownWrap');
-            if (!wrap.contains(e.target)) wrap.classList.remove('open');
-        });
+        async function removeFromCart(bookId) {
+            userData.cart = userData.cart.filter(id => id !== bookId);
+            await saveUserData();
+            updateDots();
+            filterBooks();
+            openCart();
+            toast('Removed from cart');
+        }
 
-        // Cart, Wishlist, Buy, Detail functions (adapted)
+        // ================================================================
+        //  MODALS
+        // ================================================================
         function openWishlist() {
             const m = document.getElementById('wishModal');
             const c = document.getElementById('wishItems');
@@ -1191,10 +1152,7 @@
                     name: 'Bibek Books',
                     description: 'Book Purchase',
                     image: '',
-                    prefill: {
-                        name: currentUser?.displayName || '',
-                        email: currentUser?.email || '',
-                    },
+                    prefill: { name: currentUser?.displayName || '', email: currentUser?.email || '' },
                     notes: { userId: currentUser?.uid || '' },
                     theme: { color: '#8b5cf6' },
                     handler: async function(response) {
@@ -1243,7 +1201,6 @@
 
         function closeDetailModal(){ document.getElementById('detailModal').style.display='none'; }
 
-        // Edit and Delete (requires author)
         function openEditModal(bookId) {
             const b = books.find(x => x.id === bookId);
             if (!b) { toast('Book not found','err'); return; }
@@ -1261,8 +1218,47 @@
             } catch(e) { toast('❌ Error: '+e.message, 'err'); }
         }
 
-        window.openEditModal = openEditModal;
-        window.deleteBook = deleteBook;
+        // ================================================================
+        //  INIT
+        // ================================================================
+        function updateHeroStats() {
+            const total = books.length;
+            const freeCount = books.filter(b => b.isFree).length;
+            const catCount = new Set(books.map(b => b.category).filter(Boolean)).size;
+            document.getElementById('heroStats').innerHTML = `
+                <div class="hero-stat"><strong>${total}</strong><span>Books</span></div>
+                <div class="hero-stat"><strong>${catCount}</strong><span>Categories</span></div>
+                <div class="hero-stat"><strong>${freeCount}</strong><span>Free Titles</span></div>
+            `;
+        }
+
+        // Listen to books
+        db.collection('books').orderBy('createdAt', 'desc').onSnapshot(snapshot => {
+            books = snapshot.docs.map(d => ({ id: d.id, ...d.data() }));
+            updateHeroStats();
+            filterBooks();
+        }, err => { console.warn(err); books = []; updateHeroStats(); filterBooks(); });
+
+        // Social links
+        loadSocialLinks();
+
+        // Global functions for onclick
+        window.toggleDropdown = function() {
+            document.getElementById('dropdownWrap').classList.toggle('open');
+        };
+        document.addEventListener('click', function(e) {
+            const wrap = document.getElementById('dropdownWrap');
+            if (!wrap.contains(e.target)) wrap.classList.remove('open');
+        });
+
+        window.openAuthModal = openAuthModal;
+        window.closeAuthModal = closeAuthModal;
+        window.handleLogout = handleLogout;
+        window.handleAccountClick = handleAccountClick;
+        window.handleAuthorClick = handleAuthorClick;
+        window.closeAuthorPassModal = closeAuthorPassModal;
+        window.verifyAuthorPass = verifyAuthorPass;
+        window.handleAuthorLogout = handleAuthorLogout;
         window.openCart = openCart;
         window.closeCart = closeCart;
         window.openWishlist = openWishlist;
@@ -1271,32 +1267,15 @@
         window.closeBuy = closeBuy;
         window.openDetailModal = openDetailModal;
         window.closeDetailModal = closeDetailModal;
-        window.filterBooks = filterBooks;
-        window.toggleAuthorPanel = handleAuthorClick;
-        window.closeAuthorPassModal = closeAuthorPassModal;
-        window.verifyAuthorPass = verifyAuthorPass;
-        window.handleAuthorLogout = handleAuthorLogout;
-        window.handleAccountClick = handleAccountClick;
-        window.handleLogout = handleLogout;
-        window.handleAuthorClick = handleAuthorClick;
-        window.requireAuthThen = requireAuthThen;
-        window.toggleDropdown = toggleDropdown;
-        window.doLogin = doLogin;
-        window.doRegister = doRegister;
-        window.forgotPassword = forgotPassword;
-        window.sendPhoneOTP = sendPhoneOTP;
-        window.renderAuthForm = renderAuthForm;
-        window.switchAuthTab = switchAuthTab;
-        window.showAuthErr = showAuthErr;
+        window.openEditModal = openEditModal;
+        window.deleteBook = deleteBook;
         window.editSocialLinks = editSocialLinks;
+        window.requireAuthThen = requireAuthThen;
 
-        // Init
         renderCatPills();
         filterBooks();
         updateHeroStats();
-        loadSocialLinks();
-
-        console.log('📚 Bibek Books with Firebase Auth & Storage ready.');
+        console.log('📚 Bibek Books – All issues fixed! No Storage needed.');
     </script>
 </body>
 </html>
