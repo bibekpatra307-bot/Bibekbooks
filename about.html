@@ -7,27 +7,29 @@
     <meta name="description" content="Bibek Patra founded Bibek Books to share knowledge through ebooks. Learn about our mission.">
     <link rel="canonical" href="https://bibekbook.store/about.html">
     <style>
-        /* Yaha wohi CSS copy karo jo index.html ke <style> tag mein hai – but with :root fixed */
-        /* For now, just copy full <style> from your working index.html backup */
-        body { font-family: Arial, sans-serif; background: #1a0f2e; color: white; }
-        .main { max-width: 800px; margin: 40px auto; padding: 20px; }
-        .nav { background: #231538; padding: 10px; }
+        body { font-family: 'Outfit', sans-serif; background: #1a0f2e; color: #f0e6ff; margin: 0; padding: 0; line-height: 1.6; }
+        .nav { background: rgba(26,15,46,0.9); padding: 15px 20px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid rgba(255,255,255,0.1); }
+        .nav a { color: #f0b90b; text-decoration: none; font-size: 1.2rem; font-weight: bold; }
+        .nav-links a { color: #c4b5dc; margin-left: 15px; font-size: 0.9rem; }
+        .container { max-width: 800px; margin: 40px auto; padding: 0 20px; }
+        h1 { color: #fff; font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; }
+        .footer { text-align: center; padding: 30px; color: #a08cc5; border-top: 1px solid rgba(255,255,255,0.05); margin-top: 40px; }
     </style>
 </head>
 <body>
-    <nav class="nav" style="display: flex; justify-content: space-between; padding: 10px 20px;">
-        <a href="/" style="color: #f0b90b; text-decoration: none; font-size: 1.5rem;">Bibek Books</a>
-        <div>
-            <a href="/about.html" style="color: white; margin: 0 10px;">About</a>
-            <a href="/contact.html" style="color: white; margin: 0 10px;">Contact</a>
+    <nav class="nav">
+        <a href="/">📚 Bibek Books</a>
+        <div class="nav-links">
+            <a href="/about.html">About</a>
+            <a href="/contact.html">Contact</a>
         </div>
     </nav>
-    <div class="main">
+    <div class="container">
         <h1>About Bibek Patra</h1>
         <p>Hello, I'm Bibek Patra – a writer and knowledge seeker. I believe books can change lives. Through Bibek Books, I want to bring valuable spiritual, motivational, and educational content to everyone at affordable prices.</p>
         <p>This digital library started in 2026 with just 4 books. My goal is to add more books every month and create a community of readers who grow together.</p>
         <p>Thank you for being here. Happy reading!</p>
     </div>
-    <footer style="text-align: center; padding: 20px; color: gray;">© 2026 Bibek Patra</footer>
+    <div class="footer">© 2026 Bibek Patra · Bibek Books</div>
 </body>
 </html>
