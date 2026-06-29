@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Contact – Bibek Books</title>
     <meta name="description" content="Get in touch with Bibek Books. We'd love to hear from you!" />
+    <!-- Browser Tab Icon (favicon.png) -->
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -149,7 +150,7 @@
         }
 
         /* ================================================================
-           NAVIGATION
+           NAVIGATION – with favicon2.png logo
            ================================================================ */
         .nav {
             position: sticky;
@@ -178,18 +179,15 @@
             white-space: nowrap;
             flex-shrink: 0;
         }
-        .nav-logo-mark {
+        /* NEW: favicon2.png as logo image */
+        .nav-logo-img {
             width: 40px;
             height: 40px;
-            background: var(--gradient-gold);
             border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.2rem;
+            object-fit: cover;
             flex-shrink: 0;
-            box-shadow: 0 3px 16px rgba(212, 175, 55, 0.35);
-            color: #1a1128;
+            box-shadow: 0 3px 16px rgba(212, 175, 55, 0.3);
+            background: var(--bg-secondary);
         }
         .nav-spacer {
             flex: 1;
@@ -462,13 +460,13 @@
             .nav-logo {
                 font-size: 1.3rem;
             }
+            .nav-logo-img {
+                width: 34px;
+                height: 34px;
+            }
             .nav-btn {
                 padding: 0 10px;
                 font-size: 0.8rem;
-            }
-            .nav-btn-icon {
-                width: 40px;
-                font-size: 1rem;
             }
             .theme-toggle {
                 width: 40px;
@@ -486,14 +484,9 @@
             .nav-logo {
                 font-size: 1.1rem;
             }
-            .nav-logo-mark {
-                width: 34px;
-                height: 34px;
-                font-size: 1rem;
-            }
-            .nav-btn-icon {
-                width: 36px;
-                font-size: 0.9rem;
+            .nav-logo-img {
+                width: 30px;
+                height: 30px;
             }
             .theme-toggle {
                 width: 36px;
@@ -508,15 +501,18 @@
     <!-- ===== TOAST ===== -->
     <div class="toast-wrap" id="toastWrap"></div>
 
-    <!-- ===== NAV ===== -->
+    <!-- ===== NAV – with favicon2.png logo ===== -->
     <nav class="nav">
-        <a class="nav-logo" href="/"><span class="nav-logo-mark">📚</span>Bibek Books</a>
+        <a class="nav-logo" href="/">
+            <img src="/favicon2.png" alt="Bibek Books" class="nav-logo-img">
+            Bibek Books
+        </a>
         <div class="nav-spacer"></div>
         <div class="nav-btns">
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
                 <i class="fas fa-moon"></i>
             </button>
-            <a href="/" class="nav-btn">Home</a>
+            <a href="/" class="nav-btn"><i class="fas fa-home"></i> Home</a>
         </div>
     </nav>
 
@@ -628,7 +624,7 @@
             setTimeout(() => t.remove(), 3300);
         }
 
-        // ─── Form submission (Formspree) ───
+        // ─── Form submission ───
         const form = document.getElementById('contactForm');
         form.addEventListener('submit', function(e) {
             const btn = this.querySelector('button[type="submit"]');
@@ -636,33 +632,21 @@
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
             btn.disabled = true;
 
-            // Formspree handles the actual submission via action + method
-            // We'll show a success toast if the page redirects (Formspree default)
-            // But we also handle potential fetch fallback
-
-            // Re-enable after 5 seconds if no redirect (safety)
             setTimeout(() => {
                 btn.innerHTML = originalText;
                 btn.disabled = false;
             }, 5000);
 
-            // Optional: prevent default and use fetch for better UX
-            // e.preventDefault(); — but Formspree works with standard form submission
-            // We'll keep standard behavior, but show toast on success via query param?
-            // Since Formspree redirects, we can't easily capture success.
-            // So we show a toast on submit as feedback.
             toast('📬 Sending your message...', 'ok');
         });
 
         // If the page loads with a success param from Formspree redirect
         if (window.location.search.includes('success')) {
             toast('✅ Message sent successfully! We\'ll get back to you soon.', 'ok');
-            // Clean URL
             window.history.replaceState({}, document.title, window.location.pathname);
         }
 
-        console.log('📬 Contact page loaded — Formspree integration active.');
+        console.log('📬 Contact page loaded — favicon2.png logo active.');
     </script>
-
 </body>
 </html>
