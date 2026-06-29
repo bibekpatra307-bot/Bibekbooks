@@ -126,6 +126,15 @@
             flex-shrink: 0;
             box-shadow: 0 3px 16px rgba(212, 175, 55, 0.35);
             color: #1a1128;
+        .nav-logo-img {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    object-fit: cover;
+    flex-shrink: 0;
+    box-shadow: 0 3px 16px rgba(212, 175, 55, 0.3);
+    background: var(--bg-secondary);
+}
         }
         .nav-spacer {
             flex: 1;
@@ -326,7 +335,10 @@
 
     <!-- ===== NAV ===== -->
     <nav class="nav">
-        <a class="nav-logo" href="/"><span class="nav-logo-mark">📚</span>Bibek Books</a>
+        <a class="nav-logo" id="navLogo">
+    <img src="/favicon2.png" alt="Bibek Books" class="nav-logo-img">
+    Bibek Books
+</a>
         <div class="nav-spacer"></div>
         <div class="nav-btns">
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
