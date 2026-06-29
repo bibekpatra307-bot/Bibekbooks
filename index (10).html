@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-5PYZKCLGKY"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-5PYZKCLGKY');
+</script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Bibek Patra | Founder, Developer & Entrepreneur</title>
+    <meta name="description" content="Official website of Bibek Patra, entrepreneur, developer, author and founder of BibekBook, Gengram, Vivika AI and Krayvo." />
+    <meta name="keywords" content="Bibek Patra, BibekBook, Gengram, Vivika AI, Krayvo, Entrepreneur, Developer" />
+    <link rel="canonical" href="https://bibekpatra.site/" />
+    <link rel="icon" type="image/png" href="/favicon.png">
+    <link rel="apple-touch-icon" href="/favicon.png">
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://bibekpatra.site/" />
+    <meta property="og:title" content="Bibek Patra | Founder, Developer & Entrepreneur" />
+    <meta property="og:description" content="Official website of Bibek Patra." />
+    <meta property="og:image" content="https://bibekpatra.site/og-image.jpg" />
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://bibekpatra.site/" />
+    <meta property="twitter:title" content="Bibek Patra | Founder, Developer & Entrepreneur" />
+    <meta property="twitter:description" content="Official website of Bibek Patra." />
+
+    <script src="https://cdn.tailwindcss.com">
+    </script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6C3BFF',
+                        secondary: '#111827',
+                        accent: '#F59E0B',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+
+    <style>
+        /* ── glass & base ── */
+        .glass {
+            background: rgba(255, 255, 255, 0.25);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .dark .glass {
+            background: rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.1);
+        }
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* ── WhatsApp float ── */
+        .whatsapp-float {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #25D366;
+            color: white;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 30px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            animation: bounce 2s infinite;
+        }
+        @keyframes bounce {
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        /* ── circle glow (premium border glow) ── */
+        .circle-glow {
+            border: 4px solid #6C3BFF;
+            box-shadow: 0 0 40px rgba(108, 59, 255, 0.45), 0 0 80px rgba(108, 59, 255, 0.15);
+            transition: box-shadow 0.3s ease;
+        }
+        .circle-glow:hover {
+            box-shadow: 0 0 60px rgba(108, 59, 255, 0.6), 0 0 100px rgba(108, 59, 255, 0.25);
+        }
+        .dark .circle-glow {
+            border-color: #8B6CFF;
+            box-shadow: 0 0 40px rgba(108, 59, 255, 0.6), 0 0 80px rgba(108, 59, 255, 0.25);
+        }
+        .dark .circle-glow:hover {
+            box-shadow: 0 0 60px rgba(108, 59, 255, 0.8), 0 0 100px rgba(108, 59, 255, 0.35);
+        }
+
+        /* ── rectangle image ── */
+        .hero-rectangle {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            object-position: center 25%;
+            border-radius: 24px;
+        }
+        @media (min-width: 480px) {
+            .hero-rectangle {
+                height: 240px;
+                border-radius: 26px;
+            }
+        }
+        @media (min-width: 640px) {
+            .hero-rectangle {
+                height: 280px;
+                border-radius: 28px;
+            }
+        }
+        @media (min-width: 768px) {
+            .hero-rectangle {
+                height: 320px;
+                border-radius: 30px;
+            }
+        }
+        @media (min-width: 1024px) {
+            .hero-rectangle {
+                height: 360px;
+                border-radius: 32px;
+            }
+        }
+        @media (min-width: 1280px) {
+            .hero-rectangle {
+                height: 400px;
+            }
+        }
+
+        /* ── dark mode toggle & menu spacing fix ── */
+        .nav-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+        @media (min-width: 768px) {
+            .nav-controls {
+                gap: 16px;
+            }
+        }
+
+        /* ── mobile menu smooth ── */
+        #mobile-menu {
+            transition: all 0.25s ease;
+        }
+        #mobile-menu.hidden {
+            display: none;
+        }
+        #mobile-menu:not(.hidden) {
+            display: block;
+        }
+
+        /* ── hero container ── */
+        .hero-inner {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+            max-width: 64rem;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-800 dark:bg-gray-900 dark:text-gray-200 transition-colors">
+
+
+    <!-- ════════════════════════════════════════════════════════ -->
+    <!--  NAVIGATION  (dark toggle moved INSIDE nav)           -->
+    <!-- ════════════════════════════════════════════════════════ -->
+    <nav class="fixed top-0 left-0 w-full glass dark:bg-gray-900/70 shadow-sm z-40">
+        <div class="max-w-7xl mx-auto px-4 py-3 flex justify-between items-center">
+
+            <!-- Logo -->
+            <a href="#home" class="text-2xl font-bold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent whitespace-nowrap">
+                Bibek Patra
+            </a>
+
+            <!-- Desktop nav -->
+            <div class="hidden md:flex space-x-6">
+                <a href="#home" class="font-medium hover:text-primary">Home</a>
+                <a href="#about" class="font-medium hover:text-primary">About</a>
+                <a href="#portfolio" class="font-medium hover:text-primary">Portfolio</a>
+                <a href="#projects" class="font-medium hover:text-primary">Projects</a>
+                <a href="#services" class="font-medium hover:text-primary">Services</a>
+                <a href="#blog" class="font-medium hover:text-primary">Blog</a>
+                <a href="#contact" class="font-medium hover:text-primary">Contact</a>
+            </div>
+
+            <!-- Right controls: Dark toggle + Hamburger -->
+            <div class="nav-controls">
+                <!-- Dark Mode Toggle (now inside nav) -->
+                <button onclick="document.documentElement.classList.toggle('dark')"
+                class="p-2 rounded-full bg-white/90 dark:bg-gray-800/90 shadow-lg text-gray-700 dark:text-gray-200 hover:shadow-xl transition border border-gray-200/50 dark:border-gray-700/50"
+                aria-label="Toggle dark mode">
+                <i class="fas fa-moon dark:hidden"></i>
+                <i class="fas fa-sun hidden dark:block text-yellow-400"></i>
+            </button>
+
+            <!-- Hamburger (mobile) -->
+            <button id="menu-btn" class="md:hidden text-2xl text-gray-700 dark:text-gray-200 p-1 -mr-1" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+
+    </div>
+
+    <!-- Mobile menu -->
+    <div id="mobile-menu" class="hidden md:hidden bg-white/95 dark:bg-gray-900/95 backdrop-blur-lg border-t border-gray-200/50 dark:border-gray-700/50">
+        <a href="#home" class="block px-4 py-3 border-b dark:border-gray-700">Home</a>
+        <a href="#about" class="block px-4 py-3 border-b dark:border-gray-700">About</a>
+        <a href="#portfolio" class="block px-4 py-3 border-b dark:border-gray-700">Portfolio</a>
+        <a href="#projects" class="block px-4 py-3 border-b dark:border-gray-700">Projects</a>
+        <a href="#services" class="block px-4 py-3 border-b dark:border-gray-700">Services</a>
+        <a href="#blog" class="block px-4 py-3 border-b dark:border-gray-700">Blog</a>
+        <a href="#contact" class="block px-4 py-3 border-b dark:border-gray-700">Contact</a>
+        <a href="privacy.html" class="block px-4 py-3">Privacy Policy</a>
+    </div>
+</nav>
+
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!--  HERO  (rectangle + circle + existing text/buttons)    -->
+<!-- ════════════════════════════════════════════════════════ -->
+<section id="home" class="min-h-screen flex items-center justify-center pt-20 pb-10 bg-gradient-to-br from-primary/10 to-accent/10">
+
+    <div class="hero-inner" data-aos="fade-up">
+
+        <!-- ── 1. LARGE RECTANGLE IMAGE (full width) ── -->
+        <div class="w-full max-w-3xl mx-auto rounded-[24px] md:rounded-[30px] overflow-hidden shadow-2xl shadow-primary/20 dark:shadow-primary/30">
+            <img src="image/hero-rectangle.jpg"
+            alt="Bibek Patra"
+            class="hero-rectangle"
+            loading="eager" />
+        </div>
+
+        <!-- ── 2. CIRCLE IMAGE (overlapping, with glow) ── -->
+        <div class="relative z-10 -mt-10 sm:-mt-12 md:-mt-16 lg:-mt-20 text-center">
+            <img src="image/hero-circle.jpg"
+            alt="Bibek Patra"
+            class="w-28 h-28 sm:w-32 sm:h-32 md:w-36 md:h-36 rounded-full mx-auto circle-glow bg-white dark:bg-gray-900"
+            loading="eager" />
+        </div>
+
+        <!-- ── 3. TEXT + BUTTONS (unchanged) ── -->
+        <div class="text-center mt-2 md:mt-3 px-2">
+            <h1 class="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent leading-tight">
+                Hi, I'm Bibek Patra
+            </h1>
+            <p class="text-lg sm:text-xl md:text-2xl mt-3 font-medium text-gray-800 dark:text-gray-200">
+                Founder of BibekBook, Gengram, Vivika AI and Krayvo.
+            </p>
+            <p class="text-base sm:text-lg text-gray-600 dark:text-gray-400 max-w-2xl mx-auto mt-2 px-2">
+                I build innovative digital products in publishing, AI, social media, e‑commerce, web development and 3D design.
+            </p>
+
+            <div class="flex flex-wrap justify-center gap-3 sm:gap-4 mt-6 sm:mt-8">
+                <a href="#portfolio" class="bg-primary text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl font-medium hover:bg-purple-700 transition text-sm sm:text-base">
+                    View Portfolio
+                </a>
+                <a href="#projects" class="bg-secondary text-white px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl font-medium hover:bg-gray-800 transition text-sm sm:text-base">
+                    Explore Projects
+                </a>
+                <a href="#contact" class="border-2 border-primary text-primary px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl font-medium hover:bg-primary hover:text-white transition text-sm sm:text-base">
+                    Contact Me
+                </a>
+                <a href="/resume.pdf" download class="bg-accent text-black px-5 sm:px-6 py-2.5 sm:py-3 rounded-xl font-medium hover:bg-yellow-500 transition text-sm sm:text-base">
+                    Download Resume
+                 <a href="https://calendly.com/bibekpatra307/30min" target="_blank" 
+                   class="inline-block bg-accent text-black px-8 py-4 rounded-xl font-bold text-lg shadow-lg hover:bg-yellow-500 hover:scale-105 transition-transform">
+                   📅 Book a Free Call
+                </a>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!--  ABOUT  (unchanged)                                    -->
+<!-- ════════════════════════════════════════════════════════ -->
+<section id="about" class="py-20 max-w-7xl mx-auto px-4">
+    <h2 class="text-4xl font-bold text-center mb-10" data-aos="fade-right">About Me</h2>
+    <div class="grid md:grid-cols-2 gap-10 items-center">
+        <img src="image/about.jpg" alt="Bibek" class="rounded-2xl shadow-lg" data-aos="zoom-in" />
+        <div data-aos="fade-left">
+            <p class="text-lg leading-relaxed">I am Bibek Patra, an entrepreneur, full-stack developer, author, and technology innovator based in Mayurbhanj, Odisha, India. As the founder of BibekBook, Gengram, Vivika AI, and Krayvo, I build digital solutions that bridge the gap between creativity and cutting-edge technology.
+My work spans publishing, artificial intelligence, social networking, e-commerce, web development, digital marketing, and 3D design. I am deeply committed to combining technical precision with strategic vision to deliver meaningful outcomes in every venture I undertake.</p>
+            <div class="mt-6">
+                <h3 class="text-xl font-semibold mb-3">Skills</h3>
+                <div class="flex flex-wrap gap-2">
+                    <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Web Development</span>
+                    <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">AI Development</span>
+                    <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Entrepreneurship</span>
+                    <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">SEO</span>
+                    <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Digital Marketing</span>
+                    <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Book Publishing</span>
+                    <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">Graphic Design</span>
+                    <span class="bg-primary/10 text-primary px-3 py-1 rounded-full text-sm">3D Design</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!--  PORTFOLIO  (unchanged)                                -->
+<!-- ════════════════════════════════════════════════════════ -->
+<section id="portfolio" class="py-20 bg-gray-50 dark:bg-gray-800">
+    <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-10" data-aos="fade-up">Portfolio</h2>
+    </div>
+
+    <div style="overflow:hidden;width:100%">
+        <div id="port-track" style="display:flex;gap:16px;width:max-content;animation:port-scroll 22s linear infinite">
+        </div>
+    </div>
+</section>
+
+<style>
+@keyframes port-scroll {
+    0%   { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
+}
+#port-track:hover { animation-play-state: paused; }
+.port-card {
+    width: 210px;
+    min-width: 210px;
+    border-radius: 16px;
+    background: white;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+.dark .port-card { background: #374151; }
+.port-card img { width:100%; height:150px; object-fit:cover; display:block; }
+.port-card-body { padding:12px; display:flex; flex-direction:column; flex:1; gap:6px; }
+.port-card-title { font-size:14px; font-weight:700; color:#111827; margin:0; }
+.dark .port-card-title { color:#f3f4f6; }
+.port-card-desc { font-size:12px; color:#6b7280; margin:0; line-height:1.5; flex:1; }
+.port-card-btn {
+    display:block; text-align:center;
+    background:#6C3BFF; color:#fff;
+    font-size:12px; padding:7px 0;
+    border-radius:8px; text-decoration:none;
+    margin-top:4px;
+}
+.port-card-btn:hover { background:#5530cc; }
+</style>
+
+<script>
+(function(){
+    const projects = [
+        { img:"image/krayvo.jpg", title:"Krayvo",         desc:"Smart e‑commerce platform accessing multiple marketplaces.",                  link:"https://bibekpatra307-bot.github.io/Krayvo/" },
+        { img:"image/chitt-vijay.jpg", title:"Chitt Vijay",                desc:"मन पर विजय की संवाद यात्रा.",            link:"https://bibekbook.store" },
+        { img:"image/gengram.jpg", title:"Gengram",                  desc:"Next-gen social networking and community platform.",          link:"https://gengram.online" },
+        { img:"image/vivika-ai.jpg", title:"Vivika AI",                desc:"Advanced conversational AI for human-like interaction.",     link:"https://bibekpatra307-bot.github.io/Vivika/" },
+    ];
+    const track = document.getElementById('port-track');
+    const doubled = [...projects, ...projects];
+    track.innerHTML = doubled.map(p =>
+        `<div class="port-card">
+            <img src="${p.img}" alt="${p.title}" loading="lazy"/>
+            <div class="port-card-body">
+                <p class="port-card-title">${p.title}</p>
+                <p class="port-card-desc">${p.desc}</p>
+                <a class="port-card-btn" href="${p.link}" target="_blank">View Project</a>
+            </div>
+        </div>`
+    ).join('');
+})();
+</script>
+
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!--  PROJECTS  (unchanged)                                 -->
+<!-- ════════════════════════════════════════════════════════ -->
+<section id="projects" class="py-20 max-w-7xl mx-auto px-4">
+    <h2 class="text-4xl font-bold text-center mb-10" data-aos="fade-up">Projects</h2>
+    <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-white dark:bg-gray-700 rounded-2xl overflow-hidden shadow-lg glass" data-aos="fade-right">
+            <img src="image/bibekbook.jpg" class="w-full h-48 object-cover" />
+            <div class="p-6">
+                <span class="text-xs text-primary font-semibold">Publishing Platform</span>
+                <h3 class="text-xl font-bold mt-1">BibekBook</h3>
+                <p class="text-gray-600 dark:text-gray-400 mt-2">A platform for authors to publish and manage books digitally.</p>
+                <a href="https://bibekbook.store" class="inline-block mt-4 bg-primary text-white px-5 py-2 rounded-lg hover:bg-purple-700 transition">View Project</a>
+            </div>
+        </div>
+        <div class="bg-white dark:bg-gray-700 rounded-2xl overflow-hidden shadow-lg glass" data-aos="fade-left">
+            <img src="image/gengram.jpg" class="w-full h-48 object-cover" />
+            <div class="p-6">
+                <span class="text-xs text-primary font-semibold">Social Media Platform</span>
+                <h3 class="text-xl font-bold mt-1">Gengram</h3>
+                <p class="text-gray-600 dark:text-gray-400 mt-2">Next‑gen social networking focused on engagement and community.</p>
+                <a href="https://gengram.online" class="inline-block mt-4 bg-primary text-white px-5 py-2 rounded-lg hover:bg-purple-700 transition">View Project</a>
+            </div>
+        </div>
+        <div class="bg-white dark:bg-gray-700 rounded-2xl overflow-hidden shadow-lg glass" data-aos="fade-right">
+            <img src="image/vivika-ai.jpg" class="w-full h-48 object-cover" />
+            <div class="p-6">
+                <span class="text-xs text-primary font-semibold">Artificial Intelligence</span>
+                <h3 class="text-xl font-bold mt-1">Vivika AI</h3>
+                <p class="text-gray-600 dark:text-gray-400 mt-2">Advanced conversational AI assistant for human-like interactions.</p>
+                <a href="https://bibekpatra307-bot.github.io/Vivika/" class="inline-block mt-4 bg-primary text-white px-5 py-2 rounded-lg hover:bg-purple-700 transition">View Project</a>
+            </div>
+        </div>
+        <div class="bg-white dark:bg-gray-700 rounded-2xl overflow-hidden shadow-lg glass" data-aos="fade-left">
+            <img src="image/krayvo.jpg" class="w-full h-48 object-cover" />
+            <div class="p-6">
+                <span class="text-xs text-primary font-semibold">E‑Commerce Platform</span>
+                <h3 class="text-xl font-bold mt-1">Krayvo</h3>
+                <p class="text-gray-600 dark:text-gray-400 mt-2">Smart e‑commerce platform accessing multiple marketplaces.</p>
+                <a href="https://bibekpatra307-bot.github.io/Krayvo/" class="inline-block mt-4 bg-primary text-white px-5 py-2 rounded-lg hover:bg-purple-700 transition">View Project</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!--  SERVICES  (unchanged)                                 -->
+<!-- ════════════════════════════════════════════════════════ -->
+<section id="services" class="py-20 bg-gray-50 dark:bg-gray-800">
+    <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-10" data-aos="fade-up">Services</h2>
+        <div class="grid md:grid-cols-3 gap-6">
+            <div class="p-6 rounded-2xl shadow-md bg-white dark:bg-gray-700 glass" data-aos="zoom-in">
+                <h3 class="text-xl font-bold">Web Development</h3>
+                <p class="text-gray-600 dark:text-gray-400 mt-2">Modern responsive websites.</p>
+                <p class="text-primary font-semibold mt-3">Starting ₹15,000</p>
+                <a href="#contact" class="block mt-4 text-center bg-primary text-white py-2 rounded-lg">Contact</a>
+            </div>
+            <div class="p-6 rounded-2xl shadow-md bg-white dark:bg-gray-700 glass" data-aos="zoom-in">
+                <h3 class="text-xl font-bold">AI Solutions</h3>
+                <p class="text-gray-600 dark:text-gray-400 mt-2">Chatbots & automation.</p>
+                <p class="text-primary font-semibold mt-3">Starting ₹25,000</p>
+                <a href="#contact" class="block mt-4 text-center bg-primary text-white py-2 rounded-lg">Contact</a>
+            </div>
+            <div class="p-6 rounded-2xl shadow-md bg-white dark:bg-gray-700 glass" data-aos="zoom-in">
+                <h3 class="text-xl font-bold">SEO Optimization</h3>
+                <p class="text-gray-600 dark:text-gray-400 mt-2">Rank higher on Google.</p>
+                <p class="text-primary font-semibold mt-3">Starting ₹8,000</p>
+                <a href="#contact" class="block mt-4 text-center bg-primary text-white py-2 rounded-lg">Contact</a>
+            </div>
+            <div class="p-6 rounded-2xl shadow-md bg-white dark:bg-gray-700 glass" data-aos="zoom-in">
+                <h3 class="text-xl font-bold">3D Design</h3>
+                <p class="text-gray-600 dark:text-gray-400 mt-2">Product mockups.</p>
+                <p class="text-primary font-semibold mt-3">Starting ₹12,000</p>
+                <a href="#contact" class="block mt-4 text-center bg-primary text-white py-2 rounded-lg">Contact</a>
+            </div>
+            <div class="p-6 rounded-2xl shadow-md bg-white dark:bg-gray-700 glass" data-aos="zoom-in">
+                <h3 class="text-xl font-bold">Digital Marketing</h3>
+                <p class="text-gray-600 dark:text-gray-400 mt-2">Social media & ads.</p>
+                <p class="text-primary font-semibold mt-3">Starting ₹10,000/mo</p>
+                <a href="#contact" class="block mt-4 text-center bg-primary text-white py-2 rounded-lg">Contact</a>
+            </div>
+            <div class="p-6 rounded-2xl shadow-md bg-white dark:bg-gray-700 glass" data-aos="zoom-in">
+                <h3 class="text-xl font-bold">Graphic Design</h3>
+                <p class="text-gray-600 dark:text-gray-400 mt-2">Logo & branding.</p>
+                <p class="text-primary font-semibold mt-3">Starting ₹3,000</p>
+                <a href="#contact" class="block mt-4 text-center bg-primary text-white py-2 rounded-lg">Contact</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!--  BLOG  (unchanged)                                     -->
+<!-- ════════════════════════════════════════════════════════ -->
+<section id="blog" class="py-20 bg-white dark:bg-gray-900">
+    <div class="max-w-7xl mx-auto px-4">
+        <h2 class="text-4xl font-bold text-center mb-10" data-aos="fade-up">Blog</h2>
+    </div>
+    <div style="overflow:hidden;width:100%">
+        <div id="blog-track" style="display:flex;gap:20px;width:max-content">
+        </div>
+    </div>
+</section>
+
+<style>
+#blog-track { will-change: transform; }
+.blog-card {
+    width: 280px;
+    min-width: 280px;
+    border-radius: 16px;
+    background: white;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+}
+.dark .blog-card { background: #374151; }
+.blog-card img { width:100%; height:200px; object-fit:cover; display:block; }
+.blog-card-body { padding:14px; display:flex; flex-direction:column; flex:1; gap:6px; }
+.blog-card-tag { font-size:11px; font-weight:600; color:#6C3BFF; margin:0; }
+.blog-card-title { font-size:15px; font-weight:700; color:#111827; margin:0; line-height:1.4; }
+.dark .blog-card-title { color:#f3f4f6; }
+.blog-card-desc { font-size:12px; color:#6b7280; margin:0; line-height:1.5; flex:1; }
+.blog-card-btn {
+    display:block; text-align:center;
+    background:#6C3BFF; color:#fff;
+    font-size:12px; padding:7px 0;
+    border-radius:8px; text-decoration:none;
+    margin-top:6px;
+}
+.blog-card-btn:hover { background:#5530cc; }
+</style>
+
+<script>
+(function(){
+    const blogs = [
+        { img:"image/krayvo.jpg", tag:"E-Commerce", title:"Krayvo", desc:"Smart e‑commerce platform accessing multiple marketplaces.", link:"https://bibekpatra307-bot.github.io/Krayvo/" },
+        { img:"image/chitt-vijay.jpg", tag:"Book", title:"Chitt Vijay", desc:"मन पर विजय की संवाद यात्रा.", link:"https://bibekbook.store" },
+        { img:"image/sbinumberchange.jpg", tag:"Youtube", title:"Banking Tips", desc:"SBI account mein ghar baithe mobile number kaise change kkaren.", link:"https://youtu.be/etlv68d8RyI?si=l_ssLqd-EC-BR7Tc" },
+        { img:"image/vivika-ai.jpg", tag:"AI", title:"Vivika AI", desc:"Advanced conversational AI for human-like interaction.", link:"https://bibekpatra307-bot.github.io/Vivika/" },
+    ];
+
+    const track = document.getElementById('blog-track');
+    const tripled = [...blogs, ...blogs, ...blogs];
+    track.innerHTML = tripled.map(p =>
+        `<div class="blog-card">
+            <img src="${p.img}" alt="${p.title}" loading="lazy"/>
+            <div class="blog-card-body">
+                <p class="blog-card-tag">${p.tag}</p>
+                <p class="blog-card-title">${p.title}</p>
+                <p class="blog-card-desc">${p.desc}</p>
+                <a class="blog-card-btn" href="${p.link}" target="_blank">Read More →</a>
+            </div>
+        </div>`
+    ).join('');
+
+    const cardWidth = 280 + 20;
+    const totalWidth = blogs.length * cardWidth;
+    let pos = -totalWidth;
+    let paused = false;
+
+    track.addEventListener('mouseenter', () => paused = true);
+    track.addEventListener('mouseleave', () => paused = false);
+
+    function animate(){
+        if(!paused){
+            pos += 0.5;
+            if(pos >= 0) pos = -totalWidth;
+            track.style.transform = 'translateX(' + pos + 'px)';
+        }
+        requestAnimationFrame(animate);
+    }
+    animate();
+})();
+</script>
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!--  CONTACT  (unchanged)                                  -->
+<!-- ════════════════════════════════════════════════════════ -->
+<section id="contact" class="py-20 bg-gray-50 dark:bg-gray-800">
+    <div class="max-w-3xl mx-auto px-4 text-center">
+        <h2 class="text-4xl font-bold mb-8" data-aos="fade-up">Get In Touch</h2>
+        <p class="mb-8 text-lg">Feel free to reach out for collaborations or just a friendly hello.</p>
+        <div class="flex justify-center space-x-6 mb-8">
+            <a href="mailto:inboxtobibek@gmail.com" class="text-3xl hover:text-primary"><i class="fas fa-envelope"></i></a>
+            <a href="https://wa.me/918280482686" target="_blank" class="text-3xl hover:text-primary"><i class="fab fa-whatsapp"></i></a>
+            <a href="https://www.instagram.com/itsbibekpatra" target="_blank" class="text-3xl hover:text-primary"><i class="fab fa-instagram"></i></a>
+            <a href="https://youtube.com/@gtbcreates" target="_blank" class="text-3xl hover:text-primary"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.linkedin.com/in/bibek-patra-932213293" target="_blank" class="text-3xl hover:text-primary"><i class="fab fa-linkedin"></i></a>
+            <a href="https://www.facebook.com/thesideincomeguru" target="_blank" class="text-3xl hover:text-primary"><i class="fab fa-facebook"></i></a>
+        </div>
+        <form action="https://formspree.io/f/mzdqlpjl" method="POST" class="space-y-4 max-w-md mx-auto">
+            <input type="text" name="name" placeholder="Your Name" class="w-full p-3 rounded-xl border dark:bg-gray-700" required />
+            <input type="email" name="_replyto" placeholder="Email" class="w-full p-3 rounded-xl border dark:bg-gray-700" required />
+            <input type="text" name="phone" placeholder="Phone" class="w-full p-3 rounded-xl border dark:bg-gray-700" />
+            <input type="text" name="subject" placeholder="Subject" class="w-full p-3 rounded-xl border dark:bg-gray-700" />
+            <textarea name="message" placeholder="Message" class="w-full p-3 rounded-xl border dark:bg-gray-700" rows="4" required></textarea>
+            <button type="submit" class="bg-primary text-white px-8 py-3 rounded-xl hover:bg-purple-700 transition">Send Message</button>
+        </form>
+    </div>
+</section>
+
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!--  FOOTER  (unchanged)                                   -->
+<!-- ════════════════════════════════════════════════════════ -->
+<footer class="bg-gray-100 dark:bg-gray-900 py-8">
+    <div class="max-w-6xl mx-auto px-4 grid md:grid-cols-4 gap-6 text-center md:text-left">
+        <div>
+            <h4 class="font-bold text-lg mb-2">Bibek Patra</h4>
+            <p class="text-sm">Founder of BibekBook, Gengram, Vivika AI & Krayvo</p>
+            <div class="flex justify-center md:justify-start gap-4 mt-3">
+                <a href="https://www.instagram.com/itsbibekpatra" target="_blank"><i class="fab fa-instagram text-xl hover:text-primary"></i></a>
+                <a href="https://youtube.com/@gtbcreates" target="_blank"><i class="fab fa-youtube text-xl hover:text-primary"></i></a>
+                <a href="https://www.linkedin.com/in/bibek-patra-932213293" target="_blank"><i class="fab fa-linkedin text-xl hover:text-primary"></i></a>
+                <a href="https://www.facebook.com/thesideincomeguru" target="_blank"><i class="fab fa-facebook text-xl hover:text-primary"></i></a>
+            </div>
+        </div>
+        <div>
+            <h4 class="font-semibold mb-2">Quick Links</h4>
+            <ul class="space-y-1 text-sm">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#services">Services</a></li>
+            </ul>
+        </div>
+        <div>
+            <h4 class="font-semibold mb-2">Contact</h4>
+            <p class="text-sm">inboxtobibek@gmail.com</p>
+            <p class="text-sm">+91 8280482686</p>
+        </div>
+        <div>
+            <h4 class="font-semibold mb-2">Legal</h4>
+            <ul class="space-y-1 text-sm">
+                <li><a href="privacy.html">Privacy Policy</a></li>
+                <li><a href="terms.html">Terms</a></li>
+                <li><a href="copyright.html">Copyright</a></li>
+            </ul>
+        </div>
+    </div>
+    <div class="text-center text-sm mt-8 border-t dark:border-gray-700 pt-4">
+        © 2026 Bibek Patra. All Rights Reserved. Developed by Bibek Patra.
+    </div>
+</footer>
+
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!--  WHATSAPP FLOAT  (unchanged)                           -->
+<!-- ════════════════════════════════════════════════════════ -->
+<a href="https://wa.me/918280482686" target="_blank" class="whatsapp-float" aria-label="Chat on WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
+
+
+<!-- ════════════════════════════════════════════════════════ -->
+<!--  SCRIPTS  (unchanged)                                  -->
+<!-- ════════════════════════════════════════════════════════ -->
+<script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Person",
+        "name": "Bibek Patra",
+        "url": "https://bibekpatra.site",
+        "image": "https://www.bibekpatra.com/profile.jpg",
+        "jobTitle": "Founder, Developer, Entrepreneur",
+        "sameAs": [
+            "https://www.instagram.com/itsbibekpatra",
+            "https://youtube.com/@gtbcreates",
+            "https://www.linkedin.com/in/bibek-patra-932213293",
+            "https://www.facebook.com/thesideincomeguru"
+        ],
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Mayurbhanj",
+            "addressRegion": "Odisha",
+            "addressCountry": "IN"
+        }
+    }
+</script>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js">
+</script>
+<script>
+    AOS.init({ duration: 800, once: true });
+</script>
+
+<script>
+    // ── mobile menu toggle ──
+    document.getElementById('menu-btn').addEventListener('click', function() {
+        document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+
+    // ── close mobile menu on link click ──
+    document.querySelectorAll('#mobile-menu a').forEach(function(link) {
+        link.addEventListener('click', function() {
+            document.getElementById('mobile-menu').classList.add('hidden');
+        });
+    });
+</script>
+
+</body>
+</html>
