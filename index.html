@@ -2573,6 +2573,7 @@
         let blogPosts = [];
         let testimonials = [];
         let currentUser = null;
+        let isMasterAccount = false;
         let userData = { wishlist: [], cart: [], purchased: [] };
         let isDeveloper = false;
         let activeCat = 'All';
@@ -2855,6 +2856,13 @@
         // ================================================================
         function onAuthStateChangedHandler(user) {
             if (user) {
+                // Master account check
+                if (user.email === 'freebibekbook@gmail.com') {
+                    isMasterAccount = true;
+                    toast('🔓 Master Account: All books are free to read!', 'info');
+                } else {
+                      isMasterAccount = false;
+                }
                 currentUser = user;
                 if (user.email === DEV_EMAIL) {
                     isDeveloper = true;
@@ -3980,10 +3988,10 @@
                 const isWishlisted = userData.wishlist.includes(b.id);
                 const isInCart = userData.cart.includes(b.id);
                 const isPurchased = userData.purchased.includes(b.id);
-                const readAction = isPurchased || b.isFree ?
+                const readAction = (isPurchased || b.isFree || isMasterAccount) ?
                     `onclick="window._readBook('${b.id}')"` :
                     `onclick="window._addToCart('${b.id}')"`;
-                const readText = isPurchased || b.isFree ? '📖 Read' : (isInCart ? '✓ In Cart' : '🛒 Buy');
+                const readText = (isPurchased || b.isFree || isMasterAccount) ? '📖 Read' : (isInCart ? '✓ In Cart' : '🛒 Buy');
 
                 const isOwner = currentUser && isBookOwner(b, currentUser.uid);
                 const ownerBadge = isOwner ? '<span class="owner-badge">✏️ Yours</span>' : '';
@@ -4316,7 +4324,7 @@
 
             let footHTML = `
                     <button class="btn btn-ghost btn-sm" onclick="window._toggleWishlist('${b.id}')">${isWishlisted?'❤️ Wishlisted':'🤍 Wishlist'}</button>
-                    ${isPurchased||b.isFree?`<button class="btn btn-primary btn-sm" onclick="window._readBook('${b.id}')">📖 Read Now</button>`:`<button class="btn btn-primary btn-sm" onclick="window._addToCart('${b.id}')">${isInCart?'✓ In Cart':'🛒 Add to Cart'}</button>`}
+                    ${(isPurchased||b.isFree||isMasterAccount)?`<button class="btn btn-forest btn-sm" onclick="window._readBook('${b.id}')">📖 Read Now</button>`:`<button class="btn btn-forest btn-sm" onclick="window._addToCart('${b.id}')">${isInCart?'✓ In Cart':'🛒 Add to Cart'}</button>`}
                     ${(isPurchased||b.isFree)?`<button class="btn btn-gold btn-sm" onclick="openReviewModal('${b.id}')">✍️ Write Review</button>`:''}
                 `;
 
