@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Terms & Conditions – Bibek Books</title>
     <meta name="description" content="Terms and Conditions for using Bibek Books platform." />
-    <!-- Browser Tab Icon (favicon.png) -->
     <link rel="icon" type="image/png" href="/favicon.png" />
     <link rel="apple-touch-icon" href="/favicon.png" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -13,9 +12,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
     <style>
-        /* ================================================================
-           THEME VARIABLES (same as privacy.html)
-           ================================================================ */
         :root {
             --font-display: 'Playfair Display', Georgia, serif;
             --font-body: 'Inter', -apple-system, sans-serif;
@@ -29,7 +25,6 @@
             --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.08);
             --shadow-md: 0 8px 30px rgba(0, 0, 0, 0.12);
         }
-
         [data-theme="light"] {
             --bg-primary: #faf8f6;
             --bg-secondary: #ffffff;
@@ -48,7 +43,6 @@
             --gradient-gold: linear-gradient(135deg, #d4af37 0%, #f0d878 30%, #c9a632 60%, #a8882e 100%);
             --gradient-accent: linear-gradient(135deg, #7c3aed 0%, #6d28d9 100%);
         }
-
         [data-theme="dark"] {
             --bg-primary: #0f0a1a;
             --bg-secondary: #1a1128;
@@ -67,17 +61,12 @@
             --gradient-gold: linear-gradient(135deg, #d4af37 0%, #f0d878 30%, #c9a632 60%, #a8882e 100%);
             --gradient-accent: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
         }
-
-        /* ================================================================
-           RESET & BASE
-           ================================================================ */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        html,
-        body {
+        html, body {
             font-family: var(--font-body);
             background: var(--bg-primary);
             color: var(--text-primary);
@@ -103,9 +92,6 @@
             width: 100%;
         }
 
-        /* ================================================================
-           NAVIGATION – with favicon2.png logo
-           ================================================================ */
         .nav {
             position: sticky;
             top: 0;
@@ -194,12 +180,9 @@
             border-color: var(--border-light);
         }
 
-        /* ================================================================
-           PAGE CONTENT – Compact
-           ================================================================ */
         .page-content {
-            padding: 3rem 0 4rem;
-            max-width: 780px;
+            padding: 2.5rem 0 3.5rem;
+            max-width: 820px;
             margin: 0 auto;
         }
         .page-content .badge {
@@ -208,55 +191,85 @@
             color: var(--accent-primary);
             padding: 4px 16px;
             border-radius: var(--radius-full);
-            font-size: 0.75rem;
-            font-weight: 600;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
             margin-bottom: 0.5rem;
-            letter-spacing: 0.04em;
         }
         .page-content h1 {
             font-family: var(--font-display);
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             font-weight: 700;
             color: var(--text-primary);
-            margin-bottom: 0.3rem;
-            line-height: 1.2;
+            margin-bottom: 0.25rem;
+            line-height: 1.15;
         }
-        .page-content .date {
+        .page-content .last-updated {
             font-size: 0.85rem;
             color: var(--text-tertiary);
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--border-light);
+            padding-bottom: 0.75rem;
         }
         .page-content h2 {
             font-family: var(--font-display);
-            font-size: 1.4rem;
+            font-size: 1.3rem;
             font-weight: 600;
             color: var(--text-primary);
-            margin-top: 1.5rem;
-            margin-bottom: 0.4rem;
+            margin-top: 1.75rem;
+            margin-bottom: 0.5rem;
+        }
+        .page-content h2 i {
+            color: var(--gold);
+            margin-right: 8px;
         }
         .page-content p {
             color: var(--text-secondary);
             font-size: 0.95rem;
-            margin-bottom: 0.75rem;
-            line-height: 1.7;
+            margin-bottom: 0.7rem;
+            line-height: 1.75;
         }
         .page-content ul {
             color: var(--text-secondary);
             font-size: 0.95rem;
             padding-left: 1.5rem;
-            margin-bottom: 0.75rem;
-            line-height: 1.7;
+            margin-bottom: 0.7rem;
+            line-height: 1.75;
         }
         .page-content ul li {
-            margin-bottom: 0.3rem;
+            margin-bottom: 0.25rem;
         }
         .page-content ul li strong {
             color: var(--text-primary);
         }
+        .page-content .highlight-box {
+            background: var(--accent-light);
+            border-left: 3px solid var(--accent-primary);
+            padding: 1rem 1.25rem;
+            border-radius: var(--radius-sm);
+            margin: 1rem 0;
+        }
+        .page-content .highlight-box p {
+            margin-bottom: 0;
+            font-size: 0.9rem;
+        }
+        .page-content .contact-row {
+            display: flex;
+            gap: 1.5rem;
+            flex-wrap: wrap;
+            margin-top: 0.5rem;
+        }
+        .page-content .contact-row span {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+        .page-content .contact-row i {
+            color: var(--gold);
+            margin-right: 6px;
+            width: 18px;
+        }
 
-        /* ================================================================
-           FOOTER
-           ================================================================ */
         .site-footer {
             background: rgba(255, 255, 255, 0.02);
             border-top: 1px solid var(--border-light);
@@ -305,70 +318,29 @@
             color: var(--text-muted);
         }
 
-        /* ================================================================
-           RESPONSIVE
-           ================================================================ */
         @media (max-width: 768px) {
-            .page-content {
-                padding: 2rem 0 3rem;
-            }
-            .page-content h1 {
-                font-size: 1.8rem;
-            }
-            .page-content h2 {
-                font-size: 1.2rem;
-                margin-top: 1.2rem;
-            }
-            .page-content p,
-            .page-content ul {
-                font-size: 0.88rem;
-            }
-            .nav-logo {
-                font-size: 1.3rem;
-            }
-            .nav-logo-img {
-                width: 34px;
-                height: 34px;
-            }
-            .nav-btn {
-                padding: 0 10px;
-                font-size: 0.8rem;
-            }
-            .theme-toggle {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
-            }
+            .page-content { padding: 1.5rem 0 2.5rem; }
+            .page-content h1 { font-size: 1.8rem; }
+            .page-content h2 { font-size: 1.15rem; margin-top: 1.25rem; }
+            .page-content p, .page-content ul { font-size: 0.88rem; }
+            .nav-logo { font-size: 1.3rem; }
+            .nav-logo-img { width: 34px; height: 34px; }
+            .nav-btn { padding: 0 10px; font-size: 0.8rem; }
+            .theme-toggle { width: 40px; height: 40px; font-size: 1rem; }
+            .page-content .contact-row { flex-direction: column; gap: 0.5rem; }
         }
         @media (max-width: 480px) {
-            .page-content h1 {
-                font-size: 1.5rem;
-            }
-            .page-content h2 {
-                font-size: 1.05rem;
-            }
-            .page-content p,
-            .page-content ul {
-                font-size: 0.82rem;
-            }
-            .nav-logo {
-                font-size: 1.1rem;
-            }
-            .nav-logo-img {
-                width: 30px;
-                height: 30px;
-            }
-            .theme-toggle {
-                width: 36px;
-                height: 36px;
-                font-size: 0.9rem;
-            }
+            .page-content h1 { font-size: 1.5rem; }
+            .page-content h2 { font-size: 1rem; }
+            .page-content p, .page-content ul { font-size: 0.82rem; }
+            .nav-logo { font-size: 1.1rem; }
+            .nav-logo-img { width: 30px; height: 30px; }
+            .theme-toggle { width: 36px; height: 36px; font-size: 0.9rem; }
         }
     </style>
 </head>
 <body>
 
-    <!-- ===== NAV – with favicon2.png ===== -->
     <nav class="nav">
         <a class="nav-logo" href="/">
             <img src="/favicon2.png" alt="Bibek Books" class="nav-logo-img">
@@ -383,102 +355,151 @@
         </div>
     </nav>
 
-    <!-- ===== PAGE CONTENT ===== -->
     <main class="container">
         <div class="page-content">
             <span class="badge">⚖️ Terms & Conditions</span>
             <h1>Terms &amp; Conditions</h1>
-            <p class="date"><strong>Last updated:</strong> June 28, 2026</p>
+            <p class="last-updated"><strong>Effective Date:</strong> June 28, 2026 &nbsp;·&nbsp; <strong>Last Updated:</strong> June 28, 2026</p>
 
             <p>
-                Welcome to <strong>Bibek Books</strong>. By using our website and services, you agree
-                to comply with and be bound by the following terms and conditions. Please read them
-                carefully before using our platform.
+                Welcome to <strong>Bibek Books</strong> ("we", "our", "us"). These Terms &amp; Conditions
+                govern your use of our website, services, and platform. By accessing or using Bibek Books,
+                you agree to be bound by these terms. If you do not agree, please do not use our platform.
             </p>
 
-            <h2>1. Acceptance of Terms</h2>
+            <div class="highlight-box">
+                <p><strong>📌 In Short:</strong> Bibek Books is a digital library and publishing platform. By using it, you agree to our rules regarding accounts, purchases, content, and conduct.</p>
+            </div>
+
+            <h2><i class="fas fa-check-circle"></i> 1. Acceptance of Terms</h2>
             <p>
-                By accessing or using Bibek Books, you agree to be bound by these Terms &amp; Conditions
-                and our Privacy Policy. If you do not agree with any part of these terms, you must not
-                use our services.
+                By using Bibek Books, you confirm that you have read, understood, and agree to be bound
+                by these Terms &amp; Conditions and our <a href="/privacy.html">Privacy Policy</a>.
+                If you are using our platform on behalf of an organization, you represent that you have
+                the authority to bind that organization to these terms.
             </p>
 
-            <h2>2. User Accounts</h2>
+            <h2><i class="fas fa-user-plus"></i> 2. Account Registration</h2>
             <ul>
-                <li>You must be at least 13 years old to create an account.</li>
-                <li>You are responsible for maintaining the confidentiality of your account credentials.</li>
-                <li>You are solely responsible for all activities that occur under your account.</li>
-                <li>We reserve the right to terminate accounts that violate our policies.</li>
+                <li><strong>Eligibility:</strong> You must be at least 13 years old to create an account.</li>
+                <li><strong>Accuracy:</strong> You agree to provide accurate, current, and complete information during registration.</li>
+                <li><strong>Security:</strong> You are responsible for maintaining the confidentiality of your login credentials and for all activities that occur under your account.</li>
+                <li><strong>Notification:</strong> You must notify us immediately of any unauthorized use of your account.</li>
+                <li><strong>Termination:</strong> We reserve the right to suspend or terminate accounts that violate our policies or are inactive for an extended period.</li>
             </ul>
 
-            <h2>3. Book Purchases</h2>
+            <h2><i class="fas fa-shopping-cart"></i> 3. Purchases &amp; Payments</h2>
             <ul>
-                <li>All books purchased are digital downloads and are non-refundable once downloaded.</li>
-                <li>Prices are displayed in Indian Rupees (₹) and are subject to change without notice.</li>
-                <li>We reserve the right to modify, suspend, or discontinue any book offering at any time.</li>
-                <li>Payment processing is handled securely by <strong>Razorpay</strong>.</li>
+                <li><strong>Digital Products:</strong> All books sold on Bibek Books are digital downloads. No physical copies are shipped.</li>
+                <li><strong>Pricing:</strong> All prices are listed in Indian Rupees (₹) and are subject to change without prior notice.</li>
+                <li><strong>Payment Processing:</strong> Payments are securely processed through <strong>Razorpay</strong>. We do not store your payment information.</li>
+                <li><strong>Taxes:</strong> Where applicable, taxes may be added to the purchase price.</li>
+                <li><strong>License:</strong> Upon purchase, you are granted a non-exclusive, non-transferable license to access and read the book for personal, non-commercial use.</li>
+                <li><strong>No Redistribution:</strong> You may not redistribute, resell, share, or otherwise transfer purchased books to any third party.</li>
             </ul>
 
-            <h2>4. User Content</h2>
+            <h2><i class="fas fa-gift"></i> 4. Free Books</h2>
             <ul>
-                <li>You retain ownership of any content you submit (reviews, comments, etc.).</li>
-                <li>By submitting content, you grant us a non-exclusive, royalty-free license to use, display, and distribute it on our platform.</li>
-                <li>We reserve the right to remove any content that is abusive, offensive, or violates our policies.</li>
+                <li>Books offered for free are provided for personal, non-commercial use only.</li>
+                <li>You may not redistribute, share, or sell free books without explicit permission from Bibek Books.</li>
+                <li>We reserve the right to change the status of free books to paid at any time without prior notice.</li>
             </ul>
 
-            <h2>5. Author Publishing</h2>
+            <h2><i class="fas fa-star"></i> 5. User-Generated Content (Reviews &amp; Comments)</h2>
             <ul>
-                <li>Authors must register and complete their profile before publishing.</li>
-                <li>You retain full ownership and copyright of your published work.</li>
-                <li>We reserve the right to remove any book that violates our content guidelines.</li>
-                <li>Payments to authors are processed via UPI to the registered UPI ID.</li>
+                <li><strong>Ownership:</strong> You retain ownership of any content you submit, including reviews, ratings, and comments.</li>
+                <li><strong>License:</strong> By submitting content, you grant us a non-exclusive, perpetual, royalty-free license to use, display, reproduce, modify, and distribute your content on our platform.</li>
+                <li><strong>Guidelines:</strong> Reviews must be honest, respectful, and relevant. You may not submit content that is false, misleading, defamatory, offensive, abusive, harassing, infringing, or containing spam.</li>
+                <li><strong>Removal:</strong> We reserve the right to edit or remove any content that violates these guidelines.</li>
             </ul>
 
-            <h2>6. Prohibited Activities</h2>
+            <h2><i class="fas fa-pen-fancy"></i> 6. Author Publishing</h2>
             <ul>
-                <li>Uploading plagiarized or copyrighted content without permission.</li>
-                <li>Engaging in fraudulent or deceptive activities.</li>
-                <li>Attempting to hack, disrupt, or compromise our systems.</li>
-                <li>Using our platform for illegal or harmful purposes.</li>
+                <li><strong>Registration:</strong> Authors must complete the author registration process and provide accurate profile information.</li>
+                <li><strong>Ownership:</strong> You retain full ownership and copyright of your published works.</li>
+                <li><strong>Content Guidelines:</strong> You warrant that your content does not infringe on any third-party rights, is not defamatory, and does not contain illegal material.</li>
+                <li><strong>Pricing:</strong> You set the price for your books. Bibek Books may recommend pricing but the final decision remains with you.</li>
+                <li><strong>Earnings:</strong> Payments to authors are processed via UPI to the registered UPI ID. Bibek Books deducts a platform fee from each sale.</li>
+                <li><strong>Removal:</strong> We reserve the right to remove any published content that violates our policies.</li>
             </ul>
 
-            <h2>7. Disclaimer of Warranties</h2>
+            <h2><i class="fas fa-copyright"></i> 7. Intellectual Property</h2>
+            <ul>
+                <li><strong>Platform Content:</strong> All content on Bibek Books is owned by Bibek Books or its licensors and is protected by copyright and other intellectual property laws.</li>
+                <li><strong>Trademarks:</strong> "Bibek Books" and our logo are trademarks of Bibek Patra. Unauthorized use is prohibited.</li>
+                <li><strong>License:</strong> You are granted a limited, non-exclusive, non-transferable license to access and use our platform for personal, non-commercial purposes.</li>
+                <li><strong>Restrictions:</strong> You may not copy, modify, reproduce, distribute, or create derivative works from our content without explicit written permission.</li>
+            </ul>
+
+            <h2><i class="fas fa-gavel"></i> 8. Prohibited Activities</h2>
+            <p>You agree not to engage in any of the following activities:</p>
+            <ul>
+                <li>Uploading plagiarized, copyrighted, or infringing content without permission.</li>
+                <li>Engaging in fraudulent, deceptive, or misleading activities.</li>
+                <li>Attempting to hack, disrupt, or compromise our systems, servers, or network.</li>
+                <li>Using our platform for illegal, harmful, or malicious purposes.</li>
+                <li>Impersonating any person or entity, or misrepresenting your affiliation.</li>
+                <li>Uploading viruses, malware, or any harmful code.</li>
+                <li>Harassing, abusing, or threatening other users.</li>
+                <li>Scraping or crawling our website without prior written consent.</li>
+            </ul>
+
+            <h2><i class="fas fa-shield-alt"></i> 9. Disclaimer of Warranties</h2>
             <p>
-                Bibek Books is provided "as is" without any warranties of any kind. We do not guarantee
-                that our services will be uninterrupted, error-free, or secure. We are not responsible
-                for any loss or damage arising from your use of our platform.
+                <strong>Bibek Books is provided "as is" and "as available" without warranties of any kind.</strong>
+                We do not warrant that our platform will be uninterrupted, error-free, secure, or free from
+                viruses. We make no representations about the accuracy, reliability, or completeness of
+                any content on our platform. Your use of our services is at your sole risk.
             </p>
 
-            <h2>8. Limitation of Liability</h2>
+            <h2><i class="fas fa-exclamation-triangle"></i> 10. Limitation of Liability</h2>
             <p>
-                To the fullest extent permitted by law, Bibek Books shall not be liable for any indirect,
-                incidental, special, consequential, or punitive damages arising from your use of our services.
+                To the fullest extent permitted by law, Bibek Books and its affiliates shall not be liable
+                for any direct, indirect, incidental, special, consequential, or punitive damages arising
+                from your use of our platform, including loss of profits, revenue, data, goodwill, or
+                any damages arising from unauthorized access or third-party content.
             </p>
 
-            <h2>9. Governing Law</h2>
+            <h2><i class="fas fa-flag"></i> 11. Indemnification</h2>
             <p>
-                These terms shall be governed by and construed in accordance with the laws of India.
-                Any disputes shall be subject to the exclusive jurisdiction of courts in Mayurbhanj, Odisha.
+                You agree to indemnify, defend, and hold harmless Bibek Books, its affiliates, and its
+                employees from any claims, damages, losses, liabilities, costs, or expenses arising from
+                your violation of these Terms, your violation of any third-party rights, or your use of
+                our platform in any way that is prohibited by law.
             </p>
 
-            <h2>10. Changes to Terms</h2>
+            <h2><i class="fas fa-ban"></i> 12. Termination</h2>
             <p>
-                We reserve the right to update these Terms &amp; Conditions at any time. Continued use
-                of our services after changes constitutes your acceptance of the updated terms.
+                We reserve the right to suspend or terminate your account and access to our platform at
+                any time, with or without notice, for any reason, including violation of these terms.
+                Upon termination, your right to use our platform ceases immediately.
             </p>
 
-            <h2>📬 Contact Us</h2>
+            <h2><i class="fas fa-balance-scale"></i> 13. Governing Law</h2>
             <p>
-                If you have any questions about these Terms &amp; Conditions, please contact us:
+                These Terms &amp; Conditions shall be governed by and construed in accordance with the
+                laws of India. Any disputes arising under or in connection with these terms shall be
+                subject to the exclusive jurisdiction of the courts located in Mayurbhanj, Odisha, India.
             </p>
+
+            <h2><i class="fas fa-edit"></i> 14. Changes to Terms</h2>
             <p>
-                <strong>Email:</strong> <a href="mailto:inboxtobibek@gmail.com">inboxtobibek@gmail.com</a><br />
-                <strong>Phone:</strong> +91 8280482686
+                We may update these Terms &amp; Conditions from time to time. We will notify you of material
+                changes by posting the updated terms on this page with a revised effective date. Your
+                continued use of our platform after the effective date constitutes your acceptance of
+                the revised terms.
             </p>
+
+            <h2><i class="fas fa-envelope"></i> 15. Contact Us</h2>
+            <p>If you have any questions or concerns about these Terms &amp; Conditions, please contact us:</p>
+            <div class="contact-row">
+                <span><i class="fas fa-envelope"></i> <a href="mailto:inboxtobibek@gmail.com">inboxtobibek@gmail.com</a></span>
+                <span><i class="fas fa-phone"></i> <a href="tel:+918280482686">+91 82804 82686</a></span>
+                <span><i class="fas fa-map-marker-alt"></i> Mayurbhanj, Odisha, India</span>
+            </div>
         </div>
     </main>
 
-    <!-- ===== FOOTER ===== -->
     <footer class="site-footer">
         <div class="social-links-footer">
             <a href="https://www.instagram.com/itsbibekpatra" target="_blank"><i class="fab fa-instagram"></i></a>
@@ -498,7 +519,6 @@
     </footer>
 
     <script>
-        // ─── Theme Toggle ───
         const toggle = document.getElementById('themeToggle');
         const savedTheme = localStorage.getItem('bibek-theme') || 'dark';
         document.documentElement.setAttribute('data-theme', savedTheme);
