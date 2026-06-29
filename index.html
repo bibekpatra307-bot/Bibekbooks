@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>Bibek Books – Multi-Author Publishing Platform</title>
+    <title>Bibek Books – Premium Digital Library</title>
     <meta name="description" content="Bibek Patra's digital library: Download spiritual, fiction, non-fiction and science books. Read free ebooks or buy at low prices." />
     <meta name="keywords" content="Bibek Books, digital library, ebook store, spiritual books, fiction books, science books, Bibek Patra" />
     <link rel="canonical" href="https://bibekbook.store/" />
@@ -11,8 +11,8 @@
     <link rel="apple-touch-icon" href="/favicon.png" />
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://bibekbook.store/" />
-    <meta property="og:title" content="Bibek Books – Multi-Author Publishing Platform" />
-    <meta property="og:description" content="Curated books by Bibek – read online or download." />
+    <meta property="og:title" content="Bibek Books – Premium Digital Library" />
+    <meta property="og:description" content="Curated books by Bibek Patra – read online or download." />
     <meta property="og:image" content="https://bibekbook.store/og-image.jpg" />
     <meta name="twitter:card" content="summary_large_image" />
 
@@ -33,7 +33,7 @@
 
     <style>
         /* ================================================================
-           THEME VARIABLES (unchanged)
+           THEME VARIABLES – Preserved Identity
            ================================================================ */
         :root {
             --font-display: 'Playfair Display', Georgia, serif;
@@ -84,7 +84,7 @@
             --shadow-card-hover: 0 12px 40px rgba(108, 59, 255, 0.15);
         }
 
-        /* Dark Theme (default) */
+        /* Dark Theme (default) – Gold + Purple + Dark */
         [data-theme="dark"] {
             --bg-primary: #0f0a1a;
             --bg-secondary: #1a1128;
@@ -135,6 +135,7 @@
             line-height: 1.6;
             font-size: 16px;
             transition: background var(--transition-smooth), color var(--transition-smooth);
+            scroll-behavior: smooth;
         }
 
         ::selection {
@@ -142,6 +143,7 @@
             color: #fff;
         }
 
+        /* Scrollbar – Premium */
         ::-webkit-scrollbar {
             width: 6px;
             height: 6px;
@@ -190,6 +192,7 @@
             background: var(--gradient-accent);
         }
 
+        /* Glass effect – Premium */
         .glass {
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(20px);
@@ -201,7 +204,7 @@
         }
 
         /* ================================================================
-           SKELETON LOADING
+           SKELETON LOADING – Premium
            ================================================================ */
         .skeleton {
             background: var(--bg-skeleton);
@@ -247,7 +250,7 @@
         }
 
         /* ================================================================
-           BUTTONS
+           BUTTONS – Premium
            ================================================================ */
         .btn {
             display: inline-flex;
@@ -351,7 +354,7 @@
         }
 
         /* ================================================================
-           NAVIGATION (updated menu)
+           NAVIGATION – Premium Glass
            ================================================================ */
         .nav {
             position: sticky;
@@ -463,6 +466,7 @@
             }
         }
 
+        /* Theme Toggle */
         .theme-toggle {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-light);
@@ -483,6 +487,7 @@
             border-color: var(--border-medium);
         }
 
+        /* Dropdown – Premium */
         .dropdown-wrap {
             position: relative;
         }
@@ -493,7 +498,7 @@
             background: var(--bg-elevated);
             border-radius: var(--radius-md);
             box-shadow: var(--shadow-lg);
-            min-width: 220px;
+            min-width: 230px;
             padding: 8px;
             display: none;
             z-index: 260;
@@ -561,7 +566,7 @@
         }
 
         /* ================================================================
-           HERO (unchanged)
+           HERO – Preserved Identity
            ================================================================ */
         .hero {
             background: var(--gradient-hero);
@@ -651,7 +656,7 @@
         }
 
         /* ================================================================
-           SECTION HEADER
+           SECTION HEADER – Premium
            ================================================================ */
         .section-header {
             text-align: center;
@@ -681,7 +686,7 @@
         }
 
         /* ================================================================
-           AUTHOR PANEL (Developer Author Studio)
+           AUTHOR PANEL – Hidden by default
            ================================================================ */
         .author-panel {
             background: var(--bg-card);
@@ -772,7 +777,7 @@
         }
 
         /* ================================================================
-           SECTION BAR
+           SECTION BAR – Search & Filters
            ================================================================ */
         .section-bar {
             display: flex;
@@ -835,6 +840,7 @@
             font-size: 1rem;
         }
 
+        /* Category Pills */
         .cat-pills {
             display: flex;
             gap: 8px;
@@ -865,7 +871,7 @@
         }
 
         /* ================================================================
-           BOOK GRID (updated with ownership badge)
+           BOOK GRID – Premium Cards
            ================================================================ */
         .book-grid {
             display: grid;
@@ -1120,48 +1126,6 @@
             font-size: 0.7rem;
             color: var(--text-tertiary);
         }
-        .review-form {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            margin-top: 0.75rem;
-        }
-        .review-form textarea {
-            padding: 10px 14px;
-            border: 1.5px solid var(--border-light);
-            border-radius: var(--radius-sm);
-            font-family: inherit;
-            font-size: 0.9rem;
-            background: rgba(255, 255, 255, 0.04);
-            color: var(--text-primary);
-            outline: none;
-            resize: vertical;
-            min-height: 60px;
-            max-height: 120px;
-            transition: var(--transition-fast);
-            width: 100%;
-        }
-        .review-form textarea:focus {
-            border-color: var(--accent-primary);
-            box-shadow: 0 0 0 4px rgba(108, 59, 255, 0.12);
-            background: rgba(255, 255, 255, 0.08);
-        }
-        .review-form .char-count {
-            font-size: 0.75rem;
-            color: var(--text-tertiary);
-            text-align: right;
-        }
-        .review-form .char-count.warning {
-            color: #f59e0b;
-        }
-        .review-form .char-count.danger {
-            color: #ef4444;
-        }
-        .review-form .review-actions {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
         .review-rating {
             display: flex;
             gap: 4px;
@@ -1181,24 +1145,21 @@
         }
 
         /* ================================================================
-           TESTIMONIALS & BLOG
+           TESTIMONIALS – Restored
            ================================================================ */
-        .testimonials-grid,
-        .blog-grid {
+        .testimonials-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
             gap: 20px;
         }
-        .testimonial-card,
-        .blog-card {
+        .testimonial-card {
             background: var(--bg-card);
             border-radius: var(--radius-lg);
             border: 1px solid var(--border-light);
             padding: 1.8rem;
             transition: var(--transition-smooth);
         }
-        .testimonial-card:hover,
-        .blog-card:hover {
+        .testimonial-card:hover {
             box-shadow: var(--shadow-card-hover);
             transform: translateY(-2px);
         }
@@ -1230,28 +1191,55 @@
             font-size: 0.8rem;
             color: var(--text-tertiary);
         }
+        .testimonial-card .rating-stars {
+            color: var(--gold);
+            font-size: 0.9rem;
+            margin-bottom: 0.5rem;
+        }
 
+        /* ================================================================
+           BLOG – Restored
+           ================================================================ */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        .blog-card {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-light);
+            overflow: hidden;
+            transition: var(--transition-smooth);
+            cursor: pointer;
+        }
+        .blog-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-card-hover);
+        }
         .blog-card-img {
             width: 100%;
-            height: 160px;
-            border-radius: var(--radius-sm);
+            height: 180px;
+            object-fit: cover;
             background: var(--bg-tertiary);
             display: flex;
             align-items: center;
             justify-content: center;
             font-size: 2.5rem;
             color: var(--text-muted);
-            margin-bottom: 1rem;
+        }
+        .blog-card-body {
+            padding: 1.5rem;
         }
         .blog-card-body .date {
             font-size: 0.8rem;
             color: var(--text-tertiary);
-            margin-bottom: 4px;
+            margin-bottom: 0.4rem;
         }
         .blog-card-body h3 {
             font-family: var(--font-display);
             font-weight: 700;
-            margin-bottom: 4px;
+            margin-bottom: 0.4rem;
             font-size: 1.15rem;
             color: var(--text-primary);
         }
@@ -1265,7 +1253,7 @@
         }
 
         /* ================================================================
-           CONTACT
+           CONTACT – Restored Full
            ================================================================ */
         .contact-layout {
             display: grid;
@@ -1346,7 +1334,7 @@
         }
 
         /* ================================================================
-           HELP & SUPPORT (new)
+           HELP & SUPPORT
            ================================================================ */
         .help-section {
             background: var(--bg-card);
@@ -1433,7 +1421,7 @@
         }
 
         /* ================================================================
-           MODALS
+           MODALS – Premium
            ================================================================ */
         .overlay {
             position: fixed;
@@ -1588,7 +1576,7 @@
         }
 
         /* ================================================================
-           AUTH MODAL
+           AUTH MODAL – Premium
            ================================================================ */
         .auth-overlay {
             position: fixed;
@@ -1690,7 +1678,7 @@
         }
 
         /* ================================================================
-           TOAST
+           TOAST – Premium
            ================================================================ */
         .toast-wrap {
             position: fixed;
@@ -1737,56 +1725,174 @@
         }
 
         /* ================================================================
-           FOOTER
+           FOOTER – Restored Full
            ================================================================ */
         .site-footer {
             background: rgba(255, 255, 255, 0.02);
             border-top: 1px solid var(--border-light);
-            padding: 32px 20px 20px;
-            text-align: center;
-            font-size: 0.85rem;
-            color: var(--text-tertiary);
+            padding: 40px 20px 24px;
             margin-top: 40px;
             width: 100%;
             flex-shrink: 0;
         }
-        .footer-links {
-            display: flex;
-            justify-content: center;
-            gap: 24px;
-            flex-wrap: wrap;
-            margin-bottom: 12px;
+        .footer-grid {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 2rem;
+            padding: 0 20px;
         }
-        .footer-links a {
-            color: var(--text-secondary);
-            text-decoration: none;
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                text-align: center;
+            }
+            .footer-social {
+                justify-content: center;
+            }
+        }
+        .footer-brand .brand {
+            font-family: var(--font-display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--gold);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .footer-brand .brand .mark {
+            width: 36px;
+            height: 36px;
+            background: var(--gradient-gold);
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1rem;
+            color: #1a1128;
+        }
+        .footer-brand p {
+            color: var(--text-tertiary);
             font-size: 0.85rem;
-            transition: var(--transition-fast);
-            cursor: pointer;
+            margin-top: 8px;
+            max-width: 300px;
         }
-        .footer-links a:hover {
+        .footer-col h4 {
+            font-weight: 700;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+        .footer-col ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-col ul li {
+            margin-bottom: 4px;
+        }
+        .footer-col ul li a,
+        .footer-col ul li span {
+            color: var(--text-tertiary);
+            font-size: 0.85rem;
+            cursor: pointer;
+            transition: var(--transition-fast);
+        }
+        .footer-col ul li a:hover,
+        .footer-col ul li span:hover {
             color: var(--gold);
         }
-        .social-links-footer {
+        .footer-social {
             display: flex;
-            justify-content: center;
-            gap: 16px;
-            margin-bottom: 12px;
+            gap: 12px;
+            margin-top: 8px;
             flex-wrap: wrap;
         }
-        .social-links-footer a {
+        .footer-social a {
+            width: 40px;
+            height: 40px;
+            border-radius: var(--radius-full);
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--border-light);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: var(--text-secondary);
-            font-size: 1.3rem;
-            text-decoration: none;
             transition: var(--transition-fast);
+            font-size: 1.1rem;
         }
-        .social-links-footer a:hover {
-            color: var(--gold);
+        .footer-social a:hover {
+            background: var(--gradient-accent);
+            color: #fff;
+            border-color: var(--accent-primary);
             transform: translateY(-2px);
         }
-        .footer-copy {
-            font-size: 0.75rem;
+        .footer-bottom {
+            max-width: 1280px;
+            margin: 24px auto 0;
+            padding: 16px 20px 0;
+            border-top: 1px solid var(--border-light);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.8rem;
             color: var(--text-muted);
+        }
+        .footer-bottom a {
+            color: var(--text-tertiary);
+            transition: var(--transition-fast);
+        }
+        .footer-bottom a:hover {
+            color: var(--gold);
+        }
+
+        /* ================================================================
+           UPI Payment
+           ================================================================ */
+        .upi-options {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin: 1rem 0;
+        }
+        .upi-btn {
+            padding: 14px 24px;
+            border-radius: var(--radius-md);
+            border: 2px solid var(--border-light);
+            background: var(--bg-card);
+            cursor: pointer;
+            transition: var(--transition-fast);
+            font-family: inherit;
+            font-weight: 600;
+            color: var(--text-secondary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+            min-width: 140px;
+            justify-content: center;
+        }
+        .upi-btn:hover {
+            border-color: var(--gold);
+            background: var(--gold-light);
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+        .upi-btn .upi-icon {
+            font-size: 1.6rem;
+        }
+        .upi-btn .upi-icon.gpay {
+            color: #1a73e8;
+        }
+        .upi-btn .upi-icon.phonepe {
+            color: #5f259f;
+        }
+        .upi-btn .upi-icon.paytm {
+            color: #00baf2;
         }
 
         /* ================================================================
@@ -1799,17 +1905,6 @@
             padding: 2rem;
             max-width: 600px;
             margin: 0 auto;
-        }
-        .author-reg-card .profile-preview {
-            width: 100px;
-            height: 100px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 3px solid var(--gold);
-            margin: 0 auto 1rem;
-            display: block;
-            background: var(--bg-tertiary);
-            position: relative;
         }
         .author-reg-card .profile-preview-placeholder {
             width: 100px;
@@ -1847,7 +1942,7 @@
 
         .author-dashboard-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
             gap: 16px;
             margin: 1rem 0;
         }
@@ -1872,34 +1967,6 @@
         .dash-stat-card .stat-label {
             font-size: 0.8rem;
             color: var(--text-tertiary);
-        }
-
-        .dash-tabs {
-            display: flex;
-            gap: 4px;
-            flex-wrap: wrap;
-            border-bottom: 1px solid var(--border-light);
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-        }
-        .dash-tab {
-            padding: 8px 20px;
-            border-radius: var(--radius-full);
-            border: none;
-            background: transparent;
-            color: var(--text-tertiary);
-            font-family: inherit;
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition-fast);
-        }
-        .dash-tab:hover {
-            color: var(--text-primary);
-            background: rgba(255, 255, 255, 0.05);
-        }
-        .dash-tab.active {
-            background: var(--gradient-accent);
-            color: #fff;
         }
 
         .book-list-item {
@@ -1945,60 +2012,10 @@
             background: rgba(16, 185, 129, 0.2);
             color: #10b981;
         }
-        .b-status.archived {
-            background: rgba(239, 68, 68, 0.2);
-            color: #ef4444;
-        }
-        .b-status.pending {
-            background: rgba(139, 92, 246, 0.2);
-            color: var(--accent-primary);
-        }
 
-        /* UPI Payment */
-        .upi-options {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin: 1rem 0;
-        }
-        .upi-btn {
-            padding: 14px 24px;
-            border-radius: var(--radius-md);
-            border: 2px solid var(--border-light);
-            background: var(--bg-card);
-            cursor: pointer;
-            transition: var(--transition-fast);
-            font-family: inherit;
-            font-weight: 600;
-            color: var(--text-secondary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-size: 1rem;
-            min-width: 140px;
-            justify-content: center;
-        }
-        .upi-btn:hover {
-            border-color: var(--gold);
-            background: var(--gold-light);
-            color: var(--text-primary);
-            transform: translateY(-2px);
-        }
-        .upi-btn .upi-icon {
-            font-size: 1.6rem;
-        }
-        .upi-btn .upi-icon.gpay {
-            color: #1a73e8;
-        }
-        .upi-btn .upi-icon.phonepe {
-            color: #5f259f;
-        }
-        .upi-btn .upi-icon.paytm {
-            color: #00baf2;
-        }
-
-        /* Author public page */
+        /* ================================================================
+           AUTHOR PUBLIC PAGE
+           ================================================================ */
         .author-profile-header {
             display: flex;
             gap: 2rem;
@@ -2105,7 +2122,7 @@
         }
 
         /* ================================================================
-           RESPONSIVE
+           RESPONSIVE – Premium
            ================================================================ */
         @media (max-width: 768px) {
             .book-grid {
@@ -2206,6 +2223,18 @@
             .help-grid {
                 grid-template-columns: 1fr;
             }
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                text-align: center;
+            }
+            .footer-brand p {
+                max-width: 100%;
+            }
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
         }
 
         @media (max-width: 480px) {
@@ -2288,11 +2317,11 @@
         </div>
     </div>
 
-    <!-- ===== AUTHOR PASSWORD MODAL (Developer Author Studio) ===== -->
+    <!-- ===== AUTHOR STUDIO PASSWORD MODAL (Developer Only) ===== -->
     <div id="authorPassModal" style="display:none" class="auth-overlay" onclick="if(event.target===this)closeAuthorPassModal()">
         <div class="card-modal" style="max-width:400px;text-align:center;">
             <h3 style="color:var(--gold);margin-bottom:16px;font-family:var(--font-display);">🔐 Developer Author Studio</h3>
-            <p style="color:var(--text-tertiary);font-size:0.85rem;margin-bottom:14px;">Enter the developer password to access the Author Studio.</p>
+            <p style="color:var(--text-tertiary);font-size:0.85rem;margin-bottom:14px;">Enter the developer password to access Author Studio.</p>
             <div class="fg" style="margin-bottom:14px;">
                 <label>Enter Password</label>
                 <input type="password" id="authorPassInput" placeholder="••••••" style="text-align:center;width:100%;">
@@ -2327,10 +2356,9 @@
                     <div class="dropdown-divider"></div>
                     <button class="dropdown-item gold" id="dropPublish" onclick="handlePublishClick()">✍️ Publish Your</button>
                     <button class="dropdown-item" id="dropHelp" onclick="openHelpSupport()">❓ Help & Support</button>
-                    <!-- Developer Author Studio (hidden, password protected) -->
+                    <!-- Author Studio (Developer only, password protected) -->
                     <button class="dropdown-item" id="dropAuthor" onclick="handleAuthorClick()" style="display:none;">⚙️ Author Studio</button>
                     <button class="dropdown-item" id="dropAuthorLogout" style="display:none;color:var(--gold);font-weight:600;" onclick="handleAuthorLogout()">🔒 Lock Studio</button>
-                    <!-- Hidden double-click on logo to open Author Studio -->
                 </div>
             </div>
         </div>
@@ -2341,7 +2369,7 @@
         <div class="container">
             <div class="hero-content">
                 <div class="hero-badge">✨ Discover · Read · Publish</div>
-                <h1>Your Personal<br><span class="gold">Multi-Author Library</span></h1>
+                <h1>Your Personal<br><span class="gold">Digital Library</span></h1>
                 <p>Curated books by Bibek and independent authors — buy, read free titles, save your favourites, and share your reviews.</p>
                 <div class="hero-stats" id="heroStats">
                     <div class="hero-stat"><strong id="statBooks">0</strong><span>Books</span></div>
@@ -2356,7 +2384,7 @@
     <!-- ===== MAIN ===== -->
     <main class="container" style="padding-top:1.5rem;">
 
-        <!-- Developer Author Studio Panel -->
+        <!-- ===== AUTHOR STUDIO PANEL (Developer Only) ===== -->
         <div class="author-panel" id="authorPanel">
             <div class="panel-header">
                 <div class="panel-title">⚙️ Developer Author Studio</div>
@@ -2365,7 +2393,7 @@
             <div id="authorPanelBody"></div>
         </div>
 
-        <!-- Author Registration / Dashboard (Publish Your) -->
+        <!-- ===== PUBLISH YOUR PANEL (Author Dashboard) ===== -->
         <div class="author-panel" id="publishPanel" style="border-color:rgba(139,92,246,0.3);display:none;">
             <div id="publishPanelContent"></div>
         </div>
@@ -2382,12 +2410,12 @@
             <div class="cat-pills" id="catPills"></div>
         </div>
 
-        <!-- Book Grid -->
+        <!-- ===== BOOK GRID ===== -->
         <div class="book-grid" id="bookGrid">
             <!-- Skeleton loaders -->
         </div>
 
-        <!-- Testimonials -->
+        <!-- ===== TESTIMONIALS ===== -->
         <section style="margin-top:4rem;">
             <div class="section-header">
                 <span class="label">Reader Love</span>
@@ -2397,7 +2425,7 @@
             <div class="testimonials-grid" id="testimonialsGrid"></div>
         </section>
 
-        <!-- Blog -->
+        <!-- ===== BLOG ===== -->
         <section style="margin-top:4rem;">
             <div class="section-header">
                 <span class="label">Insights</span>
@@ -2407,7 +2435,7 @@
             <div class="blog-grid" id="blogGrid"></div>
         </section>
 
-        <!-- Help & Support Section (toggled) -->
+        <!-- ===== HELP & SUPPORT ===== -->
         <section style="margin-top:4rem;" id="helpSection">
             <div class="help-section" id="helpContent" style="display:none;">
                 <h2>❓ Help & Support</h2>
@@ -2462,7 +2490,7 @@
                     </div>
                 </div>
 
-                <!-- FAQ Section -->
+                <!-- FAQ -->
                 <div id="faqContainer" style="margin-top:2rem;display:none;">
                     <h3 style="font-family:var(--font-display);color:var(--text-primary);margin-bottom:1rem;">📋 Frequently Asked Questions</h3>
                     <div class="help-faq-item">
@@ -2507,7 +2535,7 @@
             </div>
         </section>
 
-        <!-- Contact -->
+        <!-- ===== CONTACT ===== -->
         <section style="margin-top:4rem;" id="contactSection">
             <div class="section-header">
                 <span class="label">Get In Touch</span>
@@ -2563,22 +2591,54 @@
 
     </main>
 
-    <!-- ===== FOOTER ===== -->
-    <footer class="site-footer">
-        <div class="social-links-footer" id="footerSocial">
-            <a href="https://www.instagram.com/itsbibekpatra" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
-            <a href="https://youtube.com/@gtbcreates" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
-            <a href="https://www.linkedin.com/in/bibek-patra-932213293" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-            <a href="https://www.facebook.com/thesideincomeguru" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-            <a href="https://wa.me/918280482686" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    <!-- ===== FOOTER – Restored Full ===== -->
+    <footer class="site-footer" id="siteFooter">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="brand">
+                    <span class="mark">📚</span> Bibek Books
+                </div>
+                <p>A premium digital library and publishing platform for independent authors and readers.</p>
+                <div class="footer-social">
+                    <a href="https://www.instagram.com/itsbibekpatra" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="https://youtube.com/@gtbcreates" target="_blank" aria-label="YouTube"><i class="fab fa-youtube"></i></a>
+                    <a href="https://www.linkedin.com/in/bibek-patra-932213293" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="https://www.facebook.com/thesideincomeguru" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://wa.me/918280482686" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                </div>
+            </div>
+            <div class="footer-col">
+                <h4>Quick Links</h4>
+                <ul>
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#contactSection">Contact</a></li>
+                    <li><span onclick="openHelpSupport()">Help & Support</span></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Discover</h4>
+                <ul>
+                    <li><span onclick="window._setCat('All')">All Books</span></li>
+                    <li><span onclick="window._setCat('Spiritual')">Spiritual</span></li>
+                    <li><span onclick="window._setCat('Fiction')">Fiction</span></li>
+                    <li><span onclick="window._setCat('Non-Fiction')">Non-Fiction</span></li>
+                    <li><span onclick="window._setCat('Science')">Science</span></li>
+                </ul>
+            </div>
+            <div class="footer-col">
+                <h4>Legal</h4>
+                <ul>
+                    <li><a href="privacy.html">Privacy Policy</a></li>
+                    <li><a href="terms.html">Terms & Conditions</a></li>
+                    <li><a href="copyright.html">Copyright</a></li>
+                </ul>
+            </div>
         </div>
-        <div class="footer-links">
-            <span onclick="openHelpSupport();document.getElementById('helpSection').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">About</span>
-            <span onclick="document.getElementById('contactSection').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">Contact</span>
-            <span onclick="openHelpSupport();toast('🔒 Privacy Policy: Your data is safe with us.','info')" style="cursor:pointer;">Privacy Policy</span>
-            <span onclick="openHelpSupport();toast('📜 Terms & Conditions: By using this site, you agree to our terms.','info')" style="cursor:pointer;">Terms</span>
+        <div class="footer-bottom">
+            <span>© 2026 Bibek Patra · Bibek Books. All rights reserved.</span>
+            <span>Made with ❤️ by Bibek Patra</span>
         </div>
-        <div class="footer-copy">© 2026 Bibek Patra · Bibek Books</div>
     </footer>
 
     <!-- ===== MODALS ===== -->
@@ -2625,7 +2685,7 @@
         </div>
     </div>
 
-    <!-- Admin Edit Modal (Developer) -->
+    <!-- Admin Edit Modal -->
     <div class="overlay" id="adminEditModal" style="display:none;" onclick="if(event.target===this)closeAdminEditModal()">
         <div class="card-modal" style="max-width:560px;">
             <h3 style="display:flex;justify-content:space-between;color:var(--text-primary);font-size:1.2rem;font-family:var(--font-display);">
@@ -2696,7 +2756,6 @@
         let currentBookId = null;
         let currentAuthorProfile = null; // For logged-in user's author profile
         let authorMap = {}; // id -> author data
-        let userAuthorProfiles = {}; // userId -> authorProfile
 
         const CATS = ['Spiritual', 'Fiction', 'Non-Fiction', 'Science', 'History', 'Poetry', 'Business'];
         const PALETTES = [
@@ -2733,7 +2792,7 @@
         };
 
         // ================================================================
-        // OWNERSHIP HELPERS
+        // OWNERSHIP HELPERS – Strict
         // ================================================================
         function isBookOwner(book, uid) {
             if (!uid) return false;
@@ -2741,10 +2800,6 @@
             if (isDeveloper) return true;
             // Check ownerUid field (primary)
             if (book.ownerUid === uid) return true;
-            // Fallback: check if the book was created by this user's author profile
-            if (book.authorId && userAuthorProfiles[uid]) {
-                if (book.authorId === userAuthorProfiles[uid].id) return true;
-            }
             return false;
         }
 
@@ -2962,7 +3017,10 @@
 
         function handleAccountClick() {
             document.getElementById('dropdownWrap').classList.remove('open');
-            if (currentUser) { toast('Logged in as ' + (currentUser.displayName || currentUser.email), 'info'); return; }
+            if (currentUser) {
+                toast('👤 ' + (currentUser.displayName || currentUser.email), 'info');
+                return;
+            }
             openAuthModal();
         }
 
@@ -3082,7 +3140,7 @@
         }
 
         // ================================================================
-        // AUTHOR PROFILE CHECK (display only, no permissions)
+        // AUTHOR PROFILE CHECK – Display only, no permissions
         // ================================================================
         async function checkAuthorProfile(uid) {
             if (!uid) return;
@@ -3091,7 +3149,6 @@
                 if (!snap.empty) {
                     const doc = snap.docs[0];
                     currentAuthorProfile = { id: doc.id, ...doc.data() };
-                    userAuthorProfiles[uid] = currentAuthorProfile;
                     authorMap[doc.id] = currentAuthorProfile;
                 } else {
                     currentAuthorProfile = null;
@@ -3142,7 +3199,6 @@
                 toast('Please fill in all fields.', 'err');
                 return;
             }
-            // Send to Formspree
             fetch('https://formspree.io/f/mzdqlpjl', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
@@ -3332,7 +3388,6 @@
 
                 const docRef = await db.collection('authors').add(authorData);
                 currentAuthorProfile = { id: docRef.id, ...authorData };
-                userAuthorProfiles[currentUser.uid] = currentAuthorProfile;
                 authorMap[docRef.id] = currentAuthorProfile;
                 toast('🎉 Author profile created! Welcome to Bibek Books.');
                 closePublishPanel();
@@ -3355,13 +3410,19 @@
         }
 
         // ================================================================
-        // AUTHOR DASHBOARD (with ownership-based controls)
+        // AUTHOR DASHBOARD – Own books only (ownerUid based)
         // ================================================================
         function renderAuthorDashboard() {
             const panel = document.getElementById('publishPanel');
             const content = document.getElementById('publishPanelContent');
             panel.style.display = 'block';
             document.getElementById('authorPanel').classList.remove('open');
+
+            if (!currentUser) {
+                content.innerHTML =
+                    `<div class="empty-state"><div class="empty-icon">⚠️</div><p>Please login first.</p></div>`;
+                return;
+            }
 
             if (!currentAuthorProfile) {
                 content.innerHTML =
@@ -3371,7 +3432,7 @@
 
             const profile = currentAuthorProfile;
             // Books owned by this user (ownerUid === currentUser.uid)
-            const authorBooks = books.filter(b => b.ownerUid === currentUser.uid || b.authorId === profile.id);
+            const authorBooks = books.filter(b => b.ownerUid === currentUser.uid);
             const publishedBooks = authorBooks.filter(b => b.status === 'published' || !b.status);
             const draftBooks = authorBooks.filter(b => b.status === 'draft');
             const totalEarnings = publishedBooks.reduce((sum, b) => sum + (b.price || 0), 0);
@@ -3422,7 +3483,7 @@
         }
 
         // ================================================================
-        // AUTHOR: PUBLISH BOOK (with ownerUid)
+        // AUTHOR: PUBLISH BOOK – With ownerUid
         // ================================================================
         function showAuthorPublishForm(editData = null) {
             const content = document.getElementById('publishPanelContent');
@@ -3563,7 +3624,7 @@
         }
 
         // ================================================================
-        // AUTHOR: MY BOOKS (with ownership checks)
+        // AUTHOR: MY BOOKS – Owner based
         // ================================================================
         function renderAuthorMyBooks() {
             const content = document.getElementById('publishPanelContent');
@@ -3571,7 +3632,7 @@
             if (!currentAuthorProfile) { renderAuthorDashboard(); return; }
 
             // Books owned by this user (ownerUid === currentUser.uid)
-            const authorBooks = books.filter(b => b.ownerUid === currentUser.uid || b.authorId === currentAuthorProfile?.id);
+            const authorBooks = books.filter(b => b.ownerUid === currentUser.uid);
 
             content.innerHTML = `
                 <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1rem;">
@@ -3601,7 +3662,7 @@
         }
 
         // ================================================================
-        // AUTHOR: EDIT / DELETE BOOKS (with ownership checks)
+        // AUTHOR: EDIT / DELETE BOOKS – With ownership checks
         // ================================================================
         function editBookAsAuthor(bookId) {
             const b = books.find(x => x.id === bookId);
@@ -3755,7 +3816,7 @@
         }
 
         // ================================================================
-        // DEVELOPER AUTHOR STUDIO (password protected)
+        // DEVELOPER AUTHOR STUDIO – Password protected
         // ================================================================
         function handleAuthorClick() {
             document.getElementById('dropdownWrap').classList.remove('open');
@@ -3786,7 +3847,6 @@
             isDeveloper = false;
             document.getElementById('authorPanel').classList.remove('open');
             document.getElementById('dropAuthorLogout').style.display = 'none';
-            // Only hide studio if not developer account
             if (currentUser?.email !== DEV_EMAIL) {
                 document.getElementById('dropAuthor').style.display = 'none';
             }
@@ -3800,7 +3860,7 @@
         });
 
         // ================================================================
-        // DEVELOPER STUDIO (full control)
+        // DEVELOPER STUDIO – Full control
         // ================================================================
         function renderDeveloperStudio() {
             const head = document.getElementById('authorPanelHead');
@@ -3820,7 +3880,6 @@
             const body = document.getElementById('authorPanelBody');
             const totalBooks = books.length;
             const totalAuthors = Object.keys(authorMap).length;
-            const totalUsers = 0; // We'll fetch this
             const totalRevenue = books.reduce((s, b) => s + (b.price || 0), 0);
 
             db.collection('users').get().then(snap => {
@@ -4100,7 +4159,7 @@
         }
 
         // ================================================================
-        // BOOK GRID & FILTERS (with ownership display)
+        // BOOK GRID & FILTERS
         // ================================================================
         function renderBookGrid(bookArr) {
             const grid = document.getElementById('bookGrid');
@@ -4122,7 +4181,6 @@
 
                 const authorName = b.author || 'Unknown';
                 const authorAvatar = b.authorProfileImage || '';
-                const authorUsername = b.authorUsername || '';
                 const authorId = b.authorId || '';
                 const authorLink = authorId ? `onclick="event.stopPropagation();openAuthorPage('${authorId}')"` :
                     `onclick="event.stopPropagation();toast('Author profile not available','err')"`;
@@ -4138,7 +4196,6 @@
                     `onclick="window._addToCart('${b.id}')"`;
                 const readText = isPurchased || b.isFree ? '📖 Read' : (isInCart ? '✓ In Cart' : '🛒 Buy');
 
-                // Show owner badge if current user owns this book
                 const isOwner = currentUser && isBookOwner(b, currentUser.uid);
                 const ownerBadge = isOwner ? '<span class="owner-badge">✏️ Yours</span>' : '';
 
@@ -4244,7 +4301,7 @@
         }
 
         // ================================================================
-        // MODALS (unchanged)
+        // MODALS
         // ================================================================
         function openWishlist() {
             const m = document.getElementById('wishModal');
@@ -4465,7 +4522,6 @@
                 ${(isPurchased||b.isFree)?`<button class="btn btn-gold btn-sm" onclick="openReviewModal('${b.id}')">✍️ Write Review</button>`:''}
             `;
 
-            // Owner controls (for book owner)
             if (isOwner) {
                 footHTML += `
                     <button class="btn btn-gold btn-sm" onclick="closeDetailModal();editBookAsAuthor('${b.id}')">✏️ Edit</button>
@@ -4473,7 +4529,6 @@
                 `;
             }
 
-            // Developer controls
             if (isDeveloper) {
                 footHTML += `
                     <button class="btn btn-gold btn-sm" onclick="closeDetailModal();devEditBook('${b.id}')">⚙️ Dev Edit</button>
@@ -4490,7 +4545,7 @@
         function closeDetailModal() { document.getElementById('detailModal').style.display = 'none'; }
 
         // ================================================================
-        // AUTHOR PUBLIC PAGE (display only)
+        // AUTHOR PUBLIC PAGE – Display only
         // ================================================================
         async function openAuthorPage(authorId) {
             if (!authorId) { toast('Author not found', 'err'); return; }
@@ -4570,7 +4625,7 @@
         }
 
         // ================================================================
-        // REVIEW SYSTEM (unchanged)
+        // REVIEW SYSTEM
         // ================================================================
         async function loadReviews(bookId) {
             const container = document.getElementById('reviewsContainer');
@@ -4682,58 +4737,70 @@
         }
 
         // ================================================================
-        // TESTIMONIALS
+        // TESTIMONIALS – Restored
         // ================================================================
         async function renderTestimonials() {
             const grid = document.getElementById('testimonialsGrid');
             if (testimonials.length) {
-                grid.innerHTML = testimonials.map(t => `
+                grid.innerHTML = testimonials.map(t => {
+                    const stars = '★'.repeat(t.rating || 5) + '☆'.repeat(5 - (t.rating || 5));
+                    return `
                     <div class="testimonial-card">
+                        <div class="rating-stars">${stars}</div>
                         <p class="quote">${esc(t.quote)}</p>
                         <p class="author-name">— ${esc(t.name)}</p>
                         <p class="author-role">${esc(t.role)}</p>
                     </div>
-                `).join('');
+                `;
+                }).join('');
                 return;
             }
             try {
                 const snap = await db.collection('testimonials').get();
                 testimonials = snap.docs.map(d => ({ id: d.id, ...d.data() }));
-                grid.innerHTML = testimonials.map(t => `
+                grid.innerHTML = testimonials.map(t => {
+                    const stars = '★'.repeat(t.rating || 5) + '☆'.repeat(5 - (t.rating || 5));
+                    return `
                     <div class="testimonial-card">
+                        <div class="rating-stars">${stars}</div>
                         <p class="quote">${esc(t.quote)}</p>
                         <p class="author-name">— ${esc(t.name)}</p>
                         <p class="author-role">${esc(t.role)}</p>
                     </div>
-                `).join('');
+                `;
+                }).join('');
             } catch (e) {
                 testimonials = [
                     { quote: 'Bibek Books has transformed my reading experience. The curation is impeccable!',
-                        name: 'Ananya Gupta', role: 'Book Reviewer' },
+                        name: 'Ananya Gupta', role: 'Book Reviewer', rating: 5 },
                     { quote: 'A wonderful platform that celebrates the diversity of Indian writing.', name: 'Vikram Patel',
-                        role: 'Professor of Literature' },
+                        role: 'Professor of Literature', rating: 5 },
                     { quote: 'I discovered so many amazing authors through Bibek Books. Highly recommended!',
-                        name: 'Sneha Iyer', role: 'Avid Reader' }
+                        name: 'Sneha Iyer', role: 'Avid Reader', rating: 5 }
                 ];
-                grid.innerHTML = testimonials.map(t => `
+                grid.innerHTML = testimonials.map(t => {
+                    const stars = '★'.repeat(t.rating || 5) + '☆'.repeat(5 - (t.rating || 5));
+                    return `
                     <div class="testimonial-card">
+                        <div class="rating-stars">${stars}</div>
                         <p class="quote">${esc(t.quote)}</p>
                         <p class="author-name">— ${esc(t.name)}</p>
                         <p class="author-role">${esc(t.role)}</p>
                     </div>
-                `).join('');
+                `;
+                }).join('');
             }
         }
 
         // ================================================================
-        // BLOG
+        // BLOG – Restored
         // ================================================================
         async function renderBlog() {
             const grid = document.getElementById('blogGrid');
             if (blogPosts.length) {
                 grid.innerHTML = blogPosts.map(p => `
-                    <div class="blog-card">
-                        <div class="blog-card-img">📝</div>
+                    <div class="blog-card" onclick="window.open('${p.link || '#'}', '_blank')">
+                        <div class="blog-card-img">${p.icon || '📝'}</div>
                         <div class="blog-card-body">
                             <p class="date">${esc(p.date)}</p>
                             <h3>${esc(p.title)}</h3>
@@ -4747,8 +4814,8 @@
                 const snap = await db.collection('blogPosts').orderBy('date', 'desc').get();
                 blogPosts = snap.docs.map(d => ({ id: d.id, ...d.data() }));
                 grid.innerHTML = blogPosts.map(p => `
-                    <div class="blog-card">
-                        <div class="blog-card-img">📝</div>
+                    <div class="blog-card" onclick="window.open('${p.link || '#'}', '_blank')">
+                        <div class="blog-card-img">${p.icon || '📝'}</div>
                         <div class="blog-card-body">
                             <p class="date">${esc(p.date)}</p>
                             <h3>${esc(p.title)}</h3>
@@ -4759,15 +4826,15 @@
             } catch (e) {
                 blogPosts = [
                     { title: 'Why Indian Literature Deserves Global Attention', date: '2026-05-15',
-                        excerpt: 'Exploring the rich tapestry of Indian storytelling...' },
+                        excerpt: 'Exploring the rich tapestry of Indian storytelling...', icon: '📖' },
                     { title: 'Top 10 Must-Read Books by Indian Authors in 2026', date: '2026-06-01',
-                        excerpt: 'Our curated list of the best reads this year...' },
+                        excerpt: 'Our curated list of the best reads this year...', icon: '📚' },
                     { title: 'Reading Tips: How to Build a Daily Reading Habit', date: '2026-06-10',
-                        excerpt: 'Practical advice for busy readers...' }
+                        excerpt: 'Practical advice for busy readers...', icon: '💡' }
                 ];
                 grid.innerHTML = blogPosts.map(p => `
-                    <div class="blog-card">
-                        <div class="blog-card-img">📝</div>
+                    <div class="blog-card" onclick="window.open('${p.link || '#'}', '_blank')">
+                        <div class="blog-card-img">${p.icon || '📝'}</div>
                         <div class="blog-card-body">
                             <p class="date">${esc(p.date)}</p>
                             <h3>${esc(p.title)}</h3>
@@ -4816,7 +4883,6 @@
                 const found = Object.values(authorMap).find(a => a.userId === currentUser.uid);
                 if (found) {
                     currentAuthorProfile = found;
-                    userAuthorProfiles[currentUser.uid] = found;
                 }
             }
             updateHeroStats();
@@ -4833,6 +4899,17 @@
             document.getElementById('statCats').textContent = catCount;
             document.getElementById('statFree').textContent = freeCount;
             document.getElementById('statAuthors').textContent = authorCount || Object.keys(authorMap).length;
+        }
+
+        // ================================================================
+        // ADMIN FUNCTIONS (reused from original, exposed via Author Studio)
+        // ================================================================
+
+        async function adminDeleteBook(id) {
+            if (!isDeveloper) { toast('Access denied', 'err'); return; }
+            if (!confirm('Delete this book permanently?')) return;
+            try { await db.collection('books').doc(id).delete();
+                toast('Deleted', 'ok'); } catch (e) { toast('Error: ' + e.message, 'err'); }
         }
 
         // ================================================================
@@ -4939,6 +5016,7 @@
         window.devManageUsers = devManageUsers;
         window.devAnalytics = devAnalytics;
         window.changeAuthorPass = changeAuthorPass;
+        window.adminDeleteBook = adminDeleteBook;
 
         init();
     </script>
