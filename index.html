@@ -33,7 +33,7 @@
 
     <style>
         /* ================================================================
-           THEME VARIABLES
+           THEME VARIABLES (unchanged)
            ================================================================ */
         :root {
             --font-display: 'Playfair Display', Georgia, serif;
@@ -142,7 +142,6 @@
             color: #fff;
         }
 
-        /* Scrollbar */
         ::-webkit-scrollbar {
             width: 6px;
             height: 6px;
@@ -191,7 +190,6 @@
             background: var(--gradient-accent);
         }
 
-        /* Glass effect */
         .glass {
             background: rgba(255, 255, 255, 0.08);
             backdrop-filter: blur(20px);
@@ -353,7 +351,7 @@
         }
 
         /* ================================================================
-           NAVIGATION
+           NAVIGATION (updated menu)
            ================================================================ */
         .nav {
             position: sticky;
@@ -386,6 +384,7 @@
             text-decoration: none;
             white-space: nowrap;
             flex-shrink: 0;
+            cursor: pointer;
         }
         .nav-logo-mark {
             width: 40px;
@@ -464,7 +463,6 @@
             }
         }
 
-        /* Theme Toggle */
         .theme-toggle {
             background: rgba(255, 255, 255, 0.05);
             border: 1px solid var(--border-light);
@@ -485,7 +483,6 @@
             border-color: var(--border-medium);
         }
 
-        /* Dropdown */
         .dropdown-wrap {
             position: relative;
         }
@@ -545,14 +542,26 @@
             color: #ef4444;
             font-weight: 600;
         }
+        .dropdown-item.gold {
+            color: var(--gold);
+            font-weight: 600;
+        }
         .dropdown-divider {
             height: 1px;
             background: var(--border-light);
             margin: 6px 10px;
         }
+        .dropdown-item .badge-new {
+            background: #ef4444;
+            color: #fff;
+            font-size: 0.6rem;
+            padding: 2px 8px;
+            border-radius: var(--radius-full);
+            margin-left: auto;
+        }
 
         /* ================================================================
-           HERO
+           HERO (unchanged)
            ================================================================ */
         .hero {
             background: var(--gradient-hero);
@@ -672,7 +681,7 @@
         }
 
         /* ================================================================
-           AUTHOR PANEL (hidden by default, password protected)
+           AUTHOR PANEL (Developer Author Studio)
            ================================================================ */
         .author-panel {
             background: var(--bg-card);
@@ -826,7 +835,6 @@
             font-size: 1rem;
         }
 
-        /* Category Pills */
         .cat-pills {
             display: flex;
             gap: 8px;
@@ -857,7 +865,7 @@
         }
 
         /* ================================================================
-           BOOK GRID
+           BOOK GRID (updated with ownership badge)
            ================================================================ */
         .book-grid {
             display: grid;
@@ -998,6 +1006,16 @@
             vertical-align: middle;
             margin-right: 4px;
         }
+        .owner-badge {
+            font-size: 0.6rem;
+            background: var(--accent-light);
+            color: var(--accent-primary);
+            padding: 2px 10px;
+            border-radius: var(--radius-full);
+            display: inline-block;
+            margin-left: 6px;
+            font-weight: 600;
+        }
         .price-row {
             display: flex;
             align-items: center;
@@ -1059,6 +1077,12 @@
         .c-btn.buy-btn:hover {
             box-shadow: 0 4px 16px rgba(108, 59, 255, 0.35);
             background: var(--accent-hover);
+        }
+        .c-btn.owner-btn {
+            background: var(--gold-light);
+            color: var(--gold-dark);
+            border-color: var(--gold);
+            font-weight: 600;
         }
 
         /* ================================================================
@@ -1319,6 +1343,93 @@
             color: #fff;
             border-color: var(--accent-primary);
             transform: translateY(-2px);
+        }
+
+        /* ================================================================
+           HELP & SUPPORT (new)
+           ================================================================ */
+        .help-section {
+            background: var(--bg-card);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--border-light);
+            padding: 2rem;
+            margin: 2rem 0;
+        }
+        .help-section h2 {
+            font-family: var(--font-display);
+            color: var(--text-primary);
+            margin-bottom: 1.5rem;
+        }
+        .help-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 1.5rem;
+        }
+        .help-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-md);
+            padding: 1.5rem;
+            transition: var(--transition-smooth);
+            cursor: default;
+        }
+        .help-card:hover {
+            border-color: var(--gold);
+            transform: translateY(-2px);
+        }
+        .help-card .help-icon {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--gold);
+        }
+        .help-card h4 {
+            font-family: var(--font-display);
+            color: var(--text-primary);
+            margin-bottom: 0.25rem;
+        }
+        .help-card p {
+            color: var(--text-tertiary);
+            font-size: 0.9rem;
+        }
+        .help-card .help-link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            color: var(--accent-primary);
+            font-weight: 600;
+            font-size: 0.85rem;
+            cursor: pointer;
+        }
+        .help-card .help-link:hover {
+            color: var(--gold);
+        }
+        .help-faq-item {
+            padding: 1rem 0;
+            border-bottom: 1px solid var(--border-light);
+        }
+        .help-faq-item:last-child {
+            border-bottom: none;
+        }
+        .help-faq-item .q {
+            font-weight: 600;
+            color: var(--text-primary);
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .help-faq-item .q:hover {
+            color: var(--gold);
+        }
+        .help-faq-item .a {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            margin-top: 4px;
+            display: none;
+            padding-left: 1rem;
+            border-left: 2px solid var(--gold);
+        }
+        .help-faq-item .a.open {
+            display: block;
         }
 
         /* ================================================================
@@ -1651,6 +1762,7 @@
             text-decoration: none;
             font-size: 0.85rem;
             transition: var(--transition-fast);
+            cursor: pointer;
         }
         .footer-links a:hover {
             color: var(--gold);
@@ -1678,7 +1790,7 @@
         }
 
         /* ================================================================
-           NEW: AUTHOR REGISTRATION / DASHBOARD STYLES
+           AUTHOR REGISTRATION / DASHBOARD
            ================================================================ */
         .author-reg-card {
             background: var(--bg-card);
@@ -1837,6 +1949,10 @@
             background: rgba(239, 68, 68, 0.2);
             color: #ef4444;
         }
+        .b-status.pending {
+            background: rgba(139, 92, 246, 0.2);
+            color: var(--accent-primary);
+        }
 
         /* UPI Payment */
         .upi-options {
@@ -1989,138 +2105,6 @@
         }
 
         /* ================================================================
-           HELP & SUPPORT (FAQ)
-           ================================================================ */
-        .faq-search-wrap {
-            position: relative;
-            max-width: 600px;
-            margin: 0 auto 2rem;
-        }
-        .faq-search-wrap input {
-            width: 100%;
-            padding: 16px 20px 16px 52px;
-            border-radius: var(--radius-full);
-            border: 1.5px solid var(--border-light);
-            background: var(--bg-secondary);
-            color: var(--text-primary);
-            font-size: 1rem;
-            font-family: inherit;
-            transition: var(--transition-fast);
-            outline: none;
-        }
-        .faq-search-wrap input:focus {
-            border-color: var(--accent-primary);
-            box-shadow: 0 0 0 4px rgba(108, 59, 255, 0.12);
-        }
-        .faq-search-wrap .faq-search-icon {
-            position: absolute;
-            left: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--text-tertiary);
-            font-size: 1.1rem;
-        }
-        .faq-categories {
-            display: flex;
-            gap: 8px;
-            flex-wrap: wrap;
-            justify-content: center;
-            margin-bottom: 2rem;
-        }
-        .faq-cat-btn {
-            padding: 8px 20px;
-            border-radius: var(--radius-full);
-            border: 1.5px solid var(--border-light);
-            background: transparent;
-            color: var(--text-secondary);
-            cursor: pointer;
-            font-family: inherit;
-            font-size: 0.85rem;
-            font-weight: 500;
-            transition: var(--transition-fast);
-        }
-        .faq-cat-btn:hover,
-        .faq-cat-btn.on {
-            background: var(--gradient-accent);
-            color: #fff;
-            border-color: var(--accent-primary);
-        }
-        .faq-list {
-            max-width: 760px;
-            margin: 0 auto;
-        }
-        .faq-item {
-            background: var(--bg-card);
-            border-radius: var(--radius-md);
-            border: 1px solid var(--border-light);
-            margin-bottom: 12px;
-            overflow: hidden;
-            transition: var(--transition-fast);
-        }
-        .faq-item:hover {
-            border-color: var(--border-medium);
-        }
-        .faq-q {
-            padding: 18px 22px;
-            cursor: pointer;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-weight: 600;
-            color: var(--text-primary);
-            gap: 12px;
-            transition: var(--transition-fast);
-        }
-        .faq-q:hover {
-            color: var(--gold);
-        }
-        .faq-q .faq-icon {
-            font-size: 1.2rem;
-            color: var(--gold);
-            flex-shrink: 0;
-            transition: var(--transition-fast);
-        }
-        .faq-q .faq-arrow {
-            font-size: 0.9rem;
-            color: var(--text-tertiary);
-            transition: var(--transition-fast);
-        }
-        .faq-item.open .faq-arrow {
-            transform: rotate(180deg);
-        }
-        .faq-a {
-            padding: 0 22px 18px;
-            color: var(--text-secondary);
-            line-height: 1.7;
-            display: none;
-        }
-        .faq-item.open .faq-a {
-            display: block;
-        }
-        .faq-a code {
-            background: var(--bg-tertiary);
-            padding: 2px 10px;
-            border-radius: 4px;
-            font-size: 0.85rem;
-            color: var(--text-primary);
-        }
-        .faq-feedback {
-            text-align: center;
-            margin-top: 2rem;
-            padding: 1.5rem;
-            background: var(--bg-card);
-            border-radius: var(--radius-lg);
-            border: 1px solid var(--border-light);
-        }
-        .faq-feedback .fb-actions {
-            display: flex;
-            gap: 12px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 10px;
-        }
-
-        /* ================================================================
            RESPONSIVE
            ================================================================ */
         @media (max-width: 768px) {
@@ -2219,6 +2203,9 @@
             .author-dashboard-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            .help-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 480px) {
@@ -2301,11 +2288,11 @@
         </div>
     </div>
 
-    <!-- ===== AUTHOR PASSWORD MODAL (Super Admin / Author Studio) ===== -->
+    <!-- ===== AUTHOR PASSWORD MODAL (Developer Author Studio) ===== -->
     <div id="authorPassModal" style="display:none" class="auth-overlay" onclick="if(event.target===this)closeAuthorPassModal()">
         <div class="card-modal" style="max-width:400px;text-align:center;">
-            <h3 style="color:var(--gold);margin-bottom:16px;font-family:var(--font-display);">🔐 Author Studio Access</h3>
-            <p style="color:var(--text-tertiary);font-size:0.85rem;margin-bottom:14px;">Enter the super admin password to access Author Studio.</p>
+            <h3 style="color:var(--gold);margin-bottom:16px;font-family:var(--font-display);">🔐 Developer Author Studio</h3>
+            <p style="color:var(--text-tertiary);font-size:0.85rem;margin-bottom:14px;">Enter the developer password to access the Author Studio.</p>
             <div class="fg" style="margin-bottom:14px;">
                 <label>Enter Password</label>
                 <input type="password" id="authorPassInput" placeholder="••••••" style="text-align:center;width:100%;">
@@ -2320,7 +2307,7 @@
 
     <!-- ===== NAV ===== -->
     <nav class="nav" id="navbar">
-        <a class="nav-logo" href="/"><span class="nav-logo-mark">📚</span>Bibek Books</a>
+        <a class="nav-logo" id="navLogo"><span class="nav-logo-mark">📚</span>Bibek Books</a>
         <div class="nav-spacer"></div>
         <div class="nav-btns">
             <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme" title="Toggle theme">
@@ -2338,12 +2325,12 @@
                     <button class="dropdown-item accent" id="dropAccount" onclick="handleAccountClick()">👤 Account</button>
                     <button class="dropdown-item danger" id="dropLogout" style="display:none;" onclick="handleLogout()">🚪 Logout</button>
                     <div class="dropdown-divider"></div>
-                    <button class="dropdown-item" id="dropPublish" onclick="handlePublishClick()">✍️ Publish Your</button>
-                    <!-- Author Studio (hidden, password protected) -->
-                    <button class="dropdown-item" id="dropAuthor" onclick="handleAuthorClick()" style="display:none;">✒️ Author Studio</button>
-                    <button class="dropdown-item" id="dropAuthorLogout" style="display:none;color:var(--gold);font-weight:600;" onclick="handleAuthorLogout()">🔒 Lock Panel</button>
-                    <div class="dropdown-divider"></div>
+                    <button class="dropdown-item gold" id="dropPublish" onclick="handlePublishClick()">✍️ Publish Your</button>
                     <button class="dropdown-item" id="dropHelp" onclick="openHelpSupport()">❓ Help & Support</button>
+                    <!-- Developer Author Studio (hidden, password protected) -->
+                    <button class="dropdown-item" id="dropAuthor" onclick="handleAuthorClick()" style="display:none;">⚙️ Author Studio</button>
+                    <button class="dropdown-item" id="dropAuthorLogout" style="display:none;color:var(--gold);font-weight:600;" onclick="handleAuthorLogout()">🔒 Lock Studio</button>
+                    <!-- Hidden double-click on logo to open Author Studio -->
                 </div>
             </div>
         </div>
@@ -2369,10 +2356,10 @@
     <!-- ===== MAIN ===== -->
     <main class="container" style="padding-top:1.5rem;">
 
-        <!-- Author Panel (Super Admin / Author Studio) -->
+        <!-- Developer Author Studio Panel -->
         <div class="author-panel" id="authorPanel">
             <div class="panel-header">
-                <div class="panel-title">✒️ Author Studio</div>
+                <div class="panel-title">⚙️ Developer Author Studio</div>
                 <div id="authorPanelHead"></div>
             </div>
             <div id="authorPanelBody"></div>
@@ -2397,7 +2384,7 @@
 
         <!-- Book Grid -->
         <div class="book-grid" id="bookGrid">
-            <!-- Skeleton loaders will be shown initially -->
+            <!-- Skeleton loaders -->
         </div>
 
         <!-- Testimonials -->
@@ -2418,6 +2405,106 @@
                 <p>Book reviews, author interviews, and reading tips.</p>
             </div>
             <div class="blog-grid" id="blogGrid"></div>
+        </section>
+
+        <!-- Help & Support Section (toggled) -->
+        <section style="margin-top:4rem;" id="helpSection">
+            <div class="help-section" id="helpContent" style="display:none;">
+                <h2>❓ Help & Support</h2>
+                <div class="help-grid">
+                    <div class="help-card">
+                        <div class="help-icon">📖</div>
+                        <h4>About Bibek Books</h4>
+                        <p>Learn about our mission, vision, and the team behind this multi-author platform.</p>
+                        <span class="help-link" onclick="toast('📖 Bibek Books is a multi-author publishing platform founded by Bibek Patra.','info')">Read more</span>
+                    </div>
+                    <div class="help-card">
+                        <div class="help-icon">🔒</div>
+                        <h4>Privacy Policy</h4>
+                        <p>We take your privacy seriously. Learn how we collect, use, and protect your data.</p>
+                        <span class="help-link" onclick="toast('🔒 Your data is safe with us. We never share your personal information.','info')">Read more</span>
+                    </div>
+                    <div class="help-card">
+                        <div class="help-icon">📜</div>
+                        <h4>Terms & Conditions</h4>
+                        <p>Understand the rules of using Bibek Books, including publishing guidelines and user conduct.</p>
+                        <span class="help-link" onclick="toast('📜 By using Bibek Books, you agree to our terms and conditions.','info')">Read more</span>
+                    </div>
+                    <div class="help-card">
+                        <div class="help-icon">📧</div>
+                        <h4>Contact Us</h4>
+                        <p>Reach out to us for any questions, feedback, or support. We're here to help!</p>
+                        <span class="help-link" onclick="document.getElementById('contactSection').scrollIntoView({behavior:'smooth'})">Contact</span>
+                    </div>
+                    <div class="help-card">
+                        <div class="help-icon">💡</div>
+                        <h4>FAQs</h4>
+                        <p>Find answers to the most commonly asked questions about Bibek Books.</p>
+                        <span class="help-link" onclick="toggleFaqs()">View FAQs</span>
+                    </div>
+                    <div class="help-card">
+                        <div class="help-icon">✍️</div>
+                        <h4>How Publishing Works</h4>
+                        <p>Step-by-step guide to publishing your book on Bibek Books as an independent author.</p>
+                        <span class="help-link" onclick="toast('✍️ Create an author profile → Publish your book → Set a price → Share with readers!','info')">Learn more</span>
+                    </div>
+                    <div class="help-card">
+                        <div class="help-icon">💳</div>
+                        <h4>Payment Guide</h4>
+                        <p>Learn about UPI payments, pricing, and how authors earn from their books.</p>
+                        <span class="help-link" onclick="toast('💳 Authors receive payments via UPI. Readers pay using Google Pay, PhonePe, or Paytm.','info')">Learn more</span>
+                    </div>
+                    <div class="help-card">
+                        <div class="help-icon">🚨</div>
+                        <h4>Report a Problem</h4>
+                        <p>Encountered an issue? Let us know and we'll fix it as soon as possible.</p>
+                        <span class="help-link" onclick="document.getElementById('contactSection').scrollIntoView({behavior:'smooth'})">Report</span>
+                    </div>
+                </div>
+
+                <!-- FAQ Section -->
+                <div id="faqContainer" style="margin-top:2rem;display:none;">
+                    <h3 style="font-family:var(--font-display);color:var(--text-primary);margin-bottom:1rem;">📋 Frequently Asked Questions</h3>
+                    <div class="help-faq-item">
+                        <div class="q" onclick="toggleFaq(this)">How do I create an author profile? <span>+</span></div>
+                        <div class="a">Click on "Publish Your" in the menu, fill in your details, and submit. You'll need a unique username and a valid UPI ID.</div>
+                    </div>
+                    <div class="help-faq-item">
+                        <div class="q" onclick="toggleFaq(this)">How much does it cost to publish a book? <span>+</span></div>
+                        <div class="a">Publishing on Bibek Books is completely free. You only pay a small commission when you make a sale.</div>
+                    </div>
+                    <div class="help-faq-item">
+                        <div class="q" onclick="toggleFaq(this)">How do I get paid for my book sales? <span>+</span></div>
+                        <div class="a">Payments are sent directly to your registered UPI ID. You'll receive your earnings after each successful sale.</div>
+                    </div>
+                    <div class="help-faq-item">
+                        <div class="q" onclick="toggleFaq(this)">Can I edit my book after publishing? <span>+</span></div>
+                        <div class="a">Yes, you can edit your book anytime. Go to your dashboard, find your book, and click the edit button.</div>
+                    </div>
+                    <div class="help-faq-item">
+                        <div class="q" onclick="toggleFaq(this)">What formats are supported for books? <span>+</span></div>
+                        <div class="a">Currently, we support PDF files. You can upload your PDF and readers will be able to download or read it online.</div>
+                    </div>
+                    <div class="help-faq-item">
+                        <div class="q" onclick="toggleFaq(this)">Is there a limit to how many books I can publish? <span>+</span></div>
+                        <div class="a">No, you can publish as many books as you like. There's no limit for verified authors.</div>
+                    </div>
+                </div>
+
+                <!-- Support Form -->
+                <div style="margin-top:2rem;padding-top:2rem;border-top:1px solid var(--border-light);">
+                    <h3 style="font-family:var(--font-display);color:var(--text-primary);margin-bottom:1rem;">📨 Support Form</h3>
+                    <form id="supportForm" onsubmit="submitSupport(event)">
+                        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;">
+                            <div class="fg"><label>Your Name</label><input id="supportName" placeholder="Your name" required></div>
+                            <div class="fg"><label>Email</label><input id="supportEmail" type="email" placeholder="your@email.com" required></div>
+                        </div>
+                        <div class="fg" style="margin-top:0.75rem;"><label>Subject</label><input id="supportSubject" placeholder="What's this about?" required></div>
+                        <div class="fg" style="margin-top:0.75rem;"><label>Message</label><textarea id="supportMessage" rows="4" placeholder="Describe your issue or feedback..." required></textarea></div>
+                        <button type="submit" class="btn btn-primary" style="margin-top:1rem;">📤 Send Support Request</button>
+                    </form>
+                </div>
+            </div>
         </section>
 
         <!-- Contact -->
@@ -2486,10 +2573,10 @@
             <a href="https://wa.me/918280482686" target="_blank" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
         </div>
         <div class="footer-links">
-            <a href="about.html">About</a>
-            <a href="contact.html">Contact</a>
-            <a href="privacy.html">Privacy Policy</a>
-            <a href="terms.html">Terms & Conditions</a>
+            <span onclick="openHelpSupport();document.getElementById('helpSection').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">About</span>
+            <span onclick="document.getElementById('contactSection').scrollIntoView({behavior:'smooth'})" style="cursor:pointer;">Contact</span>
+            <span onclick="openHelpSupport();toast('🔒 Privacy Policy: Your data is safe with us.','info')" style="cursor:pointer;">Privacy Policy</span>
+            <span onclick="openHelpSupport();toast('📜 Terms & Conditions: By using this site, you agree to our terms.','info')" style="cursor:pointer;">Terms</span>
         </div>
         <div class="footer-copy">© 2026 Bibek Patra · Bibek Books</div>
     </footer>
@@ -2538,7 +2625,7 @@
         </div>
     </div>
 
-    <!-- Admin Edit Modal -->
+    <!-- Admin Edit Modal (Developer) -->
     <div class="overlay" id="adminEditModal" style="display:none;" onclick="if(event.target===this)closeAdminEditModal()">
         <div class="card-modal" style="max-width:560px;">
             <h3 style="display:flex;justify-content:space-between;color:var(--text-primary);font-size:1.2rem;font-family:var(--font-display);">
@@ -2574,14 +2661,6 @@
         </div>
     </div>
 
-    <!-- Help & Support Modal (FAQ) -->
-    <div class="overlay" id="helpModal" style="display:none;" onclick="if(event.target===this)closeHelpModal()">
-        <div class="modal-box" style="max-width:820px;">
-            <div class="modal-head"><h3>❓ Help & Support</h3><button class="modal-close" onclick="closeHelpModal()">✕</button></div>
-            <div id="helpBody" style="padding:24px;overflow-y:auto;max-height:72vh;"></div>
-        </div>
-    </div>
-
     <!-- ================================================================ -->
     <!-- ======================== SCRIPT ================================ -->
     <!-- ================================================================ -->
@@ -2612,15 +2691,12 @@
         let testimonials = [];
         let currentUser = null;
         let userData = { wishlist: [], cart: [], purchased: [] };
-        let isAuthor = false; // Super admin / Author Studio mode
+        let isDeveloper = false; // Developer Author Studio mode
         let activeCat = 'All';
         let currentBookId = null;
         let currentAuthorProfile = null; // For logged-in user's author profile
         let authorMap = {}; // id -> author data
-
-        // OWNER: hardcoded developer email for full platform access
-        const OWNER_EMAIL = 'bibekpatra307@gmail.com';
-        let isOwner = false;
+        let userAuthorProfiles = {}; // userId -> authorProfile
 
         const CATS = ['Spiritual', 'Fiction', 'Non-Fiction', 'Science', 'History', 'Poetry', 'Business'];
         const PALETTES = [
@@ -2633,8 +2709,12 @@
             ['#ec4899', '#db2777']
         ];
         const RAZORPAY_KEY = 'rzp_live_Swxgfrh9fcdcud';
-        const SK_PASS_KEY = 'bibek_pass';
-        const DEF_PASS = 'author123';
+        const SK_PASS_KEY = 'bibek_dev_pass';
+        const DEF_PASS = '@Bkp97531';
+
+        // Developer account credentials
+        const DEV_EMAIL = 'bibekpatra307@gmail.com';
+        const DEV_PASS = '@Bkp97531';
 
         const getPass = () => localStorage.getItem(SK_PASS_KEY) || DEF_PASS;
         const setPass = p => localStorage.setItem(SK_PASS_KEY, p);
@@ -2651,6 +2731,34 @@
             const d = Math.max(0, Math.min(90, b.discount || 0));
             return { cur: d > 0 ? Math.round(b.price * (1 - d / 100)) : b.price, orig: b.price, disc: d };
         };
+
+        // ================================================================
+        // OWNERSHIP HELPERS
+        // ================================================================
+        function isBookOwner(book, uid) {
+            if (!uid) return false;
+            // Developer has full control
+            if (isDeveloper) return true;
+            // Check ownerUid field (primary)
+            if (book.ownerUid === uid) return true;
+            // Fallback: check if the book was created by this user's author profile
+            if (book.authorId && userAuthorProfiles[uid]) {
+                if (book.authorId === userAuthorProfiles[uid].id) return true;
+            }
+            return false;
+        }
+
+        function canEditBook(book) {
+            if (!currentUser) return false;
+            if (isDeveloper) return true;
+            return isBookOwner(book, currentUser.uid);
+        }
+
+        function canDeleteBook(book) {
+            if (!currentUser) return false;
+            if (isDeveloper) return true;
+            return isBookOwner(book, currentUser.uid);
+        }
 
         // ================================================================
         // BASE64 IMAGE COMPRESSION
@@ -2864,7 +2972,10 @@
                 closeAuthModal();
                 document.getElementById('dropdownWrap').classList.remove('open');
                 document.getElementById('publishPanel').style.display = 'none';
-                isOwner = false;
+                isDeveloper = false;
+                document.getElementById('dropAuthor').style.display = 'none';
+                document.getElementById('dropAuthorLogout').style.display = 'none';
+                document.getElementById('authorPanel').classList.remove('open');
             });
         }
 
@@ -2874,10 +2985,14 @@
         function onAuthStateChangedHandler(user) {
             if (user) {
                 currentUser = user;
-                // Check if this is the owner
-                isOwner = (user.email === OWNER_EMAIL);
-                if (isOwner) {
+                // Check if this is the developer account
+                if (user.email === DEV_EMAIL) {
+                    isDeveloper = true;
                     document.getElementById('dropAuthor').style.display = 'flex';
+                    toast('🔐 Developer mode enabled', 'info');
+                } else {
+                    isDeveloper = false;
+                    document.getElementById('dropAuthor').style.display = 'none';
                 }
 
                 db.collection('users').doc(user.uid).get().then(doc => {
@@ -2910,12 +3025,14 @@
                 });
             } else {
                 currentUser = null;
+                isDeveloper = false;
                 userData.wishlist = [];
                 userData.cart = [];
                 userData.purchased = [];
                 currentAuthorProfile = null;
-                isOwner = false;
                 document.getElementById('dropAuthor').style.display = 'none';
+                document.getElementById('dropAuthorLogout').style.display = 'none';
+                document.getElementById('authorPanel').classList.remove('open');
                 updateUIForLoginState();
                 updateDots();
                 filterBooks();
@@ -2937,10 +3054,14 @@
                 accBtn.textContent = '👤 ' + (currentUser.displayName || currentUser.email || 'User');
                 accBtn.style.color = 'var(--accent-primary)';
                 logoutBtn.style.display = 'flex';
+                if (isDeveloper) {
+                    document.getElementById('dropAuthor').style.display = 'flex';
+                }
             } else {
                 accBtn.textContent = '👤 Account';
                 accBtn.style.color = '';
                 logoutBtn.style.display = 'none';
+                document.getElementById('dropAuthor').style.display = 'none';
             }
         }
 
@@ -2961,7 +3082,7 @@
         }
 
         // ================================================================
-        // AUTHOR PROFILE CHECK
+        // AUTHOR PROFILE CHECK (display only, no permissions)
         // ================================================================
         async function checkAuthorProfile(uid) {
             if (!uid) return;
@@ -2970,6 +3091,7 @@
                 if (!snap.empty) {
                     const doc = snap.docs[0];
                     currentAuthorProfile = { id: doc.id, ...doc.data() };
+                    userAuthorProfiles[uid] = currentAuthorProfile;
                     authorMap[doc.id] = currentAuthorProfile;
                 } else {
                     currentAuthorProfile = null;
@@ -2978,6 +3100,59 @@
                 console.warn('Error checking author profile:', e);
                 currentAuthorProfile = null;
             }
+        }
+
+        // ================================================================
+        // HELP & SUPPORT
+        // ================================================================
+        function openHelpSupport() {
+            const section = document.getElementById('helpContent');
+            if (section.style.display === 'block') {
+                section.style.display = 'none';
+            } else {
+                section.style.display = 'block';
+                document.getElementById('helpSection').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        function toggleFaqs() {
+            const container = document.getElementById('faqContainer');
+            container.style.display = container.style.display === 'block' ? 'none' : 'block';
+        }
+
+        function toggleFaq(el) {
+            const answer = el.nextElementSibling;
+            const span = el.querySelector('span');
+            if (answer.classList.contains('open')) {
+                answer.classList.remove('open');
+                span.textContent = '+';
+            } else {
+                answer.classList.add('open');
+                span.textContent = '−';
+            }
+        }
+
+        function submitSupport(e) {
+            e.preventDefault();
+            const name = document.getElementById('supportName').value.trim();
+            const email = document.getElementById('supportEmail').value.trim();
+            const subject = document.getElementById('supportSubject').value.trim();
+            const message = document.getElementById('supportMessage').value.trim();
+            if (!name || !email || !subject || !message) {
+                toast('Please fill in all fields.', 'err');
+                return;
+            }
+            // Send to Formspree
+            fetch('https://formspree.io/f/mzdqlpjl', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ name, email, subject, message, _subject: 'Support: ' + subject })
+                })
+                .then(() => {
+                    toast('✅ Support request sent! We\'ll get back to you soon.');
+                    document.getElementById('supportForm').reset();
+                })
+                .catch(() => toast('❌ Failed to send. Please try again.', 'err'));
         }
 
         // ================================================================
@@ -2990,7 +3165,6 @@
                 openAuthModal();
                 return;
             }
-            // Check if user already has author profile
             if (currentAuthorProfile) {
                 renderAuthorDashboard();
                 return;
@@ -3119,7 +3293,10 @@
 
             try {
                 const snap = await db.collection('authors').where('username', '==', username).get();
-                if (!snap.empty) { showRegErr('Username is already taken.'); return; }
+                if (!snap.empty) {
+                    showRegErr('Username is already taken. Please choose another.');
+                    return;
+                }
             } catch (e) { showRegErr('Error checking username: ' + e.message); return; }
 
             const socialLinks = {};
@@ -3155,6 +3332,7 @@
 
                 const docRef = await db.collection('authors').add(authorData);
                 currentAuthorProfile = { id: docRef.id, ...authorData };
+                userAuthorProfiles[currentUser.uid] = currentAuthorProfile;
                 authorMap[docRef.id] = currentAuthorProfile;
                 toast('🎉 Author profile created! Welcome to Bibek Books.');
                 closePublishPanel();
@@ -3177,7 +3355,7 @@
         }
 
         // ================================================================
-        // AUTHOR DASHBOARD (only for the logged-in user's own profile)
+        // AUTHOR DASHBOARD (with ownership-based controls)
         // ================================================================
         function renderAuthorDashboard() {
             const panel = document.getElementById('publishPanel');
@@ -3191,8 +3369,9 @@
                 return;
             }
 
-            // ONLY show books owned by this user (owner_uid === currentUser.uid)
-            const authorBooks = books.filter(b => b.owner_uid === currentUser.uid);
+            const profile = currentAuthorProfile;
+            // Books owned by this user (ownerUid === currentUser.uid)
+            const authorBooks = books.filter(b => b.ownerUid === currentUser.uid || b.authorId === profile.id);
             const publishedBooks = authorBooks.filter(b => b.status === 'published' || !b.status);
             const draftBooks = authorBooks.filter(b => b.status === 'draft');
             const totalEarnings = publishedBooks.reduce((sum, b) => sum + (b.price || 0), 0);
@@ -3200,11 +3379,10 @@
             content.innerHTML = `
                 <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1rem;">
                     <div style="display:flex;align-items:center;gap:1rem;">
-                        ${currentAuthorProfile.profileImage ? `<img src="${currentAuthorProfile.profileImage}" style="width:60px;height:60px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);">` : `<div style="width:60px;height:60px;border-radius:50%;background:var(--bg-tertiary);display:flex;align-items:center;justify-content:center;font-size:2rem;border:2px solid var(--gold);">${currentAuthorProfile.displayName ? currentAuthorProfile.displayName[0].toUpperCase() : 'A'}</div>`}
+                        ${profile.profileImage ? `<img src="${profile.profileImage}" style="width:60px;height:60px;border-radius:50%;object-fit:cover;border:2px solid var(--gold);">` : `<div style="width:60px;height:60px;border-radius:50%;background:var(--bg-tertiary);display:flex;align-items:center;justify-content:center;font-size:2rem;border:2px solid var(--gold);">${profile.displayName ? profile.displayName[0].toUpperCase() : 'A'}</div>`}
                         <div>
-                            <h3 style="font-family:var(--font-display);color:var(--text-primary);">${esc(currentAuthorProfile.displayName)}</h3>
-                            <p style="color:var(--text-tertiary);font-size:0.85rem;">@${esc(currentAuthorProfile.username)} ${currentAuthorProfile.verified ? '✅' : ''}</p>
-                            <p style="color:var(--text-tertiary);font-size:0.75rem;">${authorBooks.length} books · ${publishedBooks.length} published</p>
+                            <h3 style="font-family:var(--font-display);color:var(--text-primary);">${esc(profile.displayName)}</h3>
+                            <p style="color:var(--text-tertiary);font-size:0.85rem;">@${esc(profile.username)} ${profile.verified ? '✅' : ''}</p>
                         </div>
                     </div>
                     <div style="display:flex;gap:8px;flex-wrap:wrap;">
@@ -3224,7 +3402,7 @@
                 </div>
 
                 <div style="margin-top:1.5rem;">
-                    <h4 style="font-family:var(--font-display);color:var(--text-primary);margin-bottom:0.5rem;">📖 My Books</h4>
+                    <h4 style="font-family:var(--font-display);color:var(--text-primary);margin-bottom:0.5rem;">📖 Your Books</h4>
                     ${publishedBooks.slice(0,5).map(b => `
                         <div class="book-list-item">
                             <div class="book-thumb">${b.coverImage ? `<img src="${b.coverImage}" alt="${esc(b.title)}">` : '📄'}</div>
@@ -3238,13 +3416,13 @@
                                 <button class="btn btn-sm btn-danger" onclick="deleteBookAsAuthor('${b.id}')">🗑️</button>
                             </div>
                         </div>
-                    `).join('') || '<p style="color:var(--text-tertiary);">No published books yet. <a href="#" onclick="showAuthorPublishForm()" style="color:var(--gold);">Publish your first book →</a></p>'}
+                    `).join('') || '<p style="color:var(--text-tertiary);">No books yet. <a href="#" onclick="showAuthorPublishForm()" style="color:var(--gold);">Publish your first book →</a></p>'}
                 </div>
             `;
         }
 
         // ================================================================
-        // AUTHOR: PUBLISH BOOK (with owner_uid)
+        // AUTHOR: PUBLISH BOOK (with ownerUid)
         // ================================================================
         function showAuthorPublishForm(editData = null) {
             const content = document.getElementById('publishPanelContent');
@@ -3317,8 +3495,8 @@
             const errEl = document.getElementById('apErr');
             if (!title) { showApErr('Title is required.'); return; }
             if (!isFree && price <= 0) { showApErr('Enter a valid price or mark as free.'); return; }
-            if (!currentAuthorProfile) { showApErr('Author profile not found.'); return; }
             if (!currentUser) { showApErr('You must be logged in.'); return; }
+            if (!currentAuthorProfile) { showApErr('Author profile not found. Please create one first.'); return; }
 
             try {
                 let coverImage = '';
@@ -3342,22 +3520,22 @@
                     isFree,
                     featured,
                     status: isDraft ? 'draft' : 'published',
+                    // OWNERSHIP: store ownerUid (the authenticated user's uid)
+                    ownerUid: currentUser.uid,
+                    // Author profile for display
                     authorId: currentAuthorProfile.id,
                     author: currentAuthorProfile.displayName,
                     authorUsername: currentAuthorProfile.username,
                     authorProfileImage: currentAuthorProfile.profileImage || '',
-                    // CRITICAL: owner_uid is the authenticated user's UID
-                    owner_uid: currentUser.uid,
                     updatedAt: firebase.firestore.FieldValue.serverTimestamp()
                 };
                 if (coverImage) bookData.coverImage = coverImage;
 
                 if (editId) {
-                    // Verify ownership before update
+                    // Check ownership before update
                     const existing = books.find(b => b.id === editId);
-                    if (!existing) { showApErr('Book not found.'); return; }
-                    if (existing.owner_uid !== currentUser.uid) {
-                        showApErr('You do not own this book.');
+                    if (existing && !canEditBook(existing)) {
+                        showApErr('You do not have permission to edit this book.');
                         return;
                     }
                     await db.collection('books').doc(editId).update(bookData);
@@ -3385,14 +3563,15 @@
         }
 
         // ================================================================
-        // AUTHOR: MY BOOKS (owner_uid based)
+        // AUTHOR: MY BOOKS (with ownership checks)
         // ================================================================
         function renderAuthorMyBooks() {
             const content = document.getElementById('publishPanelContent');
+            if (!currentUser) { toast('Please login first', 'err'); return; }
             if (!currentAuthorProfile) { renderAuthorDashboard(); return; }
 
-            // Only books owned by this user
-            const authorBooks = books.filter(b => b.owner_uid === currentUser.uid);
+            // Books owned by this user (ownerUid === currentUser.uid)
+            const authorBooks = books.filter(b => b.ownerUid === currentUser.uid || b.authorId === currentAuthorProfile?.id);
 
             content.innerHTML = `
                 <div style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem;margin-bottom:1rem;">
@@ -3412,8 +3591,9 @@
                         </div>
                         <div style="font-weight:700;color:var(--gold);">${b.isFree ? 'Free' : '₹' + (b.price || 0)}</div>
                         <div style="display:flex;gap:4px;flex-wrap:wrap;">
-                            <button class="btn btn-sm btn-ghost" onclick="editBookAsAuthor('${b.id}')">✏️</button>
-                            <button class="btn btn-sm btn-danger" onclick="deleteBookAsAuthor('${b.id}')">🗑️</button>
+                            ${canEditBook(b) ? `<button class="btn btn-sm btn-ghost" onclick="editBookAsAuthor('${b.id}')">✏️</button>` : ''}
+                            ${canDeleteBook(b) ? `<button class="btn btn-sm btn-danger" onclick="deleteBookAsAuthor('${b.id}')">🗑️</button>` : ''}
+                            ${!canEditBook(b) && !canDeleteBook(b) ? '<span style="color:var(--text-tertiary);font-size:0.75rem;">🔒 Read only</span>' : ''}
                         </div>
                     </div>
                 `).join('') : '<p style="color:var(--text-tertiary);">You haven\'t published any books yet. <a href="#" onclick="showAuthorPublishForm()" style="color:var(--gold);">Publish your first book →</a></p>'}
@@ -3421,14 +3601,13 @@
         }
 
         // ================================================================
-        // AUTHOR: EDIT / DELETE BOOKS (owner_uid check)
+        // AUTHOR: EDIT / DELETE BOOKS (with ownership checks)
         // ================================================================
         function editBookAsAuthor(bookId) {
             const b = books.find(x => x.id === bookId);
             if (!b) { toast('Book not found', 'err'); return; }
-            // OWNERSHIP CHECK: owner_uid must match current user
-            if (b.owner_uid !== currentUser?.uid) {
-                toast('You can only edit your own books.', 'err');
+            if (!canEditBook(b)) {
+                toast('You do not have permission to edit this book.', 'err');
                 return;
             }
             showAuthorPublishForm({ ...b, id: bookId });
@@ -3438,8 +3617,8 @@
             if (!confirm('Delete this book permanently?')) return;
             const b = books.find(x => x.id === bookId);
             if (!b) { toast('Book not found', 'err'); return; }
-            if (b.owner_uid !== currentUser?.uid) {
-                toast('You can only delete your own books.', 'err');
+            if (!canDeleteBook(b)) {
+                toast('You do not have permission to delete this book.', 'err');
                 return;
             }
             try {
@@ -3576,13 +3755,10 @@
         }
 
         // ================================================================
-        // SUPER ADMIN / AUTHOR STUDIO (owner only)
+        // DEVELOPER AUTHOR STUDIO (password protected)
         // ================================================================
         function handleAuthorClick() {
             document.getElementById('dropdownWrap').classList.remove('open');
-            if (!currentUser) { toast('Please login first', 'err');
-                openAuthModal(); return; }
-            if (!isOwner) { toast('Access denied. Owner only.', 'err'); return; }
             document.getElementById('authorPassModal').style.display = 'flex';
             document.getElementById('authorPassInput').value = '';
             document.getElementById('authorPassError').style.display = 'none';
@@ -3593,12 +3769,13 @@
         function verifyAuthorPass() {
             const pw = document.getElementById('authorPassInput').value;
             if (pw === getPass()) {
-                isAuthor = true;
+                isDeveloper = true;
                 closeAuthorPassModal();
                 document.getElementById('authorPanel').classList.add('open');
                 document.getElementById('dropAuthorLogout').style.display = 'flex';
+                document.getElementById('dropAuthor').style.display = 'flex';
                 toast('✅ Author Studio unlocked!');
-                renderAuthorPanel();
+                renderDeveloperStudio();
             } else {
                 document.getElementById('authorPassError').textContent = '❌ Incorrect password.';
                 document.getElementById('authorPassError').style.display = 'block';
@@ -3606,72 +3783,110 @@
         }
 
         function handleAuthorLogout() {
-            isAuthor = false;
+            isDeveloper = false;
             document.getElementById('authorPanel').classList.remove('open');
             document.getElementById('dropAuthorLogout').style.display = 'none';
+            // Only hide studio if not developer account
+            if (currentUser?.email !== DEV_EMAIL) {
+                document.getElementById('dropAuthor').style.display = 'none';
+            }
             toast('🔒 Author Studio locked');
         }
 
-        // Double-click on logo to trigger Author Studio (owner only)
-        document.querySelector('.nav-logo')?.addEventListener('dblclick', function(e) {
+        // Hidden double-click on logo to open Author Studio
+        document.getElementById('navLogo')?.addEventListener('dblclick', function(e) {
             e.preventDefault();
-            if (isOwner) handleAuthorClick();
-            else toast('Owner access only.', 'err');
+            handleAuthorClick();
         });
 
         // ================================================================
-        // AUTHOR PANEL (Super Admin / Owner)
+        // DEVELOPER STUDIO (full control)
         // ================================================================
-        function renderAuthorPanel() {
+        function renderDeveloperStudio() {
             const head = document.getElementById('authorPanelHead');
             head.innerHTML = `
-                <button class="btn btn-gold btn-sm" onclick="showAddBookForm()">+ New Book</button>
+                <button class="btn btn-gold btn-sm" onclick="showDevAddBook()">+ New Book</button>
+                <button class="btn btn-ghost btn-sm" onclick="devManageBooks()">📚 Manage Books</button>
+                <button class="btn btn-ghost btn-sm" onclick="devManageAuthors()">👤 Manage Authors</button>
+                <button class="btn btn-ghost btn-sm" onclick="devManageUsers()">👥 Manage Users</button>
+                <button class="btn btn-ghost btn-sm" onclick="devAnalytics()">📊 Analytics</button>
                 <button class="btn btn-ghost btn-sm" onclick="changeAuthorPass()">🔑 Change Password</button>
-                <button class="btn btn-ghost btn-sm" onclick="editSocialLinks()">🔗 Social Links</button>
-                <button class="btn btn-danger btn-sm" onclick="handleAuthorLogout()">Lock Panel</button>
+                <button class="btn btn-danger btn-sm" onclick="handleAuthorLogout()">🔒 Lock</button>
             `;
-            showAddBookForm();
+            showDevDashboard();
         }
 
-        function showAddBookForm(bookData = null) {
+        function showDevDashboard() {
             const body = document.getElementById('authorPanelBody');
-            const editId = bookData?.id || null;
-            const b = bookData || {};
-            body.innerHTML = `
-            <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px;">
-                <div class="fg"><label>Book Title *</label><input id="f_title" value="${esc(b.title||'')}" placeholder="Enter title"></div>
-                <div class="fg"><label>Author Name *</label><input id="f_author" value="${esc(b.author||'Bibek Patra')}" placeholder="Author"></div>
-                <div class="fg"><label>Category</label><select id="f_cat">${CATS.map(c=>`<option value="${c}" ${b.category===c?'selected':''}>${c}</option>`).join('')}</select></div>
-                <div class="fg"><label>Price (₹) *</label><input id="f_price" type="number" value="${b.price||''}" placeholder="499"></div>
-                <div class="fg"><label>Discount %</label><input id="f_disc" type="number" value="${b.discount||0}" min="0" max="90" placeholder="0"></div>
-                <div class="fg" style="align-items:center;justify-content:center;">
-                    <label>Free Book?</label>
-                    <label style="display:flex;align-items:center;gap:8px;cursor:pointer;color:var(--text-secondary);">
-                        <input type="checkbox" id="f_free" ${b.isFree?'checked':''} style="width:18px;height:18px;accent-color:#10b981;"> Yes, make it free
-                    </label>
-                </div>
-                <div class="fg" style="grid-column:1/-1;"><label>PDF URL</label><input id="f_pdf" value="${esc(b.pdfUrl||'')}" placeholder="https://drive.google.com/file/..."></div>
-                <div class="fg" style="grid-column:1/-1;"><label>Cover Image (upload)</label><input type="file" id="f_cover" accept="image/*"></div>
-                <div class="fg" style="grid-column:1/-1;"><label>Publish Date</label><input type="date" id="f_date" value="${b.publishDate||new Date().toISOString().slice(0,10)}"></div>
-                <div class="fg" style="grid-column:1/-1;"><label>Description</label><textarea id="f_desc" rows="3" placeholder="Book description...">${esc(b.description||'')}</textarea></div>
-                <div style="grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap;">
-                    <button class="btn btn-gold" onclick="submitBook('${editId||''}')">💾 ${editId?'Update Book':'Publish Book'}</button>
-                    <button class="btn btn-ghost" onclick="document.getElementById('authorPanelBody').innerHTML=''">✕ Cancel</button>
-                </div>
-            </div>`;
+            const totalBooks = books.length;
+            const totalAuthors = Object.keys(authorMap).length;
+            const totalUsers = 0; // We'll fetch this
+            const totalRevenue = books.reduce((s, b) => s + (b.price || 0), 0);
+
+            db.collection('users').get().then(snap => {
+                const userCount = snap.size;
+                body.innerHTML = `
+                    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px;margin-top:1rem;">
+                        <div class="dash-stat-card"><div class="stat-number">${totalBooks}</div><div class="stat-label">Total Books</div></div>
+                        <div class="dash-stat-card"><div class="stat-number">${totalAuthors}</div><div class="stat-label">Authors</div></div>
+                        <div class="dash-stat-card"><div class="stat-number">${userCount}</div><div class="stat-label">Users</div></div>
+                        <div class="dash-stat-card"><div class="stat-number">₹${totalRevenue}</div><div class="stat-label">Revenue</div></div>
+                    </div>
+                    <div style="margin-top:1.5rem;color:var(--text-tertiary);font-size:0.85rem;">
+                        <p>⚙️ Developer Studio — Full control over all books, authors, and users.</p>
+                        <p style="margin-top:4px;">Use the buttons above to manage the platform.</p>
+                    </div>
+                `;
+            }).catch(() => {
+                body.innerHTML = `
+                    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px;margin-top:1rem;">
+                        <div class="dash-stat-card"><div class="stat-number">${totalBooks}</div><div class="stat-label">Total Books</div></div>
+                        <div class="dash-stat-card"><div class="stat-number">${totalAuthors}</div><div class="stat-label">Authors</div></div>
+                        <div class="dash-stat-card"><div class="stat-number">—</div><div class="stat-label">Users</div></div>
+                        <div class="dash-stat-card"><div class="stat-number">₹${totalRevenue}</div><div class="stat-label">Revenue</div></div>
+                    </div>
+                    <div style="margin-top:1.5rem;color:var(--text-tertiary);font-size:0.85rem;">
+                        <p>⚙️ Developer Studio — Full control over all books, authors, and users.</p>
+                    </div>
+                `;
+            });
         }
 
-        async function submitBook(editId) {
-            const title = document.getElementById('f_title')?.value.trim();
-            const author = document.getElementById('f_author')?.value.trim();
-            const price = parseInt(document.getElementById('f_price')?.value) || 0;
-            const disc = parseInt(document.getElementById('f_disc')?.value) || 0;
-            const isFree = document.getElementById('f_free')?.checked || false;
-            const pdfUrl = document.getElementById('f_pdf')?.value.trim() || '';
-            const desc = document.getElementById('f_desc')?.value.trim() || '';
-            const cat = document.getElementById('f_cat')?.value || 'Fiction';
-            const pubDate = document.getElementById('f_date')?.value || '';
-            const coverFile = document.getElementById('f_cover')?.files?.[0];
+        function showDevAddBook() {
+            const body = document.getElementById('authorPanelBody');
+            body.innerHTML = `
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:14px;">
+                    <div class="fg"><label>Book Title *</label><input id="d_title" placeholder="Enter title"></div>
+                    <div class="fg"><label>Author Name *</label><input id="d_author" placeholder="Author name" value="Bibek Patra"></div>
+                    <div class="fg"><label>Category</label><select id="d_cat">${CATS.map(c=>`<option value="${c}">${c}</option>`).join('')}</select></div>
+                    <div class="fg"><label>Price (₹) *</label><input id="d_price" type="number" placeholder="499"></div>
+                    <div class="fg"><label>Discount %</label><input id="d_disc" type="number" value="0" min="0" max="90" placeholder="0"></div>
+                    <div class="fg" style="align-items:center;justify-content:center;">
+                        <label style="display:flex;align-items:center;gap:8px;cursor:pointer;color:var(--text-secondary);">
+                            <input type="checkbox" id="d_free" style="width:18px;height:18px;accent-color:#10b981;"> Free Book
+                        </label>
+                    </div>
+                    <div class="fg" style="grid-column:1/-1;"><label>PDF URL</label><input id="d_pdf" placeholder="https://drive.google.com/file/..."></div>
+                    <div class="fg" style="grid-column:1/-1;"><label>Cover Image (upload)</label><input type="file" id="d_cover" accept="image/*"></div>
+                    <div class="fg" style="grid-column:1/-1;"><label>Description</label><textarea id="d_desc" rows="3" placeholder="Book description..."></textarea></div>
+                    <div style="grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap;">
+                        <button class="btn btn-gold" onclick="submitDevBook()">💾 Publish Book</button>
+                        <button class="btn btn-ghost" onclick="showDevDashboard()">✕ Cancel</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        async function submitDevBook() {
+            const title = document.getElementById('d_title')?.value.trim();
+            const author = document.getElementById('d_author')?.value.trim();
+            const price = parseInt(document.getElementById('d_price')?.value) || 0;
+            const disc = parseInt(document.getElementById('d_disc')?.value) || 0;
+            const isFree = document.getElementById('d_free')?.checked || false;
+            const pdfUrl = document.getElementById('d_pdf')?.value.trim() || '';
+            const desc = document.getElementById('d_desc')?.value.trim() || '';
+            const cat = document.getElementById('d_cat')?.value || 'Fiction';
+            const coverFile = document.getElementById('d_cover')?.files?.[0];
             if (!title || !author) { toast('❌ Title and Author required', 'err'); return; }
             if (!isFree && price <= 0) { toast('❌ Enter a valid price', 'err'); return; }
             try {
@@ -3686,55 +3901,212 @@
                     pdfUrl,
                     description: desc,
                     category: cat,
-                    publishDate: pubDate,
-                    updatedAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    publishDate: new Date().toISOString().slice(0, 10),
+                    ownerUid: currentUser?.uid || 'dev',
+                    authorId: '',
+                    authorUsername: author.toLowerCase().replace(/\s/g, ''),
                     status: 'published',
-                    owner_uid: currentUser?.uid || 'admin'
+                    createdAt: firebase.firestore.FieldValue.serverTimestamp(),
+                    updatedAt: firebase.firestore.FieldValue.serverTimestamp()
                 };
                 if (coverImage) bookData.coverImage = coverImage;
-                if (editId) {
-                    await db.collection('books').doc(editId).update(bookData);
-                    toast('✅ Book updated!');
-                } else {
-                    bookData.createdAt = firebase.firestore.FieldValue.serverTimestamp();
-                    await db.collection('books').add(bookData);
-                    toast('🎉 Book published!');
-                }
-                document.getElementById('authorPanelBody').innerHTML = '';
+                await db.collection('books').add(bookData);
+                toast('🎉 Book published!');
+                showDevDashboard();
+                filterBooks();
             } catch (e) { toast('❌ Error: ' + e.message, 'err'); }
         }
 
+        function devManageBooks() {
+            const body = document.getElementById('authorPanelBody');
+            body.innerHTML = `
+                <div style="margin-top:1rem;">
+                    <h4 style="font-family:var(--font-display);color:var(--text-primary);margin-bottom:0.75rem;">📚 All Books (${books.length})</h4>
+                    ${books.length ? books.map(b => `
+                        <div class="book-list-item">
+                            <div class="book-thumb">${b.coverImage ? `<img src="${b.coverImage}" alt="${esc(b.title)}">` : '📄'}</div>
+                            <div class="book-meta">
+                                <div class="b-title">${esc(b.title)}</div>
+                                <div style="font-size:0.8rem;color:var(--text-tertiary);">by ${esc(b.author || 'Unknown')}</div>
+                            </div>
+                            <div style="font-weight:700;color:var(--gold);">${b.isFree ? 'Free' : '₹' + (b.price || 0)}</div>
+                            <div style="display:flex;gap:4px;flex-wrap:wrap;">
+                                <button class="btn btn-sm btn-ghost" onclick="devEditBook('${b.id}')">✏️</button>
+                                <button class="btn btn-sm btn-danger" onclick="devDeleteBook('${b.id}')">🗑️</button>
+                            </div>
+                        </div>
+                    `).join('') : '<p style="color:var(--text-tertiary);">No books found.</p>'}
+                    <button class="btn btn-ghost btn-sm" style="margin-top:1rem;" onclick="showDevDashboard()">← Back</button>
+                </div>
+            `;
+        }
+
+        function devEditBook(bookId) {
+            const b = books.find(x => x.id === bookId);
+            if (!b) { toast('Book not found', 'err'); return; }
+            const body = document.getElementById('authorPanelBody');
+            body.innerHTML = `
+                <h4 style="font-family:var(--font-display);color:var(--gold);margin-bottom:0.75rem;">✏️ Edit Book: ${esc(b.title)}</h4>
+                <div style="display:grid;grid-template-columns:1fr 1fr;gap:14px;">
+                    <div class="fg" style="grid-column:1/-1;"><label>Title *</label><input id="de_title" value="${esc(b.title)}"></div>
+                    <div class="fg" style="grid-column:1/-1;"><label>Author *</label><input id="de_author" value="${esc(b.author)}"></div>
+                    <div class="fg"><label>Category</label><select id="de_cat">${CATS.map(c=>`<option value="${c}" ${b.category===c?'selected':''}>${c}</option>`).join('')}</select></div>
+                    <div class="fg"><label>Price (₹)</label><input id="de_price" type="number" value="${b.price||0}"></div>
+                    <div class="fg"><label>Discount %</label><input id="de_disc" type="number" value="${b.discount||0}" min="0" max="90"></div>
+                    <div class="fg" style="align-items:center;justify-content:center;">
+                        <label style="display:flex;align-items:center;gap:8px;cursor:pointer;">
+                            <input type="checkbox" id="de_free" ${b.isFree?'checked':''}> Free
+                        </label>
+                    </div>
+                    <div class="fg" style="grid-column:1/-1;"><label>PDF URL</label><input id="de_pdf" value="${esc(b.pdfUrl||'')}"></div>
+                    <div class="fg" style="grid-column:1/-1;"><label>Description</label><textarea id="de_desc" rows="3">${esc(b.description||'')}</textarea></div>
+                    <div style="grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap;">
+                        <button class="btn btn-gold" onclick="devSaveBook('${b.id}')">💾 Save</button>
+                        <button class="btn btn-ghost" onclick="devManageBooks()">Cancel</button>
+                    </div>
+                </div>
+            `;
+        }
+
+        async function devSaveBook(bookId) {
+            const title = document.getElementById('de_title')?.value.trim();
+            const author = document.getElementById('de_author')?.value.trim();
+            const price = parseInt(document.getElementById('de_price')?.value) || 0;
+            const disc = parseInt(document.getElementById('de_disc')?.value) || 0;
+            const isFree = document.getElementById('de_free')?.checked || false;
+            const pdfUrl = document.getElementById('de_pdf')?.value.trim() || '';
+            const desc = document.getElementById('de_desc')?.value.trim() || '';
+            const cat = document.getElementById('de_cat')?.value || 'Fiction';
+            if (!title || !author) { toast('Title and author required', 'err'); return; }
+            try {
+                await db.collection('books').doc(bookId).update({
+                    title,
+                    author,
+                    price,
+                    discount: disc,
+                    isFree,
+                    pdfUrl,
+                    description: desc,
+                    category: cat,
+                    updatedAt: firebase.firestore.FieldValue.serverTimestamp()
+                });
+                toast('✅ Book updated!');
+                devManageBooks();
+                filterBooks();
+            } catch (e) { toast('Error: ' + e.message, 'err'); }
+        }
+
+        async function devDeleteBook(bookId) {
+            if (!confirm('Delete this book permanently?')) return;
+            try {
+                await db.collection('books').doc(bookId).delete();
+                toast('🗑️ Book deleted.');
+                devManageBooks();
+                filterBooks();
+            } catch (e) { toast('Error: ' + e.message, 'err'); }
+        }
+
+        function devManageAuthors() {
+            const body = document.getElementById('authorPanelBody');
+            const authorList = Object.values(authorMap);
+            body.innerHTML = `
+                <div style="margin-top:1rem;">
+                    <h4 style="font-family:var(--font-display);color:var(--text-primary);margin-bottom:0.75rem;">👤 All Authors (${authorList.length})</h4>
+                    ${authorList.length ? authorList.map(a => `
+                        <div class="book-list-item" style="border-bottom:1px solid var(--border-light);padding:10px 0;">
+                            <div style="width:44px;height:44px;border-radius:50%;overflow:hidden;flex-shrink:0;background:var(--bg-tertiary);display:flex;align-items:center;justify-content:center;font-size:1.2rem;">
+                                ${a.profileImage ? `<img src="${a.profileImage}" style="width:100%;height:100%;object-fit:cover;">` : (a.displayName ? a.displayName[0].toUpperCase() : 'A')}
+                            </div>
+                            <div class="book-meta">
+                                <div class="b-title">${esc(a.displayName)}</div>
+                                <div style="font-size:0.8rem;color:var(--text-tertiary);">@${esc(a.username)} ${a.verified ? '✅' : ''}</div>
+                            </div>
+                            <div style="font-size:0.8rem;color:var(--text-tertiary);">📚 ${a.bookCount || 0} books</div>
+                            <div style="display:flex;gap:4px;flex-wrap:wrap;">
+                                <button class="btn btn-sm btn-ghost" onclick="devToggleVerify('${a.id}')">${a.verified ? '⭐' : '☆'}</button>
+                            </div>
+                        </div>
+                    `).join('') : '<p style="color:var(--text-tertiary);">No authors found.</p>'}
+                    <button class="btn btn-ghost btn-sm" style="margin-top:1rem;" onclick="showDevDashboard()">← Back</button>
+                </div>
+            `;
+        }
+
+        async function devToggleVerify(authorId) {
+            const a = authorMap[authorId];
+            if (!a) { toast('Author not found', 'err'); return; }
+            try {
+                const newVal = !a.verified;
+                await db.collection('authors').doc(authorId).update({ verified: newVal });
+                a.verified = newVal;
+                toast(newVal ? '✅ Author verified!' : '⭐ Verification removed.');
+                devManageAuthors();
+            } catch (e) { toast('Error: ' + e.message, 'err'); }
+        }
+
+        function devManageUsers() {
+            const body = document.getElementById('authorPanelBody');
+            db.collection('users').get().then(snap => {
+                const users = snap.docs.map(d => ({ id: d.id, ...d.data() }));
+                body.innerHTML = `
+                    <div style="margin-top:1rem;">
+                        <h4 style="font-family:var(--font-display);color:var(--text-primary);margin-bottom:0.75rem;">👥 All Users (${users.length})</h4>
+                        ${users.length ? users.map(u => `
+                            <div class="book-list-item" style="border-bottom:1px solid var(--border-light);padding:10px 0;">
+                                <div class="book-meta">
+                                    <div class="b-title">${esc(u.displayName || 'Unknown')}</div>
+                                    <div style="font-size:0.8rem;color:var(--text-tertiary);">${esc(u.email || '')}</div>
+                                </div>
+                                <div style="font-size:0.8rem;color:var(--text-tertiary);">📚 ${(u.purchased||[]).length} purchased</div>
+                            </div>
+                        `).join('') : '<p style="color:var(--text-tertiary);">No users found.</p>'}
+                        <button class="btn btn-ghost btn-sm" style="margin-top:1rem;" onclick="showDevDashboard()">← Back</button>
+                    </div>
+                `;
+            }).catch(() => {
+                body.innerHTML =
+                    `<p style="color:var(--text-tertiary);">Unable to load users. <button class="btn btn-ghost btn-sm" onclick="showDevDashboard()">← Back</button></p>`;
+            });
+        }
+
+        function devAnalytics() {
+            const body = document.getElementById('authorPanelBody');
+            const totalBooks = books.length;
+            const freeBooks = books.filter(b => b.isFree).length;
+            const paidBooks = totalBooks - freeBooks;
+            const totalRevenue = books.reduce((s, b) => s + (b.price || 0), 0);
+            const avgPrice = totalBooks > 0 ? (totalRevenue / totalBooks).toFixed(2) : 0;
+
+            body.innerHTML = `
+                <div style="margin-top:1rem;">
+                    <h4 style="font-family:var(--font-display);color:var(--text-primary);margin-bottom:0.75rem;">📊 Platform Analytics</h4>
+                    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:16px;">
+                        <div class="dash-stat-card"><div class="stat-number">${totalBooks}</div><div class="stat-label">Total Books</div></div>
+                        <div class="dash-stat-card"><div class="stat-number">${freeBooks}</div><div class="stat-label">Free Books</div></div>
+                        <div class="dash-stat-card"><div class="stat-number">${paidBooks}</div><div class="stat-label">Paid Books</div></div>
+                        <div class="dash-stat-card"><div class="stat-number">₹${totalRevenue}</div><div class="stat-label">Total Revenue</div></div>
+                        <div class="dash-stat-card"><div class="stat-number">₹${avgPrice}</div><div class="stat-label">Avg Price</div></div>
+                        <div class="dash-stat-card"><div class="stat-number">${Object.keys(authorMap).length}</div><div class="stat-label">Authors</div></div>
+                    </div>
+                    <button class="btn btn-ghost btn-sm" style="margin-top:1rem;" onclick="showDevDashboard()">← Back</button>
+                </div>
+            `;
+        }
+
         function changeAuthorPass() {
-            const np = prompt('Enter new author password:');
+            const np = prompt('Enter new developer password:');
             if (np && np.trim()) { setPass(np.trim());
                 toast('✅ Password updated'); }
         }
 
         // ================================================================
-        // SOCIAL LINKS (site settings)
-        // ================================================================
-        async function editSocialLinks() {
-            const docRef = db.collection('siteSettings').doc('config');
-            const doc = await docRef.get();
-            let links = { facebook: '', twitter: '', instagram: '', youtube: '' };
-            if (doc.exists && doc.data().social) links = doc.data().social;
-            const fb = prompt('Facebook URL:', links.facebook || '');
-            const tw = prompt('Twitter URL:', links.twitter || '');
-            const ig = prompt('Instagram URL:', links.instagram || '');
-            const yt = prompt('YouTube URL:', links.youtube || '');
-            const newLinks = { facebook: fb || '', twitter: tw || '', instagram: ig || '', youtube: yt || '' };
-            await docRef.set({ social: newLinks }, { merge: true });
-            toast('✅ Social links updated!');
-        }
-
-        // ================================================================
-        // BOOK GRID & FILTERS (with author display)
+        // BOOK GRID & FILTERS (with ownership display)
         // ================================================================
         function renderBookGrid(bookArr) {
             const grid = document.getElementById('bookGrid');
             if (!bookArr.length) {
                 grid.innerHTML =
-                `<div class="empty-state" style="grid-column:1/-1;"><div class="empty-icon">📭</div><p><strong>No books found</strong></p></div>`;
+                    `<div class="empty-state" style="grid-column:1/-1;"><div class="empty-icon">📭</div><p><strong>No books found</strong></p></div>`;
                 return;
             }
             grid.innerHTML = bookArr.map((b, i) => {
@@ -3766,6 +4138,10 @@
                     `onclick="window._addToCart('${b.id}')"`;
                 const readText = isPurchased || b.isFree ? '📖 Read' : (isInCart ? '✓ In Cart' : '🛒 Buy');
 
+                // Show owner badge if current user owns this book
+                const isOwner = currentUser && isBookOwner(b, currentUser.uid);
+                const ownerBadge = isOwner ? '<span class="owner-badge">✏️ Yours</span>' : '';
+
                 let authorDisplay = '';
                 if (authorAvatar) {
                     authorDisplay =
@@ -3780,12 +4156,13 @@
                     <span class="badge-read">📖 Quick View</span>
                   </div>
                   <div class="book-info">
-                    <div class="book-title">${esc(b.title)}</div>
+                    <div class="book-title">${esc(b.title)} ${ownerBadge}</div>
                     <div class="book-author">by ${authorDisplay}</div>
                     <div class="price-row">${priceHTML}</div>
                     <div class="card-btns" onclick="event.stopPropagation();">
                       <button class="c-btn ${isWishlisted?'wishlisted':''}" onclick="window._toggleWishlist('${b.id}')">${isWishlisted?'❤️':'🤍'}</button>
                       <button class="c-btn buy-btn" ${readAction}>${readText}</button>
+                      ${isOwner ? `<button class="c-btn owner-btn" onclick="event.stopPropagation();editBookAsAuthor('${b.id}')">✏️ Edit</button>` : ''}
                     </div>
                   </div>
                 </div>`;
@@ -3821,7 +4198,7 @@
         window.filterBooks = filterBooks;
 
         // ================================================================
-        // WISHLIST, CART, PURCHASE (with UPI payment)
+        // WISHLIST, CART, PURCHASE
         // ================================================================
         window._toggleWishlist = (id) => requireAuthThen(() => toggleWishlist(id));
         window._addToCart = (id) => requireAuthThen(() => addToCart(id));
@@ -3867,7 +4244,7 @@
         }
 
         // ================================================================
-        // MODALS
+        // MODALS (unchanged)
         // ================================================================
         function openWishlist() {
             const m = document.getElementById('wishModal');
@@ -4059,9 +4436,12 @@
                     `<a href="#" onclick="event.preventDefault();closeDetailModal();openAuthorPage('${authorId}')" style="color:var(--gold);text-decoration:none;display:inline-flex;align-items:center;gap:4px;">${authorHTML}</a>`;
             }
 
+            const isOwner = currentUser && isBookOwner(b, currentUser.uid);
+
             body.innerHTML = `
                 <div class="book-detail-cover" style="background:transparent;">
                     ${b.coverImage?`<img src="${esc(b.coverImage)}" style="width:100%;height:100%;object-fit:cover;border-radius:10px;">`:`<div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;font-family:var(--font-display);font-weight:700;color:#fff;text-align:center;padding:16px;background:linear-gradient(135deg,#8b5cf6,#f0b90b);border-radius:10px;">${esc(b.title)}</div>`}
+                    ${isOwner ? '<div style="position:absolute;top:10px;right:10px;background:var(--gold);color:#1a1128;padding:4px 12px;border-radius:var(--radius-full);font-size:0.7rem;font-weight:700;">✏️ Your Book</div>' : ''}
                 </div>
                 <div class="book-detail-info">
                     <h2>${esc(b.title)}</h2>
@@ -4079,34 +4459,38 @@
                 isInCart = userData.cart.includes(b.id),
                 isWishlisted = userData.wishlist.includes(b.id);
 
-            // OWNERSHIP: show edit/delete only if current user owns this book
-            const isOwnerOfBook = currentUser && b.owner_uid === currentUser.uid;
-
-            foot.innerHTML = `
+            let footHTML = `
                 <button class="btn btn-ghost btn-sm" onclick="window._toggleWishlist('${b.id}')">${isWishlisted?'❤️ Wishlisted':'🤍 Wishlist'}</button>
                 ${isPurchased||b.isFree?`<button class="btn btn-primary btn-sm" onclick="window._readBook('${b.id}')">📖 Read Now</button>`:`<button class="btn btn-primary btn-sm" onclick="window._addToCart('${b.id}')">${isInCart?'✓ In Cart':'🛒 Add to Cart'}</button>`}
                 ${(isPurchased||b.isFree)?`<button class="btn btn-gold btn-sm" onclick="openReviewModal('${b.id}')">✍️ Write Review</button>`:''}
-                ${isOwnerOfBook ? `<button class="btn btn-gold btn-sm" onclick="closeDetailModal();editBookAsAuthor('${b.id}')">✏️ Edit</button><button class="btn btn-danger btn-sm" onclick="closeDetailModal();adminDeleteBook('${b.id}')">🗑️ Delete</button>` : ''}
-                ${isAuthor ? `<button class="btn btn-gold btn-sm" onclick="closeDetailModal();openEditFromDetail('${b.id}')">✏️ Admin Edit</button><button class="btn btn-danger btn-sm" onclick="closeDetailModal();adminDeleteBook('${b.id}')">🗑️ Admin Delete</button>` : ''}
-                <button class="btn btn-ghost btn-sm" onclick="closeDetailModal()">Close</button>
             `;
+
+            // Owner controls (for book owner)
+            if (isOwner) {
+                footHTML += `
+                    <button class="btn btn-gold btn-sm" onclick="closeDetailModal();editBookAsAuthor('${b.id}')">✏️ Edit</button>
+                    <button class="btn btn-danger btn-sm" onclick="closeDetailModal();deleteBookAsAuthor('${b.id}')">🗑️ Delete</button>
+                `;
+            }
+
+            // Developer controls
+            if (isDeveloper) {
+                footHTML += `
+                    <button class="btn btn-gold btn-sm" onclick="closeDetailModal();devEditBook('${b.id}')">⚙️ Dev Edit</button>
+                    <button class="btn btn-danger btn-sm" onclick="closeDetailModal();devDeleteBook('${b.id}')">⚙️ Dev Delete</button>
+                `;
+            }
+
+            footHTML += `<button class="btn btn-ghost btn-sm" onclick="closeDetailModal()">Close</button>`;
+            foot.innerHTML = footHTML;
             document.getElementById('detailModal').style.display = 'flex';
             loadReviews(bookId);
         }
 
         function closeDetailModal() { document.getElementById('detailModal').style.display = 'none'; }
 
-        function openEditFromDetail(bookId) {
-            const b = books.find(x => x.id === bookId);
-            if (!b) { toast('Book not found', 'err'); return; }
-            document.getElementById('authorPanel').classList.add('open');
-            renderAuthorPanel();
-            showAddBookForm({ ...b, id: bookId });
-            document.getElementById('authorPanel').scrollIntoView({ behavior: 'smooth' });
-        }
-
         // ================================================================
-        // AUTHOR PUBLIC PAGE
+        // AUTHOR PUBLIC PAGE (display only)
         // ================================================================
         async function openAuthorPage(authorId) {
             if (!authorId) { toast('Author not found', 'err'); return; }
@@ -4186,7 +4570,7 @@
         }
 
         // ================================================================
-        // REVIEW SYSTEM
+        // REVIEW SYSTEM (unchanged)
         // ================================================================
         async function loadReviews(bookId) {
             const container = document.getElementById('reviewsContainer');
@@ -4395,144 +4779,7 @@
         }
 
         // ================================================================
-        // HELP & SUPPORT (FAQ) — NEW
-        // ================================================================
-        function openHelpSupport() {
-            document.getElementById('dropdownWrap').classList.remove('open');
-            const modal = document.getElementById('helpModal');
-            const body = document.getElementById('helpBody');
-
-            const faqs = [{
-                q: 'How to publish a book?',
-                a: 'Open <strong>Publish Your</strong> → Create Author Profile → Publish. Fill in the book details, upload cover and PDF, then click Publish.'
-            }, {
-                q: 'How to edit my book?',
-                a: 'Go to <strong>My Books</strong> from your Author Dashboard → Click the Edit (✏️) button next to your book.'
-            }, {
-                q: 'How to change password?',
-                a: 'Open <strong>Account</strong> → Settings → Change Password. You can also reset it via the "Forgot Password?" link on the login page.'
-            }, {
-                q: 'Why can\'t I edit another author\'s book?',
-                a: 'Only the original owner (the account that created the book) can edit or delete it. This ensures authorship and copyright integrity.'
-            }, {
-                q: 'How to upload a book cover?',
-                a: 'When publishing or editing a book, use the <strong>Book Cover</strong> file picker. Supports JPG, PNG — automatically compressed to 600px max.'
-            }, {
-                q: 'How does payment work?',
-                a: 'We use UPI (Google Pay, PhonePe, Paytm). After adding books to cart, click "Proceed to Pay" and complete the UPI transaction.'
-            }, {
-                q: 'How to create an author profile?',
-                a: 'Click <strong>Publish Your</strong> in the menu, fill in your details (name, username, bio, UPI), and submit. You\'ll get your own author dashboard.'
-            }, {
-                q: 'How to recover my account?',
-                a: 'Use the <strong>Forgot Password</strong> link on the login page. Enter your email and we\'ll send a reset link. Or contact support at inboxtobibek@gmail.com'
-            }, {
-                q: 'How to see my published books?',
-                a: 'Go to <strong>Publish Your</strong> → Dashboard → My Books. All your published and draft books are listed there.'
-            }, {
-                q: 'How to delete my book?',
-                a: 'From <strong>My Books</strong>, click the Delete (🗑️) button next to your book. Confirm the deletion.'
-            }, {
-                q: 'How to update my profile?',
-                a: 'Go to <strong>Publish Your</strong> → Dashboard → Edit Profile. Update your name, bio, UPI, social links, and profile picture.'
-            }, {
-                q: 'How to write a book review?',
-                a: 'Open any book detail page. If you\'ve purchased or the book is free, you\'ll see a "Write Review" button. Click it, rate, and share your thoughts.'
-            }, {
-                q: 'How to feature my book?',
-                a: 'Only admin can feature books. Contact support if you believe your book deserves to be featured.'
-            }];
-
-            let faqHTML = `
-                <div style="margin-bottom:1.5rem;">
-                    <div class="faq-search-wrap">
-                        <span class="faq-search-icon">🔍</span>
-                        <input type="text" id="faqSearch" placeholder="Search for answers…" oninput="filterFaqs()">
-                    </div>
-                    <div class="faq-categories" id="faqCategories">
-                        <button class="faq-cat-btn on" data-cat="all" onclick="filterFaqs('all')">All</button>
-                        <button class="faq-cat-btn" data-cat="account" onclick="filterFaqs('account')">Account</button>
-                        <button class="faq-cat-btn" data-cat="publishing" onclick="filterFaqs('publishing')">Publishing</button>
-                        <button class="faq-cat-btn" data-cat="books" onclick="filterFaqs('books')">Books</button>
-                        <button class="faq-cat-btn" data-cat="payments" onclick="filterFaqs('payments')">Payments</button>
-                        <button class="faq-cat-btn" data-cat="settings" onclick="filterFaqs('settings')">Settings</button>
-                    </div>
-                </div>
-                <div class="faq-list" id="faqList">
-                    ${faqs.map((f, i) => `
-                        <div class="faq-item" data-cat="${getFaqCategory(f.q)}" data-search="${esc(f.q)} ${esc(f.a)}">
-                            <div class="faq-q" onclick="toggleFaq(this)">
-                                <span><span class="faq-icon">❓</span> ${esc(f.q)}</span>
-                                <span class="faq-arrow">▼</span>
-                            </div>
-                            <div class="faq-a">${f.a}</div>
-                        </div>
-                    `).join('')}
-                </div>
-                <div class="faq-feedback">
-                    <p><strong>💬 Didn't find what you're looking for?</strong></p>
-                    <p style="color:var(--text-tertiary);font-size:0.9rem;">Contact our support team for personalized help.</p>
-                    <div class="fb-actions">
-                        <a href="mailto:inboxtobibek@gmail.com" class="btn btn-primary">📧 Email Support</a>
-                        <a href="#contactSection" class="btn btn-ghost" onclick="closeHelpModal()">📝 Contact Form</a>
-                    </div>
-                </div>
-            `;
-
-            body.innerHTML = faqHTML;
-            modal.style.display = 'flex';
-        }
-
-        function getFaqCategory(q) {
-            const lq = q.toLowerCase();
-            if (lq.includes('account') || lq.includes('password') || lq.includes('recover')) return 'account';
-            if (lq.includes('publish') || lq.includes('edit') || lq.includes('delete') || lq.includes('author')) return 'publishing';
-            if (lq.includes('book') || lq.includes('cover') || lq.includes('review') || lq.includes('feature')) return 'books';
-            if (lq.includes('payment') || lq.includes('upi') || lq.includes('pay')) return 'payments';
-            if (lq.includes('profile') || lq.includes('update') || lq.includes('setting')) return 'settings';
-            return 'all';
-        }
-
-        function toggleFaq(el) {
-            const item = el.closest('.faq-item');
-            const isOpen = item.classList.contains('open');
-            // Close others
-            document.querySelectorAll('.faq-item').forEach(f => f.classList.remove('open'));
-            if (!isOpen) item.classList.add('open');
-        }
-
-        function filterFaqs(cat) {
-            const search = document.getElementById('faqSearch')?.value.toLowerCase().trim() || '';
-            const items = document.querySelectorAll('.faq-item');
-            const cats = document.querySelectorAll('.faq-cat-btn');
-            cats.forEach(b => b.classList.remove('on'));
-            const activeCat = cat || document.querySelector('.faq-cat-btn.on')?.dataset.cat || 'all';
-            if (cat) {
-                document.querySelector(`.faq-cat-btn[data-cat="${cat}"]`)?.classList.add('on');
-            }
-
-            items.forEach(item => {
-                const itemCat = item.dataset.cat || 'all';
-                const searchText = item.dataset.search || '';
-                const matchCat = activeCat === 'all' || itemCat === activeCat;
-                const matchSearch = !search || searchText.toLowerCase().includes(search);
-                item.style.display = (matchCat && matchSearch) ? '' : 'none';
-            });
-        }
-
-        // Expose FAQ functions globally
-        window.openHelpSupport = openHelpSupport;
-        window.closeHelpModal = () => document.getElementById('helpModal').style.display = 'none';
-        window.toggleFaq = toggleFaq;
-        window.filterFaqs = filterFaqs;
-
-        // Close help modal on overlay click
-        document.getElementById('helpModal')?.addEventListener('click', function(e) {
-            if (e.target === this) this.style.display = 'none';
-        });
-
-        // ================================================================
-        // CONTACT FORM - Formspree
+        // CONTACT FORM
         // ================================================================
         document.getElementById('contactForm')?.addEventListener('submit', function(e) {
             const btn = this.querySelector('button[type="submit"]');
@@ -4544,16 +4791,6 @@
                 btn.disabled = false;
             }, 5000);
         });
-
-        // ================================================================
-        // ADMIN FUNCTIONS (owner only)
-        // ================================================================
-        async function adminDeleteBook(id) {
-            if (!isAuthor && !isOwner) { toast('Access denied', 'err'); return; }
-            if (!confirm('Delete this book permanently?')) return;
-            try { await db.collection('books').doc(id).delete();
-                toast('Deleted', 'ok'); } catch (e) { toast('Error: ' + e.message, 'err'); }
-        }
 
         // ================================================================
         // LIVE FIRESTORE LISTENERS
@@ -4577,7 +4814,10 @@
             Object.assign(authorMap, newMap);
             if (currentUser) {
                 const found = Object.values(authorMap).find(a => a.userId === currentUser.uid);
-                if (found) currentAuthorProfile = found;
+                if (found) {
+                    currentAuthorProfile = found;
+                    userAuthorProfiles[currentUser.uid] = found;
+                }
             }
             updateHeroStats();
             filterBooks();
@@ -4617,25 +4857,14 @@
                 document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
             });
 
-            const logo = document.querySelector('.nav-logo');
-            if (logo) {
-                logo.addEventListener('dblclick', function(e) {
-                    e.preventDefault();
-                    if (isOwner) handleAuthorClick();
-                    else toast('Owner access only.', 'err');
-                });
-            }
-
-            console.log('📚 Bibek Books – Multi-Author Publishing Platform (Secure)');
-            console.log('🔑 Author Studio password: ' + getPass());
-            console.log('👤 Owner: ' + OWNER_EMAIL);
+            console.log('📚 Bibek Books – Multi-Author Publishing Platform');
+            console.log('🔐 Developer Studio: double-click the logo or use the menu.');
             console.log('✍️ Click "Publish Your" to register as an author.');
-            console.log('📖 Double-click the logo to open Author Studio (owner only).');
+            console.log('🔑 Developer password: ' + getPass());
+            console.log('👤 Developer account: ' + DEV_EMAIL);
         }
 
-        // ================================================================
-        // GLOBAL EXPOSURES
-        // ================================================================
+        // Global functions for onclick
         window.toggleDropdown = function() {
             document.getElementById('dropdownWrap').classList.toggle('open');
         };
@@ -4662,7 +4891,6 @@
         window.closeBuy = closeBuy;
         window.openDetailModal = openDetailModal;
         window.closeDetailModal = closeDetailModal;
-        window.openEditFromDetail = openEditFromDetail;
         window.openReviewModal = openReviewModal;
         window.closeReviewModal = closeReviewModal;
         window.submitReview = submitReview;
@@ -4676,10 +4904,6 @@
         window.sendPhoneOTP = sendPhoneOTP;
         window.switchAuthTab = switchAuthTab;
         window.renderAuthForm = renderAuthForm;
-        window.submitBook = submitBook;
-        window.showAddBookForm = showAddBookForm;
-        window.editSocialLinks = editSocialLinks;
-        window.adminDeleteBook = adminDeleteBook;
         window.payWithUPI = payWithUPI;
         window.openAuthorPage = openAuthorPage;
         window.closeAuthorPageModal = closeAuthorPageModal;
@@ -4698,7 +4922,23 @@
         window.saveAuthorProfile = saveAuthorProfile;
         window.submitAuthorRegistration = submitAuthorRegistration;
         window.openHelpSupport = openHelpSupport;
-        window.closeHelpModal = () => document.getElementById('helpModal').style.display = 'none';
+        window.toggleFaqs = toggleFaqs;
+        window.toggleFaq = toggleFaq;
+        window.submitSupport = submitSupport;
+
+        // Developer studio functions
+        window.showDevDashboard = showDevDashboard;
+        window.showDevAddBook = showDevAddBook;
+        window.submitDevBook = submitDevBook;
+        window.devManageBooks = devManageBooks;
+        window.devEditBook = devEditBook;
+        window.devSaveBook = devSaveBook;
+        window.devDeleteBook = devDeleteBook;
+        window.devManageAuthors = devManageAuthors;
+        window.devToggleVerify = devToggleVerify;
+        window.devManageUsers = devManageUsers;
+        window.devAnalytics = devAnalytics;
+        window.changeAuthorPass = changeAuthorPass;
 
         init();
     </script>
